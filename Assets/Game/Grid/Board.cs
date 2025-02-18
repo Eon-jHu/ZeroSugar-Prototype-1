@@ -31,10 +31,15 @@ public class Board : MonoBehaviour
         }
     }
     
+    private void Start()
+    {
+        OnBoardReady?.Invoke();
+    }
+    
     // get centre tile.
     // 1. This can be used to centre the camera and size of play area can push back the camera on the Z axis.
-
     
+    // Get the tile that the player is on for AI Pathfinding.
     public Tile GetPlayerTile()
     {
         foreach (Tile tileInstance in tiles)
@@ -48,8 +53,4 @@ public class Board : MonoBehaviour
         return null;
     }
 
-    private void Start()
-    {
-        OnBoardReady?.Invoke();
-    }
 }
