@@ -49,7 +49,7 @@ public class Tile : MonoBehaviour
     }
 
     // can use this for enemy spawn positions
-    private bool IsBoundaryTile()
+    public bool IsBoundaryTile()
     {
         return neighbourTiles.Count < 8;
     }
