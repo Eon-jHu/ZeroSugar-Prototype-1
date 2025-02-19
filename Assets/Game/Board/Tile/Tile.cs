@@ -6,6 +6,8 @@ public class Tile : MonoBehaviour
 {
     private List<Tile> neighbourTiles = new();
     [field: SerializeField] public GameObject TileRangeIndicator { get; private set; }
+
+    [field: SerializeField]
     public IOccupier Occupier { get; private set; }
     private Transform occupierTransform;
 
