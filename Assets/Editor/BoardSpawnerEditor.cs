@@ -1,10 +1,9 @@
-using System;
 using UnityEditor;
 using UnityEngine;
 
 public class BoardSpawnerEditor : EditorWindow
 {
-    private GameObject prefab;
+    private GameObject tilePrefab;
     private int rows;
     private int columns;
 
@@ -19,7 +18,7 @@ public class BoardSpawnerEditor : EditorWindow
     {
         GUI.Label(new Rect(500,500, 200, 100), "Board Spawner");
         
-        prefab = (GameObject)EditorGUILayout.ObjectField("Prefab", prefab, typeof(GameObject), false);
+        tilePrefab = (GameObject)EditorGUILayout.ObjectField("Tile Prefab", tilePrefab, typeof(GameObject), false);
         rows = EditorGUILayout.IntField("Rows", rows);
         columns = EditorGUILayout.IntField("Columns", columns);
 
@@ -31,7 +30,7 @@ public class BoardSpawnerEditor : EditorWindow
 
     private void SpawnBoard()
     {
-        if (prefab == null)
+        if (tilePrefab == null)
         {
             Debug.LogError("No tile prefab selected.");
             return;
@@ -47,7 +46,7 @@ public class BoardSpawnerEditor : EditorWindow
         {
             for (int j = 0; j < rows; j++)
             {
-                Tile newTile = Instantiate(prefab, new Vector3(j - offsetX, 0, i - offsetZ), Quaternion.identity)
+                Tile newTile = Instantiate(tilePrefab, new Vector3(j - offsetX, 0, i - offsetZ), Quaternion.identity)
                     .GetComponent<Tile>();
                 newTile.name = "Tile " + i + "_" + j;
                 newTile.transform.parent = parent.transform;

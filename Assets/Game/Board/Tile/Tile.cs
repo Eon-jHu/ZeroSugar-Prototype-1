@@ -64,6 +64,11 @@ public class Tile : MonoBehaviour
         return neighbourTiles.Count < 8;
     }
 
+    public bool IsOccupied()
+    {
+        return Occupier != null;
+    }
+
     private void OnDestroy()
     {
         Board.OnBoardReady -= InitializeTile;
