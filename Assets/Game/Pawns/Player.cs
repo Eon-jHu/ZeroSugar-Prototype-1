@@ -2,13 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IOccupier
 {
     [SerializeField]
     private int Health;
 
     [SerializeField]
-    private int ActionPoints;
+    private int actionPoints;
+
+    [SerializeField]
+    private Tile currentTile;
+
+    [SerializeField]
+    private Board board;
 
     //Temporary variables
     Card[] Deck;
