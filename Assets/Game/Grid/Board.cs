@@ -6,30 +6,8 @@ public class PlayerTest : IOccupier {}
 
 public class Board : MonoBehaviour
 {
-    [SerializeField] private int width;
-    [SerializeField] private int height;
-
-    [SerializeField] private GameObject tile;
-
     private List<Tile> tiles = new();
-
     public static event Action OnBoardReady;
-
-    private void Awake()
-    {
-        float offsetX = (width - 1) / 2f;
-        float offsetZ = (height - 1) / 2f;
-        
-        for (int i = 0; i < width; i++)
-        {
-            for (int j = 0; j < height; j++)
-            {
-                GameObject newTile = Instantiate(tile, new Vector3(j - offsetX, 0, i - offsetZ), Quaternion.identity);
-                newTile.name = "Tile " + i + "_" + j;
-                newTile.transform.parent = transform;
-            }
-        }
-    }
     
     private void Start()
     {
