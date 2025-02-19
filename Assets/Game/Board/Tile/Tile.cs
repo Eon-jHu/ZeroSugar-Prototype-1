@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    private List<Tile> neighbourTiles = new();
+    [HideInInspector] public List<Tile> neighbourTiles = new();
     [field: SerializeField] public GameObject TileRangeIndicator { get; private set; }
 
     [field: SerializeField]
@@ -16,22 +16,6 @@ public class Tile : MonoBehaviour
     private void Awake()
     {
         Board.OnBoardReady += InitializeTile;
-    }
-
-    private void Start()
-    {
-        // catch if the occupier transform has been set in the inspector
-        if (occupierTransform)
-        {
-            IOccupier occupier = occupierTransform.GetComponent<IOccupier>();
-
-            if (occupier == null)
-            {
-                Debug.LogError("Attempt to add a occupier transform with no script that implements the IOccupier interface");
-            }
-
-            OccupyTile(occupier, null, true);
-        }
     }
 
     public bool OccupyTile(IOccupier occupier, Tile fromTile, bool snapToTile = false)
@@ -61,6 +45,7 @@ public class Tile : MonoBehaviour
     private void LeaveTile()
     {
         Occupier = null;
+        occupierTransform = null;
     }
 
     private void InitializeTile(Board board)
