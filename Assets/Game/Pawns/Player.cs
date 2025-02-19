@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour, IOccupier
 {
+    public Transform OccupierTransform => transform;
+    
     [SerializeField]
     private int Health;
 
@@ -33,13 +35,14 @@ public class Player : MonoBehaviour, IOccupier
         
     }
 
-    void PlacePlayer()
+    void PlacePlayer(Tile tile)
     {
-        FindObjectOfType<Board>().CenterTile.OccupyTile(this, null);
+        tile.OccupyTile(this, null);
     }
 
     private void OnDestroy()
     {
         Tile.OnCenterTileAssigned -= PlacePlayer;
     }
+
 }
