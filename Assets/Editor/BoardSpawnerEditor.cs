@@ -1,3 +1,4 @@
+using System;
 using UnityEditor;
 using UnityEngine;
 
@@ -40,15 +41,17 @@ public class BoardSpawnerEditor : EditorWindow
         float offsetZ = (rows - 1) / 2f;
         
         GameObject parent = new GameObject("Board Parent");
-        parent.AddComponent<Board>();
+        Board board = parent.AddComponent<Board>();
 
         for (int i = 0; i < columns; i++)
         {
             for (int j = 0; j < rows; j++)
             {
-                GameObject newTile = Instantiate(prefab, new Vector3(j - offsetX, 0, i - offsetZ), Quaternion.identity);
+                Tile newTile = Instantiate(prefab, new Vector3(j - offsetX, 0, i - offsetZ), Quaternion.identity)
+                    .GetComponent<Tile>();
                 newTile.name = "Tile " + i + "_" + j;
                 newTile.transform.parent = parent.transform;
+                board.AddTile(newTile);
             }
         }
     }

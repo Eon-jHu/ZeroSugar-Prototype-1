@@ -7,16 +7,46 @@ public class PlayerTest : IOccupier {}
 public class Board : MonoBehaviour
 {
     private List<Tile> tiles = new();
-    public static event Action OnBoardReady;
+    public static event Action<Board> OnBoardReady;
+    
+    public Tile CenterTile { get; set; }
+
+    [SerializeField] private bool boardDebug;
     
     private void Start()
     {
-        OnBoardReady?.Invoke();
+        OnBoardReady?.Invoke(this);
     }
-    
+
+    public void AddTile(Tile tile)
+    {
+        tiles.Add(tile);
+    }
+
+    private void Update()
+    {
+        if (!boardDebug)
+            return;
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            ShowRange(CenterTile, 1);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            ShowRange(CenterTile, 2);
+
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            ShowRange(CenterTile, 3);
+        }
+    }
+
     // get centre tile.
     // 1. This can be used to centre the camera and size of play area can push back the camera on the Z axis.
     
+
     // Get the tile that the player is on for AI Pathfinding.
     public Tile GetPlayerTile()
     {
@@ -31,4 +61,20 @@ public class Board : MonoBehaviour
         return null;
     }
 
+    public void ShowRange(Tile fromTile, int range)
+    {
+        // fills out the range to allow for one step diagonally.
+        float adjustedRange = range + 0.42f;
+        foreach (var tile in tiles)
+        {
+            // disables any leftover range indicators that may erroneously enabled from previous turn.
+            tile.TileRangeIndicator.SetActive(false);
+            
+            float distanceToTile = Vector3.Distance(tile.transform.position, fromTile.transform.position);
+            if (distanceToTile <= adjustedRange)
+            {
+                tile.TileRangeIndicator.SetActive(true);
+            }
+        }
+    }
 }
