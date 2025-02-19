@@ -22,14 +22,24 @@ public class Player : MonoBehaviour, IOccupier
     Card[] Discarded;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        FindObjectOfType<Board>().CenterTile.OccupyTile(this, null);
+        Tile.OnCenterTileAssigned += PlacePlayer;
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    void PlacePlayer()
+    {
+        FindObjectOfType<Board>().CenterTile.OccupyTile(this, null);
+    }
+
+    private void OnDestroy()
+    {
+        Tile.OnCenterTileAssigned -= PlacePlayer;
     }
 }
