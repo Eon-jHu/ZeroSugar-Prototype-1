@@ -24,7 +24,7 @@ public class Player : MonoBehaviour, IOccupier
     // Start is called before the first frame update
     void Start()
     {
-        
+        FindObjectOfType<Board>().CenterTile.OccupyTile(this, null);
     }
 
     // Update is called once per frame
