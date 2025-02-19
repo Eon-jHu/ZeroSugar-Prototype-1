@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour, IOccupier
 {
+    public Transform OccupierTransform => transform;
+
     public enum eEnemyType
     {
         MELEE,

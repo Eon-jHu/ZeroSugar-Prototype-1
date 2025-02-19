@@ -34,6 +34,8 @@ public class Tile : MonoBehaviour
         Occupier = occupier;
         occupierTransform = occupier.OccupierTransform;
 
+        /* Note that this probably works best when the player mesh/model is a separate from the Player root object. Then you can ensure
+         That the feet of the player model is at 0,0,0.*/
         if (snapToTile)
         {
             Occupier.OccupierTransform.position = transform.position;
