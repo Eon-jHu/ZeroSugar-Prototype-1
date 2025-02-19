@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +7,8 @@ public class Tile : MonoBehaviour
     private List<Tile> neighbourTiles = new();
     [field: SerializeField] public GameObject TileRangeIndicator { get; private set; }
     public IOccupier Occupier { get; private set; }
+
+    public static event Action OnCenterTileAssigned;
 
     private void Awake()
     {
@@ -55,6 +58,7 @@ public class Tile : MonoBehaviour
         if (transform.position == Vector3.zero)
         {
             board.CenterTile = this;
+            OnCenterTileAssigned?.Invoke();
         }
     }
 
