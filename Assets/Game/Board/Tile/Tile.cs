@@ -3,12 +3,13 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    public List<Tile> neighbourTiles = new();
+    private List<Tile> neighbourTiles = new();
+    [field: SerializeField] public GameObject TileRangeIndicator { get; private set; }
     public IOccupier Occupier { get; private set; }
 
     private void Awake()
     {
-        Board.OnBoardReady += GetNeighbourTiles;
+        Board.OnBoardReady += InitializeTile;
     }
 
     public bool OccupyTile(IOccupier occupier, Tile fromTile)
@@ -32,7 +33,7 @@ public class Tile : MonoBehaviour
         Occupier = null;
     }
 
-    private void GetNeighbourTiles()
+    private void InitializeTile(Board board)
     {
         foreach (var tile in FindObjectsOfType<Tile>())
         {
@@ -46,6 +47,15 @@ public class Tile : MonoBehaviour
                 neighbourTiles.Add(tile);
             }
         }
+        
+        // register tile with the board
+        board.AddTile(this);
+
+        // if the tile is at origin, this is the center tile.
+        if (transform.position == Vector3.zero)
+        {
+            board.CenterTile = this;
+        }
     }
 
     // can use this for enemy spawn positions
@@ -54,8 +64,13 @@ public class Tile : MonoBehaviour
         return neighbourTiles.Count < 8;
     }
 
+    public bool IsOccupied()
+    {
+        return Occupier != null;
+    }
+
     private void OnDestroy()
     {
-        Board.OnBoardReady -= GetNeighbourTiles;
+        Board.OnBoardReady -= InitializeTile;
     }
 }
