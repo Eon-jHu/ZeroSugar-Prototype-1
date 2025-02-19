@@ -2,7 +2,10 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerTest : IOccupier {}
+public class PlayerTest : IOccupier
+{
+    public Transform OccupierTransform { get; set; }
+}
 
 public class Board : MonoBehaviour
 {
@@ -61,7 +64,7 @@ public class Board : MonoBehaviour
         return null;
     }
 
-    public void ShowRange(Tile fromTile, int range)
+    private void ShowRange(Tile fromTile, int range)
     {
         // fills out the range to allow for one step diagonally.
         float adjustedRange = range + 0.42f;

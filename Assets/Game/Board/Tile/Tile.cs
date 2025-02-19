@@ -7,15 +7,32 @@ public class Tile : MonoBehaviour
     private List<Tile> neighbourTiles = new();
     [field: SerializeField] public GameObject TileRangeIndicator { get; private set; }
     public IOccupier Occupier { get; private set; }
+    private Transform occupierTransform;
 
-    public static event Action OnCenterTileAssigned;
+    public static event Action<Tile> OnCenterTileAssigned;
 
     private void Awake()
     {
         Board.OnBoardReady += InitializeTile;
     }
 
-    public bool OccupyTile(IOccupier occupier, Tile fromTile)
+    private void Start()
+    {
+        // catch if the occupier transform has been set in the inspector
+        if (occupierTransform)
+        {
+            IOccupier occupier = occupierTransform.GetComponent<IOccupier>();
+
+            if (occupier == null)
+            {
+                Debug.LogError("Attempt to add a occupier transform with no script that implements the IOccupier interface");
+            }
+
+            OccupyTile(occupier, null, true);
+        }
+    }
+
+    public bool OccupyTile(IOccupier occupier, Tile fromTile, bool snapToTile = false)
     {
         // if tile is already occupied return false.
         // todo check for unit death--Occupier might not be null
@@ -27,7 +44,15 @@ public class Tile : MonoBehaviour
         {
             fromTile.LeaveTile();
         }
+        
         Occupier = occupier;
+        occupierTransform = occupier.OccupierTransform;
+
+        if (snapToTile)
+        {
+            Occupier.OccupierTransform.position = transform.position;
+        }
+        
         return true;
     }
 
@@ -58,7 +83,8 @@ public class Tile : MonoBehaviour
         if (transform.position == Vector3.zero)
         {
             board.CenterTile = this;
-            OnCenterTileAssigned?.Invoke();
+            OnCenterTileAssigned?.Invoke(this);
+            transform.name = "Center Tile";
         }
     }
 
