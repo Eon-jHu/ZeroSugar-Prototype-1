@@ -26,6 +26,11 @@ public class Board : MonoBehaviour
         tiles.Add(tile);
     }
 
+    public List<Tile> GetTiles()
+    {
+        return tiles;
+    }
+
     private void Update()
     {
         if (!boardDebug)
@@ -56,7 +61,7 @@ public class Board : MonoBehaviour
         foreach (Tile tileInstance in tiles)
         {
             // todo change PlayerTest to the actual script on the player.
-            if (tileInstance.Occupier is PlayerTest)
+            if (tileInstance.Occupier is Player)
             {
                 return tileInstance;
             }
