@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour, IOccupier
 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         Board.OnBoardReady += EnemySpawn;
     }
