@@ -33,7 +33,7 @@ public abstract class Draggable : MonoBehaviour
     // Moves the object to the mouse position
     IEnumerator MoveToMouse()
     {
-        while (isMouseDown && (transform.position - GetMouseWorldPos() + offset).sqrMagnitude > 0.0001f)
+        while (isMouseDown && (transform.position - GetMouseWorldPos() + offset).sqrMagnitude > 0.001f)
         {
             transform.position = Vector3.Lerp(transform.position, GetMouseWorldPos() + offset, 0.1f);
             yield return null;
