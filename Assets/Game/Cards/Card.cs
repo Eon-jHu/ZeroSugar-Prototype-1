@@ -20,14 +20,18 @@ public class Card : MonoBehaviour
     private Sprite cardFace;
 
     // GameManager reference
-    private GameManager gmRef;
+    private CardManager cmRef;
     // Tracks if this is an active card
     private bool hasBeenPlayed;
+    // Own collider
+    private BoxCollider cardCollider;
 
     // Start is called before the first frame update
     void Start()
     {
-        gmRef = FindObjectOfType<GameManager>();
+        cmRef = FindObjectOfType<CardManager>();
+        cardCollider = GetComponent<BoxCollider>();
+        hasBeenPlayed = false;
     }
 
     // Method to tell all of its listeners to execute
@@ -47,20 +51,22 @@ public class Card : MonoBehaviour
         hasBeenPlayed = false;
     }
 
-    private void OnMouseDown()
+    private void OnMouseUpAsButton()
     {
-        if (!hasBeenPlayed)
+        if (hasBeenPlayed) return;
+
+        if (cardCollider.bounds.Intersects(cmRef.playArea.bounds))
         {
-            transform.position += Vector3.up * 10;
             hasBeenPlayed = true;
-            gmRef.availableCardSlots[handIndex] = true;
-            Invoke("MoveToDiscardPile", 2f);
+            cmRef.availableCardSlots[handIndex] = true;
+            //Invoke("MoveToDiscardPile", 2f);
+            MoveToDiscardPile();
         }
     }
 
     void MoveToDiscardPile()
     {
-        gmRef.discardPile.Add(this);
+        cmRef.discardPile.Add(this);
         gameObject.SetActive(false);
     }
 }

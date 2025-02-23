@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class CardManager : MonoBehaviour
 {
     public List<Card> deck = new List<Card>();
     public List<Card> discardPile = new List<Card>();
@@ -12,9 +12,19 @@ public class GameManager : MonoBehaviour
     public bool[] availableCardSlots;
 
     public TextMeshProUGUI deckSizeText;
+    public BoxCollider playArea;
+
+    // Draws cards from the deck so it fills the hand
+    public void DrawHand()
+    { 
+        while (DrawCards())
+        {
+            continue;
+        }
+    }
 
     // Draws a single card from the deck to the hand
-    public void DrawCards()
+    public bool DrawCards()
     {
         if (deck.Count > 0)
         {
@@ -31,15 +41,27 @@ public class GameManager : MonoBehaviour
                     drawnCard.handIndex = i;
 
                     drawnCard.transform.position = cardSlots[i].transform.position;
+                    // Set the sorting order
+                    drawnCard.GetComponent<Renderer>().sortingOrder = i;
 
                     availableCardSlots[i] = false;
                     deck.Remove(drawnCard);
-                    return;
+                    return true;
                 }
             }
-        }        
+            // Returns false after looping through all card slots
+            return false;
+        }
+        else
+        {
+            Reshuffle();
+            DrawCards();
+        }
+
+        return false;
     }
 
+    // Shuffles the discard pile back into the deck
     public void Reshuffle()
     {
         if (discardPile.Count >= 1)
@@ -55,6 +77,7 @@ public class GameManager : MonoBehaviour
         ShuffleDeck();
     }
 
+    // Shuffles the deck
     public void ShuffleDeck()
     {
         int count = deck.Count;
