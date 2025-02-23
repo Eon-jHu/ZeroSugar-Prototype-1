@@ -103,5 +103,6 @@ public class Card : Draggable
     {
         cmRef.discardPile.Add(this);
         gameObject.SetActive(false);
+        inPlayZone = false; // reset played status
     }
 }
