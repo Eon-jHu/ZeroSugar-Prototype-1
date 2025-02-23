@@ -39,10 +39,9 @@ public class CardManager : MonoBehaviour
                     // Display the card and move it into position
                     drawnCard.gameObject.SetActive(true);
                     drawnCard.handIndex = i;
+                    drawnCard.GetComponent<Renderer>().sortingOrder = i; // sets the sorting order
 
                     drawnCard.transform.position = cardSlots[i].transform.position;
-                    // Set the sorting order
-                    drawnCard.GetComponent<Renderer>().sortingOrder = i;
 
                     availableCardSlots[i] = false;
                     deck.Remove(drawnCard);
@@ -68,7 +67,6 @@ public class CardManager : MonoBehaviour
         {
             foreach (Card card in discardPile)
             {
-                card.ResetPlayState();
                 deck.Add(card);
             }
             discardPile.Clear();
