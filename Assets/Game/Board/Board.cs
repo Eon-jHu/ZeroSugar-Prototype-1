@@ -2,14 +2,13 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerTest : IOccupier
+public class Board : Singleton<Board>
 {
-    public Transform OccupierTransform { get; set; }
-}
+    public static readonly string SizeIndicatorString = "SizeIndicator";
 
-public class Board : MonoBehaviour
-{
     private List<Tile> tiles = new();
+    
+    public int TileSize { get; set; }
     public static event Action<Board> OnBoardReady;
     
     public Tile CenterTile { get; set; }
@@ -18,6 +17,21 @@ public class Board : MonoBehaviour
     
     private void Start()
     {
+        /* dirty way to see the size of the tile board; Carry data over from editor scripts is actually a bit annoying
+         so I just created empty name GameObjects to tell the size of the tiles since getting the scale value of the tile works for now but may change. */
+        foreach (var go in transform.GetComponentsInChildren<Transform>())
+        {
+            if (go.transform.name.Contains(SizeIndicatorString))
+            {
+                TileSize++;
+            }
+        }
+
+        if (TileSize <= 0)
+        {
+            Debug.LogError("Tile size is 0. Please recreate the board from tools>board spawner.");
+        }
+        
         OnBoardReady?.Invoke(this);
     }
 
@@ -69,7 +83,7 @@ public class Board : MonoBehaviour
         return null;
     }
 
-    private void ShowRange(Tile fromTile, int range)
+    public void ShowRange(Tile currentTile, int range)
     {
         // fills out the range to allow for one step diagonally.
         float adjustedRange = range + 0.42f;
@@ -78,11 +92,16 @@ public class Board : MonoBehaviour
             // disables any leftover range indicators that may erroneously enabled from previous turn.
             tile.TileRangeIndicator.SetActive(false);
             
-            float distanceToTile = Vector3.Distance(tile.transform.position, fromTile.transform.position);
-            if (distanceToTile <= adjustedRange)
+            float distanceToTile = Vector3.Distance(tile.transform.position, currentTile.transform.position);
+            if (distanceToTile <= adjustedRange * TileSize)
             {
                 tile.TileRangeIndicator.SetActive(true);
             }
         }
+    }
+
+    private void GetNextPathToPlayer(Tile currentTile)
+    {
+        
     }
 }
