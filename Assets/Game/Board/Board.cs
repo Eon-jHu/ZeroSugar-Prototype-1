@@ -100,8 +100,26 @@ public class Board : Singleton<Board>
         }
     }
 
-    private void GetNextPathToPlayer(Tile currentTile)
+    public Tile GetNextTileOnPathToPlayer(Tile currentTile)
     {
-        
+        Tile playerTile = GetPlayerTile();
+
+        if (playerTile == null)
+            return null;
+
+        float closestDistance = float.MaxValue;
+        Tile closestTile = null;
+
+        foreach (var tile in currentTile.neighbourTiles)
+        {
+            float distanceToPlayer = Vector3.Distance(tile.transform.position, playerTile.transform.position);
+
+            if (distanceToPlayer < closestDistance)
+            {
+                closestDistance = distanceToPlayer;
+                closestTile = tile;
+            }
+        }
+        return closestTile;
     }
 }
