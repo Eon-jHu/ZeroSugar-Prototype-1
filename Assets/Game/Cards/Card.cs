@@ -72,7 +72,7 @@ public class Card : Draggable
 
     IEnumerator ResetPos()
     {
-        while ((transform.position - cmRef.cardSlots[handIndex].position).sqrMagnitude > 0.01f)
+        while ((transform.position - cmRef.cardSlots[handIndex].position).sqrMagnitude > 0.0001f)
         {
             transform.position = Vector3.Lerp(transform.position, cmRef.cardSlots[handIndex].position, 0.1f);
             yield return null;
