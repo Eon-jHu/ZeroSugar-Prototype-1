@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour, IOccupier
 {
+    public static Player Instance;
+
     public Transform OccupierTransform => transform;
     
     [SerializeField]
@@ -26,6 +28,7 @@ public class Player : MonoBehaviour, IOccupier
     private void Awake()
     {
         Tile.OnCenterTileAssigned += PlacePlayer;
+        if (Instance == null) Instance = this;
     }
 
     private void PlacePlayer(Tile tile)
@@ -36,6 +39,11 @@ public class Player : MonoBehaviour, IOccupier
     private void OnDestroy()
     {
         Tile.OnCenterTileAssigned -= PlacePlayer;
+    }
+
+    public void EndTurn()
+    {
+        TurnBasedSystem.Instance.EndPlayerTurn();
     }
 }
 
