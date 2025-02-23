@@ -103,6 +103,11 @@ public class Board : Singleton<Board>
         }
     }
 
+    public void ShowRangeFromCenter(int range)
+    {
+        ShowRange(CenterTile, range);
+    }
+
     public Tile GetNextTileOnPathToPlayer(Tile currentTile)
     {
         Tile playerTile = GetPlayerTile();
