@@ -15,7 +15,7 @@ public class Tile : MonoBehaviour
 
     private void Awake()
     {
-        Board.OnBoardReady += InitializeTile; 
+        Board.OnTileInitRequired += InitializeTile; 
     }
 
     public bool OccupyTile(IOccupier occupier, Tile fromTile, bool snapToTile = false)
@@ -89,6 +89,6 @@ public class Tile : MonoBehaviour
 
     private void OnDestroy()
     {
-        Board.OnBoardReady -= InitializeTile;
+        Board.OnTileInitRequired -= InitializeTile; 
     }
 }

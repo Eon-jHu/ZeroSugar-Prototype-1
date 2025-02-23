@@ -9,6 +9,8 @@ public class Board : Singleton<Board>
     private List<Tile> tiles = new();
     
     public int TileSize { get; set; }
+
+    public static event Action<Board> OnTileInitRequired;
     public static event Action<Board> OnBoardReady;
     
     public Tile CenterTile { get; set; }
@@ -32,6 +34,7 @@ public class Board : Singleton<Board>
             Debug.LogError("Tile size is 0. Please recreate the board from tools>board spawner.");
         }
         
+        OnTileInitRequired?.Invoke(this);
         OnBoardReady?.Invoke(this);
     }
 
