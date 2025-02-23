@@ -26,6 +26,11 @@ public class Board : Singleton<Board>
                 TileSize++;
             }
         }
+
+        if (TileSize <= 0)
+        {
+            Debug.LogError("Tile size is 0. Please recreate the board from tools>board spawner.");
+        }
         
         OnBoardReady?.Invoke(this);
     }
