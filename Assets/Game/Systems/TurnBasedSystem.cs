@@ -58,6 +58,6 @@ public class TurnBasedSystem : MonoBehaviour
     {
         currentTurn = TurnState.PlayerTurn;
         Debug.Log("Player Turn Started");
-        //player instance
+        Player.Instance.EndTurn();
     }
 }
