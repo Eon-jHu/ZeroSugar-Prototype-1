@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class Card : MonoBehaviour
+public class Card : Draggable
 {
-    // Where the card is in our hand
+    // Where the card is in our hand; also the order in the sorting layer
     public int handIndex;
 
     [SerializeField]
@@ -16,53 +17,87 @@ public class Card : MonoBehaviour
     [SerializeField]
     private float range;
 
+    // Sprite for the card face
     [SerializeField]
-    private Sprite cardFace;
+    private Sprite cardSprite;
 
     // GameManager reference
     private CardManager cmRef;
-    // Tracks if this is an active card
-    private bool hasBeenPlayed;
+
+    // Tracks if this is an active card (UNUSED)
+    // private bool hasBeenPlayed;
+
     // Own collider
     private BoxCollider cardCollider;
+    // Renderer for the card
+    private SpriteRenderer cardRenderer;
+    // Booleans to check if it's in the play zone or not
+    private bool inPlayZone;
 
     // Start is called before the first frame update
     void Start()
     {
         cmRef = FindObjectOfType<CardManager>();
         cardCollider = GetComponent<BoxCollider>();
-        hasBeenPlayed = false;
+        cardRenderer = GetComponent<SpriteRenderer>();
+        inPlayZone = false;
     }
 
-    // Method to tell all of its listeners to execute
-    public void ExecuteEffect()
-    {
+    // ================= COLLISION AND MOUSE UP =================
 
+    protected override void OnMouseDown()
+    {
+        base.OnMouseDown();
+        GetComponent<Renderer>().sortingOrder = 100;
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void OnMouseUp()
     {
-        
-    }
+        base.OnMouseUp();
+        cardRenderer.sortingOrder = handIndex;
 
-    public void ResetPlayState()
-    {
-        hasBeenPlayed = false;
-    }
-
-    private void OnMouseUpAsButton()
-    {
-        if (hasBeenPlayed) return;
-
-        if (cardCollider.bounds.Intersects(cmRef.playArea.bounds))
+        if (inPlayZone)
         {
-            hasBeenPlayed = true;
+            // Play the card
             cmRef.availableCardSlots[handIndex] = true;
             //Invoke("MoveToDiscardPile", 2f);
             MoveToDiscardPile();
         }
+        else
+        {
+            // Reset its position
+            StartCoroutine(ResetPos());
+        }
     }
+
+    IEnumerator ResetPos()
+    {
+        while ((transform.position - cmRef.cardSlots[handIndex].position).sqrMagnitude > 0.01f)
+        {
+            transform.position = Vector3.Lerp(transform.position, cmRef.cardSlots[handIndex].position, 0.1f);
+            yield return null;
+        }        
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("PlayZone"))
+        {
+            inPlayZone = true;
+            Debug.Log("In play zone");
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("PlayZone"))
+        {
+            inPlayZone = false;
+            Debug.Log("Left play zone");
+        }
+    }
+
+    // =========================================================
 
     void MoveToDiscardPile()
     {
