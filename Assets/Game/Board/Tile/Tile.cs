@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    [HideInInspector] public List<Tile> neighbourTiles = new();
+    public List<Tile> neighbourTiles = new();
     [field: SerializeField] public GameObject TileRangeIndicator { get; private set; }
 
     [field: SerializeField]
@@ -15,7 +15,7 @@ public class Tile : MonoBehaviour
 
     private void Awake()
     {
-        Board.OnBoardReady += InitializeTile;
+        Board.OnBoardReady += InitializeTile; 
     }
 
     public bool OccupyTile(IOccupier occupier, Tile fromTile, bool snapToTile = false)
@@ -59,7 +59,7 @@ public class Tile : MonoBehaviour
             
             float distanceToOtherTile = Vector3.Distance(transform.position, tile.transform.position);
 
-            if (distanceToOtherTile <= 1.42f)
+            if (distanceToOtherTile <= 1.42f * Board.Instance.TileSize)
             {
                 neighbourTiles.Add(tile);
             }
@@ -69,11 +69,10 @@ public class Tile : MonoBehaviour
         board.AddTile(this);
 
         // if the tile is at origin, this is the center tile.
-        if (transform.position == Vector3.zero)
+        if (transform.name.ToLower().Contains("center tile"))
         {
             board.CenterTile = this;
             OnCenterTileAssigned?.Invoke(this);
-            transform.name = "Center Tile";
         }
     }
 

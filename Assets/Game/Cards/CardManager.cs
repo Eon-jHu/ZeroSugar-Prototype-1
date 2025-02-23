@@ -14,6 +14,14 @@ public class CardManager : MonoBehaviour
     public TextMeshProUGUI deckSizeText;
     public BoxCollider playArea;
 
+    private void Start()
+    {
+        foreach (Transform slot in cardSlots)
+        {
+            slot.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        }
+    }
+
     // Draws cards from the deck so it fills the hand
     public void DrawHand()
     { 
@@ -41,8 +49,8 @@ public class CardManager : MonoBehaviour
                     drawnCard.handIndex = i;
                     drawnCard.GetComponent<Renderer>().sortingOrder = i; // sets the sorting order
 
-                    drawnCard.transform.position = cardSlots[i].transform.position;
-
+                    drawnCard.transform.SetPositionAndRotation(cardSlots[i].transform.position, cardSlots[i].transform.rotation);
+                    
                     availableCardSlots[i] = false;
                     deck.Remove(drawnCard);
                     return true;
