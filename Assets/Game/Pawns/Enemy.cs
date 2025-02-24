@@ -94,7 +94,9 @@ public class Enemy : MonoBehaviour, IOccupier
 
             // do not allow a unit to take longer than 5 seconds to move.
             float moveTimeRemaining = Mathf.Min(distance / moveSpeed, maximumMoveTime);
-            targetTile.OccupyTile(this, currentTile);
+            bool canOccupy = targetTile.OccupyTile(this, currentTile);
+
+            if (!canOccupy) yield break;
             
             //animate enemy movement e.g Animator.SetBool("Walk", true)
 
@@ -105,10 +107,9 @@ public class Enemy : MonoBehaviour, IOccupier
                 moveTimeRemaining -= Time.deltaTime;
                 Vector3 directionToTile = (targetDest - transform.position).normalized;
                 
-                transform.Translate(moveSpeed * Time.deltaTime * directionToTile);
-                // need to test this, I think this is how to face the target tile.
-                transform.LookAt(new Vector3(targetDest.x, transform.position.y, targetDest.z));
-
+                transform.position += moveSpeed * Time.deltaTime * directionToTile;
+                
+                transform.forward = directionToTile;
                 
                 yield return null;
             }

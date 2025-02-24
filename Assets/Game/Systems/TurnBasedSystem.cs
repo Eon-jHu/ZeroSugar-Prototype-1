@@ -72,15 +72,7 @@ public class TurnBasedSystem : MonoBehaviour
 
         StartPlayerTurn();
     }
-
-    private void StartEnemyUnitTurn(Enemy enemy)
-    {
-    }
-
-    private void CycleToNextEnemy()
-    {
-        // select the next enemy with energy/moves remaining.
-    }
+    
 
     private void StartPlayerTurn()
     {

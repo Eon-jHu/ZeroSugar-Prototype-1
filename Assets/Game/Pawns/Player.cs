@@ -51,10 +51,12 @@ public class Player : MonoBehaviour, IOccupier
         TurnBasedSystem.Instance.EndPlayerTurn();
     }
 
-    public CheckActionValue(int actionCost)
+    
+    public bool CheckActionValue(int actionCost)
     {
         return actionPoints >= actionCost;
     }
+    
 }
 
 
