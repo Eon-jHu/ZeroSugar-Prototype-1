@@ -66,12 +66,12 @@ public class Board : Singleton<Board>
         {
             ShowRange(CenterTile, 3);
         }
+        else if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            DisableShowRange();
+        }
     }
-
-    // get centre tile.
-    // 1. This can be used to centre the camera and size of play area can push back the camera on the Z axis.
     
-
     // Get the tile that the player is on for AI Pathfinding.
     public Tile GetPlayerTile()
     {
@@ -93,12 +93,14 @@ public class Board : Singleton<Board>
         foreach (var tile in tiles)
         {
             // disables any leftover range indicators that may erroneously enabled from previous turn.
-            tile.TileRangeIndicator.SetActive(false);
+            //tile.TileRangeIndicator.SetActive(false);
+            tile.ShowTileIndicator(true);
+
             
             float distanceToTile = Vector3.Distance(tile.transform.position, currentTile.transform.position);
             if (distanceToTile <= adjustedRange * TileSize)
             {
-                tile.TileRangeIndicator.SetActive(true);
+                tile.ShowTileIndicator();
             }
         }
     }

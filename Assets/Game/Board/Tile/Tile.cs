@@ -10,6 +10,11 @@ public class Tile : MonoBehaviour
     [field: SerializeField]
     public IOccupier Occupier { get; private set; }
     private Transform occupierTransform;
+    private Color previousColor;
+
+    [SerializeField] private Color hoverGreen;
+    [SerializeField] private Color hoverYellow;
+    [SerializeField] private Color hoverRed;
 
     public static event Action<Tile> OnCenterTileAssigned;
 
@@ -17,7 +22,7 @@ public class Tile : MonoBehaviour
     {
         Board.OnTileInitRequired += InitializeTile; 
     }
-
+    
     public bool OccupyTile(IOccupier occupier, Tile fromTile, bool snapToTile = false)
     {
         // if tile is already occupied return false.
@@ -86,6 +91,50 @@ public class Tile : MonoBehaviour
     {
         return Occupier != null;
     }
+
+    public void ShowTileIndicator(bool isThrownRange = false)
+    {
+        TileRangeIndicator.SetActive(true);
+        Color color = isThrownRange ? hoverYellow : hoverGreen;
+        TileRangeIndicator.GetComponent<Renderer>().material.color = color;
+        previousColor = color;
+        
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit))
+        {
+            if (hit.collider == GetComponent<Collider>())
+            {
+                SetHoverColor();
+            }
+        }
+    }
+    
+    private void OnMouseEnter()
+    {
+        if (!TileRangeIndicator.activeSelf)
+            return;
+
+        SetHoverColor();
+    }
+
+    private void SetHoverColor()
+    {
+        Renderer render = TileRangeIndicator.GetComponent<Renderer>();
+        previousColor = render.material.color;
+        render.material.color = hoverRed;
+    }
+    
+    private void OnMouseExit()
+    {
+        if (!TileRangeIndicator.activeSelf)
+            return;
+
+        Renderer render = TileRangeIndicator.GetComponent<Renderer>();
+        render.material.color = previousColor;
+    }
+
 
     private void OnDestroy()
     {
