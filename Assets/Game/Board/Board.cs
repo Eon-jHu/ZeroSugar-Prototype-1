@@ -103,6 +103,18 @@ public class Board : Singleton<Board>
         }
     }
 
+    public Tile GetOccupierTile(IOccupier occupier)
+    {
+        foreach (var tile in tiles)
+        {
+            if (tile.Occupier == occupier)
+            {
+                return tile;
+            }
+        }
+        return null;
+    }
+
     public void ShowRangeFromCenter(int range)
     {
         ShowRange(CenterTile, range);
