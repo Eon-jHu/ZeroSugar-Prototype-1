@@ -9,6 +9,8 @@ public class Board : Singleton<Board>
     private List<Tile> tiles = new();
     
     public int TileSize { get; set; }
+
+    public static event Action<Board> OnTileInitRequired;
     public static event Action<Board> OnBoardReady;
     
     public Tile CenterTile { get; set; }
@@ -32,6 +34,7 @@ public class Board : Singleton<Board>
             Debug.LogError("Tile size is 0. Please recreate the board from tools>board spawner.");
         }
         
+        OnTileInitRequired?.Invoke(this);
         OnBoardReady?.Invoke(this);
     }
 
@@ -100,8 +103,55 @@ public class Board : Singleton<Board>
         }
     }
 
-    private void GetNextPathToPlayer(Tile currentTile)
+    public void DisableShowRange()
     {
-        
+        foreach (var tile in tiles)
+        {
+            tile.TileRangeIndicator.SetActive(false);
+        }
+    }
+
+    public Tile GetOccupierTile(IOccupier occupier)
+    {
+        foreach (var tile in tiles)
+        {
+            if (tile.Occupier == occupier)
+            {
+                return tile;
+            }
+        }
+        return null;
+    }
+
+    public void ShowRangeFromCenter(int range)
+    {
+        ShowRange(CenterTile, range);
+    }
+
+    public Tile GetNextTileOnPathToPlayer(Tile currentTile, bool diagonalMovement = false)
+    {
+        Tile playerTile = GetPlayerTile();
+
+        if (playerTile == null)
+            return null;
+
+        float closestDistance = float.MaxValue;
+        Tile closestTile = null;
+
+        foreach (var tile in currentTile.neighbourTiles)
+        {
+            float distanceToPlayer = Vector3.Distance(tile.transform.position, playerTile.transform.position);
+            
+            // disable diagonal movement, make max distance for neighbour to 1 unit space rather than 1.41 unit space that a diagonal uses.
+            if (!diagonalMovement && Vector3.Distance(currentTile.transform.position, tile.transform.position) > TileSize * 1.05)
+                continue;
+
+            if (distanceToPlayer < closestDistance)
+            {
+                closestDistance = distanceToPlayer;
+                closestTile = tile;
+            }
+        }
+        return closestTile;
     }
 }

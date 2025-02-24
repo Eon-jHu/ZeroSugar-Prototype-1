@@ -50,9 +50,9 @@ public class BoardSpawnerEditor : EditorWindow
             return;
         }
         
-        float offsetX = (columns - 1 * squareSize) / 2f;
-        float offsetZ = (rows - 1 * squareSize) / 2f;
-        
+        float offsetX = (columns * squareSize - squareSize) / 2f;
+        float offsetZ = (rows * squareSize - squareSize) / 2f;
+
         GameObject parent = new GameObject("Board Parent");
         Board board = parent.AddComponent<Board>();
 
@@ -60,13 +60,16 @@ public class BoardSpawnerEditor : EditorWindow
         {
             for (int j = 0; j < rows; j++)
             {
-                Tile newTile = Instantiate(tilePrefab, new Vector3(j * squareSize - squareSize * offsetX, 0, i * squareSize - squareSize * offsetZ), Quaternion.identity)
+                Tile newTile = Instantiate(tilePrefab, 
+                        new Vector3(j * squareSize - offsetX, 0, i * squareSize - offsetZ), 
+                        Quaternion.identity)
                     .GetComponent<Tile>();
+
                 newTile.name = "Tile " + i + "_" + j;
                 newTile.transform.parent = parent.transform;
                 newTile.transform.localScale *= squareSize;
                 board.AddTile(newTile);
-                
+
                 if (i == columns / 2 && j == rows / 2)
                 {
                     board.CenterTile = newTile;
