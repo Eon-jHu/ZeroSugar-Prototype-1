@@ -5,21 +5,11 @@ using UnityEngine;
 
 public class Card : Draggable
 {
+    // Card data in a separate scriptable object
+    public CardData cardData;
+
     // Where the card is in our hand; also the order in the sorting layer
     public int handIndex;
-
-    [SerializeField]
-    private string cardName;
-    [SerializeField]
-    private int damage;
-    [SerializeField]
-    private int actionCost;
-    [SerializeField]
-    private float range;
-
-    // Sprite for the card face
-    [SerializeField]
-    private Sprite cardSprite;
 
     // GameManager reference
     private CardManager cmRef;
@@ -35,11 +25,13 @@ public class Card : Draggable
     private bool inPlayZone;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         cmRef = FindObjectOfType<CardManager>();
         cardCollider = GetComponent<BoxCollider>();
         cardRenderer = GetComponent<SpriteRenderer>();
+        cardRenderer.sprite = cardData.cardSprite;
+
         inPlayZone = false;
     }
 
@@ -61,7 +53,7 @@ public class Card : Draggable
             // Play the card
             cmRef.availableCardSlots[handIndex] = true;
             //Invoke("MoveToDiscardPile", 2f);
-            MoveToDiscardPile();
+            GameManager.Instance.PlayCard(this);
         }
         else
         {
@@ -99,7 +91,12 @@ public class Card : Draggable
 
     // =========================================================
 
-    void MoveToDiscardPile()
+    private void MoveToPlayedArea()
+    {
+
+    }
+
+    public void MoveToDiscardPile()
     {
         cmRef.discardPile.Add(this);
         gameObject.SetActive(false);

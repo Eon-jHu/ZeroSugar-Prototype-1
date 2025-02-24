@@ -23,9 +23,15 @@ public class Player : MonoBehaviour, IOccupier
     Card[] Played;
     Card[] Discarded;
 
+    public bool CheckActionValue(int value)
+    {
+        return actionPoints >= value;
+    }    
+
     private void Awake()
     {
         Tile.OnCenterTileAssigned += PlacePlayer;
+        actionPoints = 3;
     }
 
     private void PlacePlayer(Tile tile)
