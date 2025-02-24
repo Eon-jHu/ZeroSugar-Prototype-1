@@ -103,6 +103,14 @@ public class Board : Singleton<Board>
         }
     }
 
+    public void DisableShowRange()
+    {
+        foreach (var tile in tiles)
+        {
+            tile.TileRangeIndicator.SetActive(false);
+        }
+    }
+
     public Tile GetOccupierTile(IOccupier occupier)
     {
         foreach (var tile in tiles)
