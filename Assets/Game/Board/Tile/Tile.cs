@@ -1,6 +1,9 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
+using Color = UnityEngine.Color;
 
 public class Tile : MonoBehaviour
 {
@@ -10,19 +13,26 @@ public class Tile : MonoBehaviour
     [field: SerializeField]
     public IOccupier Occupier { get; private set; }
     private Transform occupierTransform;
-    private Color previousColor;
+    public Color previousColor;
 
     [SerializeField] private Color hoverGreen;
     [SerializeField] private Color hoverYellow;
     [SerializeField] private Color hoverRed;
+    public bool isInFeedbackMode; // This is true for when the tile is in feedback mode; holding a color for 0.25s
 
     public static event Action<Tile> OnCenterTileAssigned;
+    public static event Action<Tile> OnTileClicked; // Static event that carries the clicked tile
 
     private void Awake()
     {
-        Board.OnTileInitRequired += InitializeTile; 
+        Board.OnTileInitRequired += InitializeTile;
     }
-    
+
+    private void Start()
+    {
+        isInFeedbackMode = false;
+    }
+
     public bool OccupyTile(IOccupier occupier, Tile fromTile, bool snapToTile = false)
     {
         // if tile is already occupied return false.
@@ -98,7 +108,7 @@ public class Tile : MonoBehaviour
         Color color = isThrownRange ? hoverYellow : hoverGreen;
         TileRangeIndicator.GetComponent<Renderer>().material.color = color;
         previousColor = color;
-        
+
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
@@ -110,7 +120,37 @@ public class Tile : MonoBehaviour
             }
         }
     }
-    
+
+
+    private void OnMouseUp()
+    {
+        Debug.Log(OnTileClicked);
+
+        if (OnTileClicked != null)
+        {
+            isInFeedbackMode = true;
+            StartCoroutine(ClickFeedback());
+            OnTileClicked.Invoke(this);
+        }
+    }
+
+    private void ResetColor()
+    {
+        if (isInFeedbackMode) return;
+
+        Renderer render = TileRangeIndicator.GetComponent<Renderer>();
+        render.material.color = previousColor;
+    }
+
+    private IEnumerator ClickFeedback()
+    {
+        SetHoverColor(); // Change the color to red
+        yield return new WaitForSeconds(1f); // Wait for 1 second
+        ResetColor(); // Revert back to the previous color.
+        TileRangeIndicator.SetActive(false);
+        isInFeedbackMode = false;
+    }
+
     private void OnMouseEnter()
     {
         if (!TileRangeIndicator.activeSelf)
@@ -122,17 +162,12 @@ public class Tile : MonoBehaviour
     private void SetHoverColor()
     {
         Renderer render = TileRangeIndicator.GetComponent<Renderer>();
-        previousColor = render.material.color;
         render.material.color = hoverRed;
     }
     
     private void OnMouseExit()
     {
-        if (!TileRangeIndicator.activeSelf)
-            return;
-
-        Renderer render = TileRangeIndicator.GetComponent<Renderer>();
-        render.material.color = previousColor;
+        ResetColor();
     }
 
 

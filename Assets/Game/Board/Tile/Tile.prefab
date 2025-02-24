@@ -337,6 +337,7 @@ MonoBehaviour:
   hoverGreen: {r: 0, g: 1, b: 0, a: 0.54901963}
   hoverYellow: {r: 1, g: 1, b: 0, a: 0.54901963}
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
+  baseWhite: {r: 0.8773585, g: 0.8773585, b: 0.8773585, a: 0}
 --- !u!65 &7819500650984928856
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -12,7 +12,7 @@ public class Player : MonoBehaviour, IOccupier
     private int Health;
 
     [SerializeField]
-    private int actionPoints;
+    public int actionPoints { get; private set; }
 
     [SerializeField]
     private Tile currentTile;
@@ -51,10 +51,15 @@ public class Player : MonoBehaviour, IOccupier
         TurnBasedSystem.Instance.EndPlayerTurn();
     }
 
-    
-    public bool CheckActionValue(int actionCost)
+    public void ConsumeActionPoints(int actionCost)
     {
-        return actionPoints >= actionCost;
+        actionPoints -= actionCost;
+
+        // SHOULD HAVE ALREADY CHECKED AV BEFOREHAND!!!
+        if (actionPoints < 0) // This would be cheating
+        {
+            actionPoints = 0;
+        }
     }
     
 }

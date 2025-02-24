@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -50,9 +51,9 @@ public class Card : Draggable
 
         if (inPlayZone)
         {
-            // Play the card
-            cmRef.availableCardSlots[handIndex] = true;
             //Invoke("MoveToDiscardPile", 2f);
+            StartCoroutine(FadeOutAnim());
+            cardCollider.enabled = false;
             GameManager.Instance.PlayCard(this);
         }
         else
@@ -62,13 +63,39 @@ public class Card : Draggable
         }
     }
 
-    IEnumerator ResetPos()
+    private IEnumerator FadeOutAnim()
+    {
+        while (cardRenderer.color.a > 0)
+        {
+            cardRenderer.color = new Color(cardRenderer.color.r, cardRenderer.color.g, cardRenderer.color.b, cardRenderer.color.a - 0.1f);
+            yield return null;
+        }
+    }
+
+    private IEnumerator FadeInAnim()
+    {
+        while (cardRenderer.color.a < 1)
+        {
+            cardRenderer.color = new Color(cardRenderer.color.r, cardRenderer.color.g, cardRenderer.color.b, cardRenderer.color.a + 0.1f);
+            yield return null;
+        }
+    }
+
+    private IEnumerator ResetPos()
     {
         while ((transform.position - cmRef.cardSlots[handIndex].position).sqrMagnitude > 0.001f)
         {
             transform.position = Vector3.Lerp(transform.position, cmRef.cardSlots[handIndex].position, 0.1f);
             yield return null;
         }        
+    }
+
+    public void ResetCardInHand()
+    {
+        StartCoroutine(ResetPos());
+        StartCoroutine(FadeInAnim());
+        cardCollider.enabled = true;
+        inPlayZone = false;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -98,6 +125,9 @@ public class Card : Draggable
 
     public void MoveToDiscardPile()
     {
+        // No longer in the hand
+        cmRef.availableCardSlots[handIndex] = true;
+
         cmRef.discardPile.Add(this);
         gameObject.SetActive(false);
         inPlayZone = false; // reset played status

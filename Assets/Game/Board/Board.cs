@@ -109,6 +109,8 @@ public class Board : Singleton<Board>
     {
         foreach (var tile in tiles)
         {
+            if (tile.isInFeedbackMode) continue;
+
             tile.TileRangeIndicator.SetActive(false);
         }
     }
