@@ -31,6 +31,11 @@ public class Player : MonoBehaviour, IOccupier
         if (Instance == null) Instance = this;
     }
 
+    private void Start()
+    {
+        actionPoints = 3;
+    }
+
     private void PlacePlayer(Tile tile)
     {
         tile.OccupyTile(this, null, true);
@@ -44,6 +49,11 @@ public class Player : MonoBehaviour, IOccupier
     public void EndTurn()
     {
         TurnBasedSystem.Instance.EndPlayerTurn();
+    }
+
+    public CheckActionValue(int actionCost)
+    {
+        return actionPoints >= actionCost;
     }
 }
 

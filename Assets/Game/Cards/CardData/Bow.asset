@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dee285f6198d3ce41a3a23ad594f3d30, type: 3}
+  m_Name: Bow
+  m_EditorClassIdentifier: 
+  cardSprite: {fileID: 21300000, guid: bd144c5c6048d9a4b8058cbe7380aed4, type: 3}
+  cardName: Bow
+  damage: 3
+  damageVariance: 3
+  varianceValue: 0.5
+  actionCost: 3
+  minRange: 4
+  maxRange: 6
+  aoeType: 0
+  aoeArea: 0
+  pushDistance: 0
+  pullDistance: 0
+  pushPullToCenter: 0

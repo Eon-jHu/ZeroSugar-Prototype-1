@@ -31,7 +31,7 @@ public abstract class Draggable : MonoBehaviour
     }
 
     // Moves the object to the mouse position
-    IEnumerator MoveToMouse()
+    private IEnumerator MoveToMouse()
     {
         while (isMouseDown && (transform.position - GetMouseWorldPos() + offset).sqrMagnitude > 0.001f)
         {
