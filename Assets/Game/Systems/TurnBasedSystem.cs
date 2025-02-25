@@ -10,6 +10,7 @@ public class TurnBasedSystem : MonoBehaviour
     private enum TurnState { PlayerTurn, EnemyTurn}
     private TurnState currentTurn;
 
+    public bool inGame;
     void Awake()
     {
         if (Instance == null) Instance = this;
@@ -78,6 +79,9 @@ public class TurnBasedSystem : MonoBehaviour
     {
         currentTurn = TurnState.PlayerTurn;
         Debug.Log("Player Turn Started");
+
+        // player actions
+        if(!inGame)
         Player.Instance.EndTurn();
     }
 }

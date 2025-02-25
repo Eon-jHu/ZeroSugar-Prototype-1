@@ -29,6 +29,7 @@ public class CardManager : MonoBehaviour
         {
             continue;
         }
+        Player.Instance.EndTurn();
     }
 
     // Draws a single card from the deck to the hand
@@ -64,7 +65,6 @@ public class CardManager : MonoBehaviour
             Reshuffle();
             DrawCards();
         }
-
         return false;
     }
 
@@ -81,6 +81,7 @@ public class CardManager : MonoBehaviour
         }
 
         ShuffleDeck();
+
     }
 
     // Shuffles the deck
