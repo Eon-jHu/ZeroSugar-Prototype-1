@@ -6,6 +6,7 @@ using Random = UnityEngine.Random;
 
 public class Enemy : MonoBehaviour, IOccupier
 {
+    #region Variables
     public Transform OccupierTransform => transform;
 
     public enum eEnemyType
@@ -13,6 +14,9 @@ public class Enemy : MonoBehaviour, IOccupier
         MELEE,
         RANGED,
     }
+
+    [SerializeField]
+    public eEnemyType enemyType;
 
     [SerializeField]
     private int Health;
@@ -28,13 +32,25 @@ public class Enemy : MonoBehaviour, IOccupier
 
     private bool isMoving = false;
 
+    #endregion
 
-    // Start is called before the first frame update
+    #region Initialization
     void Awake()
     {
         Board.OnBoardReady += EnemySpawn;
     }
 
+    #endregion
+
+    #region Update
+    void Update()
+    {
+        
+    }
+
+    #endregion
+
+    #region Functions
     private void EnemySpawn(Board board)
     {
         List<Tile> tiles = board.GetTiles();
@@ -45,8 +61,6 @@ public class Enemy : MonoBehaviour, IOccupier
             if (tileInstance.IsBoundaryTile() == true && tileInstance.IsOccupied() == false)
             {
                 spawnableTiles.Add(tileInstance);
-                
-                
 
             }
         }
@@ -62,6 +76,7 @@ public class Enemy : MonoBehaviour, IOccupier
         if (isInAttackRange)
         {
             // attack
+            Attack();
             // ....
             completeTurn?.Invoke();
         }
@@ -72,7 +87,7 @@ public class Enemy : MonoBehaviour, IOccupier
                 StartCoroutine(MoveTowardsPlayer());
 
                 yield return new WaitUntil(() => !isMoving);
-                
+
                 completeTurn?.Invoke();
             }
         }
@@ -87,7 +102,7 @@ public class Enemy : MonoBehaviour, IOccupier
             Tile targetTile = Board.Instance.GetNextTileOnPathToPlayer(currentTile);
 
             if (!targetTile) yield break;
-            
+
             Vector3 targetDest = targetTile.transform.position;
 
             float distance = Vector3.Distance(transform.position, targetDest);
@@ -97,7 +112,7 @@ public class Enemy : MonoBehaviour, IOccupier
             bool canOccupy = targetTile.OccupyTile(this, currentTile);
 
             if (!canOccupy) yield break;
-            
+
             //animate enemy movement e.g Animator.SetBool("Walk", true)
 
             isMoving = true;
@@ -106,11 +121,11 @@ public class Enemy : MonoBehaviour, IOccupier
             {
                 moveTimeRemaining -= Time.deltaTime;
                 Vector3 directionToTile = (targetDest - transform.position).normalized;
-                
+
                 transform.position += moveSpeed * Time.deltaTime * directionToTile;
-                
+
                 transform.forward = directionToTile;
-                
+
                 yield return null;
             }
             transform.position = targetTile.transform.position;
@@ -125,9 +140,17 @@ public class Enemy : MonoBehaviour, IOccupier
         tile.OccupyTile(this, null, true);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Attack()
     {
-        
+        if (enemyType == eEnemyType.MELEE)
+        {
+
+        }
+        else
+        {
+
+        }
     }
+
+    #endregion
 }

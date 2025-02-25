@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Player : MonoBehaviour, IOccupier
 {
+    #region Variables
     public static Player Instance;
 
     public Transform OccupierTransform => transform;
-    
+
     [SerializeField]
     private int Health;
 
@@ -25,6 +26,9 @@ public class Player : MonoBehaviour, IOccupier
     Card[] Played;
     Card[] Discarded;
 
+    #endregion
+
+    #region Initialization
     private void Awake()
     {
         Tile.OnCenterTileAssigned += PlacePlayer;
@@ -35,7 +39,9 @@ public class Player : MonoBehaviour, IOccupier
     {
         actionPoints = 3;
     }
+    #endregion
 
+    #region Functions
     private void PlacePlayer(Tile tile)
     {
         tile.OccupyTile(this, null, true);
@@ -60,8 +66,9 @@ public class Player : MonoBehaviour, IOccupier
         {
             actionPoints = 0;
         }
-    }
-    
+    } 
+    #endregion
+
 }
 
 
