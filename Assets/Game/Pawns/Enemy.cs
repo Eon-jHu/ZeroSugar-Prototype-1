@@ -48,6 +48,7 @@ public class Enemy : MonoBehaviour, IOccupier
     void Awake()
     {
         Board.OnBoardReady += EnemySpawn;
+        //Board.OnBoardReady?.Invoke(this);
         Player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
