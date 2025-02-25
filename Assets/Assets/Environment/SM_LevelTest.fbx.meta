@@ -3,7 +3,52 @@ guid: d2f78b3c93a449b45af376f74a0f885b
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_Other
+    second: {fileID: 2100000, guid: 111f58e6e508ac2418ebff3e39edbeeb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_UVGroup1
+    second: {fileID: 2100000, guid: 3f8180b206b515340942e63a0068c1f8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_UVGroup2
+    second: {fileID: 2100000, guid: 606a71eccb7c1c846b3eca3f90ccc655, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_UVGroup3
+    second: {fileID: 2100000, guid: 39870740c1ba411458110939107450b9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_UVGroup4
+    second: {fileID: 2100000, guid: 379348a413a9e0643b5604cbd60b4281, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_UVGroup5
+    second: {fileID: 2100000, guid: db4e8f65f4783f246a574c6183fb7f77, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_UVGroup6
+    second: {fileID: 2100000, guid: f50a2c41ccd0d794db92a11b8d4e3ee4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_UVGroup7
+    second: {fileID: 2100000, guid: a59e20f48358dac45821ea9b7a6d2bf7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_UVGroup8
+    second: {fileID: 2100000, guid: ad8e314604d31e54fa8aca8399dde43d, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
