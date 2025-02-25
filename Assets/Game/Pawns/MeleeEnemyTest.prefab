@@ -119,6 +119,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: 0
+  Player: {fileID: 0}
+  attackRange: 0
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 8
   Health: 0
   board: {fileID: 0}
   moveSpeed: 1.5

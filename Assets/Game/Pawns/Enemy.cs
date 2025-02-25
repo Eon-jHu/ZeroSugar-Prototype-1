@@ -19,6 +19,16 @@ public class Enemy : MonoBehaviour, IOccupier
     public eEnemyType enemyType;
 
     [SerializeField]
+    public Transform Player;
+
+    [SerializeField]
+    public float attackRange;
+
+    [SerializeField]
+    public LayerMask playerLayer;
+
+
+    [SerializeField]
     private int Health;
 
     [SerializeField]
@@ -38,6 +48,7 @@ public class Enemy : MonoBehaviour, IOccupier
     void Awake()
     {
         Board.OnBoardReady += EnemySpawn;
+        Player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     #endregion
@@ -73,8 +84,11 @@ public class Enemy : MonoBehaviour, IOccupier
     {
         bool isInAttackRange = false; // calculate if is in attack range.
 
+        isInAttackRange = EnemyRangeCheck();
+
         if (isInAttackRange)
         {
+            Debug.Log("In Range");
             // attack
             Attack();
             // ....
@@ -82,6 +96,7 @@ public class Enemy : MonoBehaviour, IOccupier
         }
         else
         {
+            Debug.Log("NOT in Range");
             if (!isMoving)
             {
                 StartCoroutine(MoveTowardsPlayer());
@@ -135,6 +150,32 @@ public class Enemy : MonoBehaviour, IOccupier
         isMoving = false;
     }
 
+    private bool EnemyRangeCheck()
+    {
+        Vector3 directionToPlayer = Player.position - transform.position;
+        float distanceToPlayer = directionToPlayer.magnitude;
+
+        // Check if within attack range
+        if (distanceToPlayer <= attackRange)
+        {
+            // Perform Raycast
+            if (Physics.Raycast(transform.position, directionToPlayer.normalized, out RaycastHit hit, attackRange, playerLayer))
+            {
+                if (hit.collider.CompareTag("Player"))
+                {
+                    Debug.DrawRay(transform.position, directionToPlayer.normalized * hit.distance, Color.red, 2.0f); // Debug
+                    
+                }
+            }
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    
+    }
+
     private void PlaceEnemy(Tile tile)
     {
         tile.OccupyTile(this, null, true);
@@ -144,11 +185,11 @@ public class Enemy : MonoBehaviour, IOccupier
     {
         if (enemyType == eEnemyType.MELEE)
         {
-
+            //melee attack
         }
         else
         {
-
+            //ranged attack
         }
     }
 
