@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1002,6 +1002,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbourTiles: []
   <TileRangeIndicator>k__BackingField: {fileID: 715819483}
+  previousColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverGreen: {r: 0, g: 0, b: 0, a: 0}
+  hoverYellow: {r: 0, g: 0, b: 0, a: 0}
+  hoverRed: {r: 0, g: 0, b: 0, a: 0}
+  isInFeedbackMode: 0
 --- !u!1 &54242812
 GameObject:
   m_ObjectHideFlags: 0
@@ -1051,6 +1056,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbourTiles: []
   <TileRangeIndicator>k__BackingField: {fileID: 1940122709}
+  previousColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverGreen: {r: 0, g: 0, b: 0, a: 0}
+  hoverYellow: {r: 0, g: 0, b: 0, a: 0}
+  hoverRed: {r: 0, g: 0, b: 0, a: 0}
+  isInFeedbackMode: 0
 --- !u!1 &61412426
 GameObject:
   m_ObjectHideFlags: 0
@@ -2096,6 +2106,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbourTiles: []
   <TileRangeIndicator>k__BackingField: {fileID: 420805877}
+  previousColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverGreen: {r: 0, g: 0, b: 0, a: 0}
+  hoverYellow: {r: 0, g: 0, b: 0, a: 0}
+  hoverRed: {r: 0, g: 0, b: 0, a: 0}
+  isInFeedbackMode: 0
 --- !u!1 &132649667
 GameObject:
   m_ObjectHideFlags: 0
@@ -2381,6 +2396,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbourTiles: []
   <TileRangeIndicator>k__BackingField: {fileID: 623165873}
+  previousColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverGreen: {r: 0, g: 0, b: 0, a: 0}
+  hoverYellow: {r: 0, g: 0, b: 0, a: 0}
+  hoverRed: {r: 0, g: 0, b: 0, a: 0}
+  isInFeedbackMode: 0
 --- !u!1 &147669740
 GameObject:
   m_ObjectHideFlags: 0
@@ -2679,6 +2699,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbourTiles: []
   <TileRangeIndicator>k__BackingField: {fileID: 1475418756}
+  previousColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverGreen: {r: 0, g: 0, b: 0, a: 0}
+  hoverYellow: {r: 0, g: 0, b: 0, a: 0}
+  hoverRed: {r: 0, g: 0, b: 0, a: 0}
+  isInFeedbackMode: 0
 --- !u!1 &170547750
 GameObject:
   m_ObjectHideFlags: 0
@@ -2894,6 +2919,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbourTiles: []
   <TileRangeIndicator>k__BackingField: {fileID: 1570999729}
+  previousColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverGreen: {r: 0, g: 0, b: 0, a: 0}
+  hoverYellow: {r: 0, g: 0, b: 0, a: 0}
+  hoverRed: {r: 0, g: 0, b: 0, a: 0}
+  isInFeedbackMode: 0
 --- !u!1 &180242110
 GameObject:
   m_ObjectHideFlags: 0
@@ -3026,6 +3056,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbourTiles: []
   <TileRangeIndicator>k__BackingField: {fileID: 1555587877}
+  previousColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverGreen: {r: 0, g: 0, b: 0, a: 0}
+  hoverYellow: {r: 0, g: 0, b: 0, a: 0}
+  hoverRed: {r: 0, g: 0, b: 0, a: 0}
+  isInFeedbackMode: 0
 --- !u!1 &190204033
 GameObject:
   m_ObjectHideFlags: 0
@@ -3158,6 +3193,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbourTiles: []
   <TileRangeIndicator>k__BackingField: {fileID: 2125243401}
+  previousColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverGreen: {r: 0, g: 0, b: 0, a: 0}
+  hoverYellow: {r: 0, g: 0, b: 0, a: 0}
+  hoverRed: {r: 0, g: 0, b: 0, a: 0}
+  isInFeedbackMode: 0
 --- !u!1 &226635949
 GameObject:
   m_ObjectHideFlags: 0
@@ -3242,6 +3282,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbourTiles: []
   <TileRangeIndicator>k__BackingField: {fileID: 75130724}
+  previousColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverGreen: {r: 0, g: 0, b: 0, a: 0}
+  hoverYellow: {r: 0, g: 0, b: 0, a: 0}
+  hoverRed: {r: 0, g: 0, b: 0, a: 0}
+  isInFeedbackMode: 0
 --- !u!1 &269785602
 GameObject:
   m_ObjectHideFlags: 0
@@ -3457,6 +3502,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbourTiles: []
   <TileRangeIndicator>k__BackingField: {fileID: 1649251150}
+  previousColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverGreen: {r: 0, g: 0, b: 0, a: 0}
+  hoverYellow: {r: 0, g: 0, b: 0, a: 0}
+  hoverRed: {r: 0, g: 0, b: 0, a: 0}
+  isInFeedbackMode: 0
 --- !u!1 &278455784
 GameObject:
   m_ObjectHideFlags: 0
@@ -4419,6 +4469,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbourTiles: []
   <TileRangeIndicator>k__BackingField: {fileID: 537116611}
+  previousColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverGreen: {r: 0, g: 0, b: 0, a: 0}
+  hoverYellow: {r: 0, g: 0, b: 0, a: 0}
+  hoverRed: {r: 0, g: 0, b: 0, a: 0}
+  isInFeedbackMode: 0
 --- !u!1 &350793842
 GameObject:
   m_ObjectHideFlags: 0
@@ -5949,6 +6004,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbourTiles: []
   <TileRangeIndicator>k__BackingField: {fileID: 1442985883}
+  previousColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverGreen: {r: 0, g: 0, b: 0, a: 0}
+  hoverYellow: {r: 0, g: 0, b: 0, a: 0}
+  hoverRed: {r: 0, g: 0, b: 0, a: 0}
+  isInFeedbackMode: 0
 --- !u!1 &470645295
 GameObject:
   m_ObjectHideFlags: 0
@@ -7077,6 +7137,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbourTiles: []
   <TileRangeIndicator>k__BackingField: {fileID: 33948086}
+  previousColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverGreen: {r: 0, g: 0, b: 0, a: 0}
+  hoverYellow: {r: 0, g: 0, b: 0, a: 0}
+  hoverRed: {r: 0, g: 0, b: 0, a: 0}
+  isInFeedbackMode: 0
 --- !u!1 &556642247
 GameObject:
   m_ObjectHideFlags: 0
@@ -7209,6 +7274,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbourTiles: []
   <TileRangeIndicator>k__BackingField: {fileID: 499823217}
+  previousColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverGreen: {r: 0, g: 0, b: 0, a: 0}
+  hoverYellow: {r: 0, g: 0, b: 0, a: 0}
+  hoverRed: {r: 0, g: 0, b: 0, a: 0}
+  isInFeedbackMode: 0
 --- !u!1 &563262503
 GameObject:
   m_ObjectHideFlags: 0
@@ -7826,6 +7896,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbourTiles: []
   <TileRangeIndicator>k__BackingField: {fileID: 1656140917}
+  previousColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverGreen: {r: 0, g: 0, b: 0, a: 0}
+  hoverYellow: {r: 0, g: 0, b: 0, a: 0}
+  hoverRed: {r: 0, g: 0, b: 0, a: 0}
+  isInFeedbackMode: 0
 --- !u!1 &607806829
 GameObject:
   m_ObjectHideFlags: 0
@@ -8041,6 +8116,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbourTiles: []
   <TileRangeIndicator>k__BackingField: {fileID: 1588845969}
+  previousColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverGreen: {r: 0, g: 0, b: 0, a: 0}
+  hoverYellow: {r: 0, g: 0, b: 0, a: 0}
+  hoverRed: {r: 0, g: 0, b: 0, a: 0}
+  isInFeedbackMode: 0
 --- !u!1 &616118717
 GameObject:
   m_ObjectHideFlags: 0
@@ -9239,6 +9319,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbourTiles: []
   <TileRangeIndicator>k__BackingField: {fileID: 1361790783}
+  previousColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverGreen: {r: 0, g: 0, b: 0, a: 0}
+  hoverYellow: {r: 0, g: 0, b: 0, a: 0}
+  hoverRed: {r: 0, g: 0, b: 0, a: 0}
+  isInFeedbackMode: 0
 --- !u!1 &706846167
 GameObject:
   m_ObjectHideFlags: 0
@@ -9488,6 +9573,75 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 716673797}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &723290988
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 7feaf0b6f90b76a43b0d9a6aa2d0c05a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.58
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7feaf0b6f90b76a43b0d9a6aa2d0c05a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7feaf0b6f90b76a43b0d9a6aa2d0c05a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.61
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7feaf0b6f90b76a43b0d9a6aa2d0c05a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.032886297
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7feaf0b6f90b76a43b0d9a6aa2d0c05a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7feaf0b6f90b76a43b0d9a6aa2d0c05a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.9994591
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7feaf0b6f90b76a43b0d9a6aa2d0c05a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7feaf0b6f90b76a43b0d9a6aa2d0c05a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7feaf0b6f90b76a43b0d9a6aa2d0c05a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 183.769
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7feaf0b6f90b76a43b0d9a6aa2d0c05a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7feaf0b6f90b76a43b0d9a6aa2d0c05a, type: 3}
+      propertyPath: m_Name
+      value: SM_Player
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7feaf0b6f90b76a43b0d9a6aa2d0c05a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1551688072}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7feaf0b6f90b76a43b0d9a6aa2d0c05a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1551688071}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7feaf0b6f90b76a43b0d9a6aa2d0c05a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1551688075}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7feaf0b6f90b76a43b0d9a6aa2d0c05a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1551688074}
+  m_SourcePrefab: {fileID: 100100000, guid: 7feaf0b6f90b76a43b0d9a6aa2d0c05a, type: 3}
 --- !u!1 &748134352
 GameObject:
   m_ObjectHideFlags: 0
@@ -9821,6 +9975,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbourTiles: []
   <TileRangeIndicator>k__BackingField: {fileID: 531311184}
+  previousColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverGreen: {r: 0, g: 0, b: 0, a: 0}
+  hoverYellow: {r: 0, g: 0, b: 0, a: 0}
+  hoverRed: {r: 0, g: 0, b: 0, a: 0}
+  isInFeedbackMode: 0
 --- !u!1 &770367873
 GameObject:
   m_ObjectHideFlags: 0
@@ -10036,6 +10195,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbourTiles: []
   <TileRangeIndicator>k__BackingField: {fileID: 1335660754}
+  previousColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverGreen: {r: 0, g: 0, b: 0, a: 0}
+  hoverYellow: {r: 0, g: 0, b: 0, a: 0}
+  hoverRed: {r: 0, g: 0, b: 0, a: 0}
+  isInFeedbackMode: 0
 --- !u!1 &774157432
 GameObject:
   m_ObjectHideFlags: 0
@@ -11850,6 +12014,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbourTiles: []
   <TileRangeIndicator>k__BackingField: {fileID: 414814374}
+  previousColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverGreen: {r: 0, g: 0, b: 0, a: 0}
+  hoverYellow: {r: 0, g: 0, b: 0, a: 0}
+  hoverRed: {r: 0, g: 0, b: 0, a: 0}
+  isInFeedbackMode: 0
 --- !u!1 &896561129
 GameObject:
   m_ObjectHideFlags: 0
@@ -11899,6 +12068,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbourTiles: []
   <TileRangeIndicator>k__BackingField: {fileID: 377356032}
+  previousColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverGreen: {r: 0, g: 0, b: 0, a: 0}
+  hoverYellow: {r: 0, g: 0, b: 0, a: 0}
+  hoverRed: {r: 0, g: 0, b: 0, a: 0}
+  isInFeedbackMode: 0
 --- !u!1 &897947569
 GameObject:
   m_ObjectHideFlags: 0
@@ -12516,6 +12690,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbourTiles: []
   <TileRangeIndicator>k__BackingField: {fileID: 47855314}
+  previousColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverGreen: {r: 0, g: 0, b: 0, a: 0}
+  hoverYellow: {r: 0, g: 0, b: 0, a: 0}
+  hoverRed: {r: 0, g: 0, b: 0, a: 0}
+  isInFeedbackMode: 0
 --- !u!1 &942852405
 GameObject:
   m_ObjectHideFlags: 0
@@ -12731,6 +12910,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbourTiles: []
   <TileRangeIndicator>k__BackingField: {fileID: 1196282048}
+  previousColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverGreen: {r: 0, g: 0, b: 0, a: 0}
+  hoverYellow: {r: 0, g: 0, b: 0, a: 0}
+  hoverRed: {r: 0, g: 0, b: 0, a: 0}
+  isInFeedbackMode: 0
 --- !u!1 &954492381
 GameObject:
   m_ObjectHideFlags: 0
@@ -13147,6 +13331,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbourTiles: []
   <TileRangeIndicator>k__BackingField: {fileID: 334426605}
+  previousColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverGreen: {r: 0, g: 0, b: 0, a: 0}
+  hoverYellow: {r: 0, g: 0, b: 0, a: 0}
+  hoverRed: {r: 0, g: 0, b: 0, a: 0}
+  isInFeedbackMode: 0
 --- !u!1 &986605343
 GameObject:
   m_ObjectHideFlags: 0
@@ -13196,6 +13385,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbourTiles: []
   <TileRangeIndicator>k__BackingField: {fileID: 402926620}
+  previousColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverGreen: {r: 0, g: 0, b: 0, a: 0}
+  hoverYellow: {r: 0, g: 0, b: 0, a: 0}
+  hoverRed: {r: 0, g: 0, b: 0, a: 0}
+  isInFeedbackMode: 0
 --- !u!1 &996060907
 GameObject:
   m_ObjectHideFlags: 0
@@ -13411,6 +13605,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbourTiles: []
   <TileRangeIndicator>k__BackingField: {fileID: 1351204074}
+  previousColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverGreen: {r: 0, g: 0, b: 0, a: 0}
+  hoverYellow: {r: 0, g: 0, b: 0, a: 0}
+  hoverRed: {r: 0, g: 0, b: 0, a: 0}
+  isInFeedbackMode: 0
 --- !u!1 &1004917679
 GameObject:
   m_ObjectHideFlags: 0
@@ -13945,6 +14144,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbourTiles: []
   <TileRangeIndicator>k__BackingField: {fileID: 848038126}
+  previousColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverGreen: {r: 0, g: 0, b: 0, a: 0}
+  hoverYellow: {r: 0, g: 0, b: 0, a: 0}
+  hoverRed: {r: 0, g: 0, b: 0, a: 0}
+  isInFeedbackMode: 0
 --- !u!1 &1017703811
 GameObject:
   m_ObjectHideFlags: 0
@@ -16216,6 +16420,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbourTiles: []
   <TileRangeIndicator>k__BackingField: {fileID: 681980132}
+  previousColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverGreen: {r: 0, g: 0, b: 0, a: 0}
+  hoverYellow: {r: 0, g: 0, b: 0, a: 0}
+  hoverRed: {r: 0, g: 0, b: 0, a: 0}
+  isInFeedbackMode: 0
 --- !u!1 &1228631164
 GameObject:
   m_ObjectHideFlags: 0
@@ -17720,6 +17929,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbourTiles: []
   <TileRangeIndicator>k__BackingField: {fileID: 834868456}
+  previousColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverGreen: {r: 0, g: 0, b: 0, a: 0}
+  hoverYellow: {r: 0, g: 0, b: 0, a: 0}
+  hoverRed: {r: 0, g: 0, b: 0, a: 0}
+  isInFeedbackMode: 0
 --- !u!1 &1327244532
 GameObject:
   m_ObjectHideFlags: 0
@@ -18516,6 +18730,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbourTiles: []
   <TileRangeIndicator>k__BackingField: {fileID: 1558010273}
+  previousColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverGreen: {r: 0, g: 0, b: 0, a: 0}
+  hoverYellow: {r: 0, g: 0, b: 0, a: 0}
+  hoverRed: {r: 0, g: 0, b: 0, a: 0}
+  isInFeedbackMode: 0
 --- !u!1 &1391300448
 GameObject:
   m_ObjectHideFlags: 0
@@ -18731,6 +18950,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbourTiles: []
   <TileRangeIndicator>k__BackingField: {fileID: 1701967243}
+  previousColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverGreen: {r: 0, g: 0, b: 0, a: 0}
+  hoverYellow: {r: 0, g: 0, b: 0, a: 0}
+  hoverRed: {r: 0, g: 0, b: 0, a: 0}
+  isInFeedbackMode: 0
 --- !u!1 &1421689532
 GameObject:
   m_ObjectHideFlags: 0
@@ -19929,6 +20153,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbourTiles: []
   <TileRangeIndicator>k__BackingField: {fileID: 1911663716}
+  previousColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverGreen: {r: 0, g: 0, b: 0, a: 0}
+  hoverYellow: {r: 0, g: 0, b: 0, a: 0}
+  hoverRed: {r: 0, g: 0, b: 0, a: 0}
+  isInFeedbackMode: 0
 --- !u!1 &1522650353
 GameObject:
   m_ObjectHideFlags: 0
@@ -20345,6 +20574,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbourTiles: []
   <TileRangeIndicator>k__BackingField: {fileID: 1689463099}
+  previousColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverGreen: {r: 0, g: 0, b: 0, a: 0}
+  hoverYellow: {r: 0, g: 0, b: 0, a: 0}
+  hoverRed: {r: 0, g: 0, b: 0, a: 0}
+  isInFeedbackMode: 0
 --- !u!1 &1546849271
 GameObject:
   m_ObjectHideFlags: 0
@@ -20511,6 +20745,80 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1549327468}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1551688070 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7feaf0b6f90b76a43b0d9a6aa2d0c05a, type: 3}
+  m_PrefabInstance: {fileID: 723290988}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1551688071
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551688070}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9eda6050bb3f0154a897ed3296a504d3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1551688072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551688070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bcdeafc4c2cd5f43b24ab65cc8eecba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 5
+  currentTile: {fileID: 0}
+  board: {fileID: 0}
+--- !u!114 &1551688074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551688070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b460b309961e48478fccf57c13e8d35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &1551688075
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551688070}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1551768018
 GameObject:
   m_ObjectHideFlags: 0
@@ -21245,6 +21553,7 @@ GameObject:
   - component: {fileID: 1582069077}
   - component: {fileID: 1582069076}
   - component: {fileID: 1582069080}
+  - component: {fileID: 1582069081}
   m_Layer: 0
   m_Name: PlayerTest
   m_TagString: Untagged
@@ -21351,9 +21660,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 5
-  actionPoints: 0
   currentTile: {fileID: 0}
   board: {fileID: 0}
+--- !u!95 &1582069081
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582069075}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9eda6050bb3f0154a897ed3296a504d3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1583638997
 GameObject:
   m_ObjectHideFlags: 0
@@ -21521,6 +21850,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbourTiles: []
   <TileRangeIndicator>k__BackingField: {fileID: 1593276778}
+  previousColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverGreen: {r: 0, g: 0, b: 0, a: 0}
+  hoverYellow: {r: 0, g: 0, b: 0, a: 0}
+  hoverRed: {r: 0, g: 0, b: 0, a: 0}
+  isInFeedbackMode: 0
 --- !u!1 &1593276778
 GameObject:
   m_ObjectHideFlags: 0
@@ -21937,6 +22271,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbourTiles: []
   <TileRangeIndicator>k__BackingField: {fileID: 276631308}
+  previousColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverGreen: {r: 0, g: 0, b: 0, a: 0}
+  hoverYellow: {r: 0, g: 0, b: 0, a: 0}
+  hoverRed: {r: 0, g: 0, b: 0, a: 0}
+  isInFeedbackMode: 0
 --- !u!1 &1615119090
 GameObject:
   m_ObjectHideFlags: 0
@@ -22318,6 +22657,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbourTiles: []
   <TileRangeIndicator>k__BackingField: {fileID: 883210985}
+  previousColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverGreen: {r: 0, g: 0, b: 0, a: 0}
+  hoverYellow: {r: 0, g: 0, b: 0, a: 0}
+  hoverRed: {r: 0, g: 0, b: 0, a: 0}
+  isInFeedbackMode: 0
 --- !u!1 &1643703207
 GameObject:
   m_ObjectHideFlags: 0
@@ -22568,6 +22912,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbourTiles: []
   <TileRangeIndicator>k__BackingField: {fileID: 434622493}
+  previousColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverGreen: {r: 0, g: 0, b: 0, a: 0}
+  hoverYellow: {r: 0, g: 0, b: 0, a: 0}
+  hoverRed: {r: 0, g: 0, b: 0, a: 0}
+  isInFeedbackMode: 0
 --- !u!1 &1658006800
 GameObject:
   m_ObjectHideFlags: 0
@@ -24026,6 +24375,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbourTiles: []
   <TileRangeIndicator>k__BackingField: {fileID: 657325093}
+  previousColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverGreen: {r: 0, g: 0, b: 0, a: 0}
+  hoverYellow: {r: 0, g: 0, b: 0, a: 0}
+  hoverRed: {r: 0, g: 0, b: 0, a: 0}
+  isInFeedbackMode: 0
 --- !u!1 &1779724028
 GameObject:
   m_ObjectHideFlags: 0
@@ -24075,6 +24429,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbourTiles: []
   <TileRangeIndicator>k__BackingField: {fileID: 968806260}
+  previousColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverGreen: {r: 0, g: 0, b: 0, a: 0}
+  hoverYellow: {r: 0, g: 0, b: 0, a: 0}
+  hoverRed: {r: 0, g: 0, b: 0, a: 0}
+  isInFeedbackMode: 0
 --- !u!1 &1783313782
 GameObject:
   m_ObjectHideFlags: 0
@@ -24207,6 +24566,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbourTiles: []
   <TileRangeIndicator>k__BackingField: {fileID: 2144003001}
+  previousColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverGreen: {r: 0, g: 0, b: 0, a: 0}
+  hoverYellow: {r: 0, g: 0, b: 0, a: 0}
+  hoverRed: {r: 0, g: 0, b: 0, a: 0}
+  isInFeedbackMode: 0
 --- !u!1 &1795218259
 GameObject:
   m_ObjectHideFlags: 0
@@ -25405,6 +25769,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbourTiles: []
   <TileRangeIndicator>k__BackingField: {fileID: 15741165}
+  previousColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverGreen: {r: 0, g: 0, b: 0, a: 0}
+  hoverYellow: {r: 0, g: 0, b: 0, a: 0}
+  hoverRed: {r: 0, g: 0, b: 0, a: 0}
+  isInFeedbackMode: 0
 --- !u!1 &1871582304
 GameObject:
   m_ObjectHideFlags: 0
@@ -25454,6 +25823,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbourTiles: []
   <TileRangeIndicator>k__BackingField: {fileID: 1010655004}
+  previousColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverGreen: {r: 0, g: 0, b: 0, a: 0}
+  hoverYellow: {r: 0, g: 0, b: 0, a: 0}
+  hoverRed: {r: 0, g: 0, b: 0, a: 0}
+  isInFeedbackMode: 0
 --- !u!1 &1872738601
 GameObject:
   m_ObjectHideFlags: 0
@@ -25538,6 +25912,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbourTiles: []
   <TileRangeIndicator>k__BackingField: {fileID: 774157432}
+  previousColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverGreen: {r: 0, g: 0, b: 0, a: 0}
+  hoverYellow: {r: 0, g: 0, b: 0, a: 0}
+  hoverRed: {r: 0, g: 0, b: 0, a: 0}
+  isInFeedbackMode: 0
 --- !u!1 &1882999672
 GameObject:
   m_ObjectHideFlags: 0
@@ -26251,6 +26630,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbourTiles: []
   <TileRangeIndicator>k__BackingField: {fileID: 1921285226}
+  previousColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverGreen: {r: 0, g: 0, b: 0, a: 0}
+  hoverYellow: {r: 0, g: 0, b: 0, a: 0}
+  hoverRed: {r: 0, g: 0, b: 0, a: 0}
+  isInFeedbackMode: 0
 --- !u!1 &1921285226
 GameObject:
   m_ObjectHideFlags: 0
@@ -26383,6 +26767,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbourTiles: []
   <TileRangeIndicator>k__BackingField: {fileID: 372002892}
+  previousColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverGreen: {r: 0, g: 0, b: 0, a: 0}
+  hoverYellow: {r: 0, g: 0, b: 0, a: 0}
+  hoverRed: {r: 0, g: 0, b: 0, a: 0}
+  isInFeedbackMode: 0
 --- !u!1 &1938326564
 GameObject:
   m_ObjectHideFlags: 0
@@ -27629,6 +28018,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbourTiles: []
   <TileRangeIndicator>k__BackingField: {fileID: 1467225932}
+  previousColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverGreen: {r: 0, g: 0, b: 0, a: 0}
+  hoverYellow: {r: 0, g: 0, b: 0, a: 0}
+  hoverRed: {r: 0, g: 0, b: 0, a: 0}
+  isInFeedbackMode: 0
 --- !u!1 &2038973151
 GameObject:
   m_ObjectHideFlags: 0
@@ -27879,6 +28273,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbourTiles: []
   <TileRangeIndicator>k__BackingField: {fileID: 1751096496}
+  previousColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverGreen: {r: 0, g: 0, b: 0, a: 0}
+  hoverYellow: {r: 0, g: 0, b: 0, a: 0}
+  hoverRed: {r: 0, g: 0, b: 0, a: 0}
+  isInFeedbackMode: 0
 --- !u!1 &2071301458
 GameObject:
   m_ObjectHideFlags: 0
@@ -28011,6 +28410,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbourTiles: []
   <TileRangeIndicator>k__BackingField: {fileID: 1705713313}
+  previousColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverGreen: {r: 0, g: 0, b: 0, a: 0}
+  hoverYellow: {r: 0, g: 0, b: 0, a: 0}
+  hoverRed: {r: 0, g: 0, b: 0, a: 0}
+  isInFeedbackMode: 0
 --- !u!1 &2079961827
 GameObject:
   m_ObjectHideFlags: 0
@@ -28060,6 +28464,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbourTiles: []
   <TileRangeIndicator>k__BackingField: {fileID: 278455784}
+  previousColor: {r: 0, g: 0, b: 0, a: 0}
+  hoverGreen: {r: 0, g: 0, b: 0, a: 0}
+  hoverYellow: {r: 0, g: 0, b: 0, a: 0}
+  hoverRed: {r: 0, g: 0, b: 0, a: 0}
+  isInFeedbackMode: 0
 --- !u!1 &2086053956
 GameObject:
   m_ObjectHideFlags: 0
@@ -29051,3 +29460,4 @@ SceneRoots:
   - {fileID: 1020502241}
   - {fileID: 1658006802}
   - {fileID: 1582069079}
+  - {fileID: 723290988}
