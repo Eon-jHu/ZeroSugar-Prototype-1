@@ -39,23 +39,20 @@ public class EnemySpawnSystem : MonoBehaviour
     #region Fuctions
     void Spawn()
     {
-        
-        ////timeCounter += Time.deltaTime;
-        //if (!hasSpawned)
-        //{
-        //    if (TurnBasedSystem.Instance.turnPhase % spawnPhaseCount == 0)
-        //    {
-                Instantiate(enemyMelee);
-                Instantiate(enemyRanged);
-                Debug.Log("Spawn new Enemy");
-                hasSpawned = true;
-        //    }
-        //    else
-        //    {
-        //        hasSpawned = false;
-        //    }
-            
-        //}
+
+        if (TurnBasedSystem.Instance.turnPhase % spawnPhaseCount != 0)
+        {
+            hasSpawned = false; // Reset when it's not the spawn phase
+        }
+
+        if (!hasSpawned && TurnBasedSystem.Instance.turnPhase % spawnPhaseCount == 0)
+        {
+            Instantiate(enemyMelee);
+            Instantiate(enemyRanged);
+            Debug.Log("Spawn new Enemy");
+
+            hasSpawned = true;
+        }
     }
     #endregion
 }
