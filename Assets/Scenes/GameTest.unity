@@ -7550,6 +7550,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b6a7fd286dda0c4dab3d116456ae70e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turnPhase: 0
   inGame: 1
 --- !u!4 &396265647
 Transform:
@@ -37927,7 +37928,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: dbdcee041b139ba4a8034c0ebd4ddf51, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: 2100000, guid: 98c4addcbc2b36440952748500e66c74, type: 2}
     - target: {fileID: 919132149155446097, guid: dbdcee041b139ba4a8034c0ebd4ddf51, type: 3}
       propertyPath: m_Name
       value: SM_TailDemon
