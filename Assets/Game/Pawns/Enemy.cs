@@ -47,8 +47,11 @@ public class Enemy : MonoBehaviour, IOccupier
     #region Initialization
     void Awake()
     {
-        Board.OnBoardReady += EnemySpawn;
+        //Board.OnBoardReady += EnemySpawn;
+        //Board.OnBoardReady?.Invoke(this);
         Player = GameObject.FindGameObjectWithTag("Player").transform;
+        board = GameObject.FindGameObjectWithTag("Board").GetComponent<Board>();
+        EnemySpawn(board);
     }
 
     #endregion
@@ -78,6 +81,11 @@ public class Enemy : MonoBehaviour, IOccupier
         Tile randomTile = spawnableTiles[Random.Range(0, spawnableTiles.Count)];
         PlaceEnemy(randomTile);
 
+    }
+
+    public void Initialize(Board boardRef)
+    {
+        board = boardRef;
     }
 
     public IEnumerator ProcessTurn(Action completeTurn)

@@ -7,6 +7,8 @@ public class TurnBasedSystem : MonoBehaviour
 {
     public static TurnBasedSystem Instance;
 
+    public int turnPhase;
+
     private enum TurnState { PlayerTurn, EnemyTurn}
     private TurnState currentTurn;
 
@@ -72,11 +74,13 @@ public class TurnBasedSystem : MonoBehaviour
         yield return new WaitForSeconds(1f); // Wait before switching back
 
         StartPlayerTurn();
+        turnPhase++;
     }
     
 
     private void StartPlayerTurn()
     {
+        
         currentTurn = TurnState.PlayerTurn;
         Debug.Log("Player Turn Started");
 
