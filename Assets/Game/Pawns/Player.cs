@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Player : MonoBehaviour, IOccupier
@@ -8,6 +9,9 @@ public class Player : MonoBehaviour, IOccupier
     public static Player Instance;
 
     public Transform OccupierTransform => transform;
+
+    public TextMeshProUGUI healthText;
+    public TextMeshProUGUI actionPointsText;
 
     [SerializeField]
     private int Health;
@@ -40,6 +44,12 @@ public class Player : MonoBehaviour, IOccupier
         actionPoints = 3;
     }
     #endregion
+
+    private void Update()
+    {
+        healthText.text = Health.ToString();
+        actionPointsText.text = actionPoints.ToString();
+    }
 
     #region Functions
     private void PlacePlayer(Tile tile)
