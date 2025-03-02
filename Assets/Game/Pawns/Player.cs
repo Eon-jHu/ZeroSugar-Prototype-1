@@ -17,9 +17,6 @@ public class Player : MonoBehaviour, IOccupier
     private int Health;
 
     [SerializeField]
-    public bool isAlive;
-
-    [SerializeField]
     public int actionPoints { get; private set; }
 
     [SerializeField]
@@ -54,7 +51,7 @@ public class Player : MonoBehaviour, IOccupier
         healthText.text = Health.ToString();
         actionPointsText.text = actionPoints.ToString();
 
-        isAlive = PlayerAliveCheck();
+        PlayerAliveCheck();
     } 
     #endregion
 
@@ -91,17 +88,11 @@ public class Player : MonoBehaviour, IOccupier
         }
     }
 
-    public bool PlayerAliveCheck()
+    public void PlayerAliveCheck()
     {
         if(Health <= 0)
         {
-            Debug.Log("dedge");
-            return false;
-        }
-        else
-        {
-            Debug.Log("alive");
-            return true;
+            //dead
         }
     }
 
