@@ -56,6 +56,17 @@ public class Player : MonoBehaviour, IOccupier
     {
         tile.OccupyTile(this, null, true);
     }
+    
+    public void TakeDamage(int damage)
+    {
+        Health -= damage;
+
+        if (Health <= 0)
+        {
+            // contact GameManager game is over.
+        }
+    }
+
 
     private void OnDestroy()
     {
