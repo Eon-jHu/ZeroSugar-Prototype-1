@@ -216,17 +216,19 @@ public class Enemy : MonoBehaviour, IOccupier
         tile.OccupyTile(this, null, true);
     }
 
+    private void DelayDamage()
+    {
+        Player.Instance.TakeDamage(attackDamage);
+    }
     private void Attack()
     {
         //seperated by type for the mean time
-        
 
         if (enemyType == eEnemyType.MELEE)
         {
             //melee attack
-            Player.Instance.TakeDamage(attackDamage);
-            transform.forward = Player.Instance.transform.position;
-            GetComponent<Animator>()?.SetBool("Attack", true);
+            GetComponent<Animator>().SetBool("TailAttack", true);
+            Invoke("DelayDamage", 0.8f);
         }
         if (enemyType == eEnemyType.RANGED)
         {
