@@ -9,8 +9,8 @@ public class TurnBasedSystem : MonoBehaviour
 
     public int turnPhase;
 
-    private enum TurnState { PlayerTurn, EnemyTurn}
-    private TurnState currentTurn;
+    public enum TurnState { PlayerTurn, EnemyTurn}
+    public TurnState CurrentTurn { get; private set; }
 
     public bool inGame;
     void Awake()
@@ -37,7 +37,7 @@ public class TurnBasedSystem : MonoBehaviour
 
     private IEnumerator EnemyTurn()
     {
-        currentTurn = TurnState.EnemyTurn;
+        CurrentTurn = TurnState.EnemyTurn;
         Debug.Log("Enemy Turn Started");
 
         yield return new WaitForSeconds(1f); // Simulate enemy thinking time
@@ -80,12 +80,11 @@ public class TurnBasedSystem : MonoBehaviour
 
     private void StartPlayerTurn()
     {
-        
-        currentTurn = TurnState.PlayerTurn;
+        CurrentTurn = TurnState.PlayerTurn;
         Debug.Log("Player Turn Started");
 
         // player actions
         if(!inGame)
-        Player.Instance.EndTurn();
+            Player.Instance.EndTurn();
     }
 }

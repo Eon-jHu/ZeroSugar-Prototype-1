@@ -67,6 +67,12 @@ public class Player : MonoBehaviour, IOccupier
         TurnBasedSystem.Instance.EndPlayerTurn();
     }
 
+    public void AnimateAttack()
+    {
+        // bool is set back to false in IdleAnimatorState.cs (attached to the idle state in the animator controller).
+        GetComponent<Animator>().SetBool("AttackBasic", true);
+    }
+
     public void ConsumeActionPoints(int actionCost)
     {
         actionPoints -= actionCost;

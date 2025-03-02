@@ -57,6 +57,7 @@ public class GameManager : Singleton<GameManager>
         Tile.OnTileClicked += ResolveCard;
 
         // 3. We just need to wait for the player to click a tile, or press escape to cancel
+        
     }
 
     private void CancelCard()
@@ -90,6 +91,11 @@ public class GameManager : Singleton<GameManager>
         //{
         //    player.EndTurn();
         //}
+        
+        // if (card.damage > 0) // if it's an attack card (movement cards or other cards may become a thing).
+        {
+            player.AnimateAttack();
+        }
 
         // 8. Reset the board
         board.DisableShowRange();

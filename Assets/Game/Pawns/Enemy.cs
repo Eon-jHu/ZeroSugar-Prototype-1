@@ -151,6 +151,7 @@ public class Enemy : MonoBehaviour, IOccupier
 
                 yield return null;
             }
+            // snap to the center tile at the end of the move sequence, should already be there from the while loop above.
             transform.position = targetTile.transform.position;
             isMoving = false;
             //Animator.SetBool("Walk", false)
