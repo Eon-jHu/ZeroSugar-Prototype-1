@@ -16,6 +16,8 @@ public class Player : MonoBehaviour, IOccupier
     [SerializeField]
     private int Health;
 
+    private int maxHealth;
+
     [SerializeField]
     public bool isAlive;
 
@@ -28,6 +30,9 @@ public class Player : MonoBehaviour, IOccupier
 
     [SerializeField]
     private Board board;
+
+    private ActionPointDisplayUI actionPointDisplayUI;
+    private HealthBar healthBar;
 
     //Temporary variables
     Card[] Deck;
@@ -46,6 +51,7 @@ public class Player : MonoBehaviour, IOccupier
     private void Start()
     {
         actionPoints = playerActionsPerTurn;
+        maxHealth = Health;
     }
     #endregion
 
@@ -85,6 +91,13 @@ public class Player : MonoBehaviour, IOccupier
     public void GrantActionPoints()
     {
         actionPoints = playerActionsPerTurn;
+
+        actionPointDisplayUI ??= FindObjectOfType<ActionPointDisplayUI>();
+
+        if (actionPointDisplayUI)
+        {
+            actionPointDisplayUI.SetActionPointDisplay(playerActionsPerTurn, actionPoints);
+        }
     }
 
     public void ConsumeActionPoints(int actionCost)
@@ -95,6 +108,13 @@ public class Player : MonoBehaviour, IOccupier
         if (actionPoints < 0) // This would be cheating
         {
             actionPoints = 0;
+        }
+        
+        actionPointDisplayUI ??= FindObjectOfType<ActionPointDisplayUI>();
+
+        if (actionPointDisplayUI)
+        {
+            actionPointDisplayUI.SetActionPointDisplay(playerActionsPerTurn, actionPoints);
         }
     }
 
@@ -116,6 +136,11 @@ public class Player : MonoBehaviour, IOccupier
     public void TakeDamage(int damage)
     {
         Health -= damage;
+
+        healthBar ??= GetComponentInChildren<HealthBar>();
+
+        if (healthBar)
+            healthBar.UpdateHealthBar((float)Health / maxHealth);
     }
         #endregion
 
