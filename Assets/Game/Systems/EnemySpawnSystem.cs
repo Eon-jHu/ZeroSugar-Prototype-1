@@ -49,6 +49,7 @@ public class EnemySpawnSystem : MonoBehaviour
         {
             Instantiate(enemyMelee);
             Instantiate(enemyRanged);
+            Instantiate(enemyRanged);
             Debug.Log("Spawn new Enemy");
 
             hasSpawned = true;

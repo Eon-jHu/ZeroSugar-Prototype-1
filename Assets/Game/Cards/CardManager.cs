@@ -18,7 +18,7 @@ public class CardManager : MonoBehaviour
     public GameObject drawButton;
 
     private bool hasDrawnFirstDeck = false;
-    public bool startOfTurn = false;
+    public bool startOfTurn = true;
 
     private void Start()
     {
