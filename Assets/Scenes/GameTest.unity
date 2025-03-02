@@ -23641,9 +23641,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1884562298}
-        m_TargetAssemblyTypeName: CardManager, Assembly-CSharp
-        m_MethodName: DrawHand
+      - m_Target: {fileID: 1196299540}
+        m_TargetAssemblyTypeName: EndTurnButton, Assembly-CSharp
+        m_MethodName: EndTurn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
