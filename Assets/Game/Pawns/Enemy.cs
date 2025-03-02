@@ -49,6 +49,10 @@ public class Enemy : MonoBehaviour, IOccupier
     [SerializeField] 
     private int health = 3;
 
+    private int maxHealth;
+
+    private HealthBar healthBar;
+
     #endregion
 
     #region Initialization
@@ -58,6 +62,7 @@ public class Enemy : MonoBehaviour, IOccupier
         //Board.OnBoardReady?.Invoke(this);
         player = GameObject.FindGameObjectWithTag("Player").transform;
         board = GameObject.FindGameObjectWithTag("Board").GetComponent<Board>();
+        maxHealth = health;
         EnemySpawn(board);
     }
 
@@ -92,6 +97,11 @@ public class Enemy : MonoBehaviour, IOccupier
     public void TakeDamage(int damage)
     {
         health -= damage;
+        healthBar ??= GetComponentInChildren<HealthBar>();
+        if (healthBar)
+        {
+            healthBar.UpdateHealthBar((float)health / maxHealth);
+        }
 
         if (health <= 0)
         {
