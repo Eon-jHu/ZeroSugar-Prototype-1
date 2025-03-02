@@ -11,6 +11,8 @@ public class TurnBasedSystem : MonoBehaviour
     public enum TurnState { PlayerTurn, EnemyTurn}
     public TurnState CurrentTurn { get; private set; }
 
+    [SerializeField]
+    private CardManager cardManagerRef;
 
     public bool inGame;
     void Awake()
@@ -75,6 +77,7 @@ public class TurnBasedSystem : MonoBehaviour
 
     private void StartPlayerTurn()
     {
+        cardManagerRef.startOfTurn = true;
         CurrentTurn = TurnState.PlayerTurn;
         Debug.Log("Player Turn Started");
         Player.Instance.GrantActionPoints();

@@ -7907,6 +7907,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnPhase: 0
+  cardManagerRef: {fileID: 1884562298}
   inGame: 1
 --- !u!4 &396265647
 Transform:
@@ -41715,6 +41716,8 @@ MonoBehaviour:
   availableCardSlots: 0101010101
   deckSizeText: {fileID: 2080853290}
   playArea: {fileID: 67482552}
+  drawButton: {fileID: 272810982}
+  startOfTurn: 0
 --- !u!1 &1888403002
 GameObject:
   m_ObjectHideFlags: 0
