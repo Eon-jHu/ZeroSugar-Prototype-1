@@ -16,6 +16,8 @@ public class GameManager : Singleton<GameManager>
     private Board board;
     private Player player;
 
+    [SerializeField] private GameObject weaponProjectile;
+
 
     // Start is called before the first frame update
     void Start()
@@ -78,22 +80,7 @@ public class GameManager : Singleton<GameManager>
         player.ConsumeActionPoints(cardBeingPlayed.cardData.actionCost);
 
         // 5. Assign damage to any enemies on the tile
-        if (tile.Occupier != null)
-        {
-            player.AnimateAttack(tile);
-
-            if (tile.Occupier.OccupierTransform.TryGetComponent(out Enemy enemy))
-            {
-                bool isInOptimalRange =
-                    board.TileIsInOptimalRange(board.GetPlayerTile(), tile, cardBeingPlayed.cardData.maxRange);
-                
-                // if player is outside of optimal range for the selected card, half the damage & floor it.
-                int damage = Mathf.Max(1, isInOptimalRange ? cardBeingPlayed.cardData.damage : 
-                    Mathf.FloorToInt((float)cardBeingPlayed.cardData.damage / 2));
-
-                enemy.TakeDamage(damage);
-            }
-        }
+        HandleAttack(tile);
 
         // 6. Discard the card
         cardBeingPlayed.MoveToDiscardPile();
@@ -112,5 +99,34 @@ public class GameManager : Singleton<GameManager>
 
         // 10. Clean up
         cardBeingPlayed = null;
+    }
+
+    private void HandleAttack(Tile tile)
+    {
+        if (tile.Occupier != null)
+        {
+            player.AnimateAttack(tile);
+
+            if (tile.Occupier.OccupierTransform.TryGetComponent(out Enemy enemy))
+            {
+                bool isInOptimalRange =
+                    board.TileIsInOptimalRange(board.GetPlayerTile(), tile, cardBeingPlayed.cardData.maxRange);
+                
+                // if player is outside of optimal range for the selected card, half the damage & floor it.
+                int damage = Mathf.Max(1, isInOptimalRange ? cardBeingPlayed.cardData.damage : 
+                    Mathf.FloorToInt((float)cardBeingPlayed.cardData.damage / 2));
+
+                float animationReleaseTime = 0.5f;
+                this.Wait(animationReleaseTime, () =>
+                {
+                    Vector3 spawnPos = player.transform.position + Vector3.up * 2;
+                    Projectile projectile = Instantiate(weaponProjectile, spawnPos, player.transform.rotation)
+                        .GetComponent<Projectile>();
+                    projectile.SetProjectile(tile.transform.position + Vector3.up, 40);
+
+                    enemy.TakeDamage(damage);
+                });
+            }
+        }
     }
 }
