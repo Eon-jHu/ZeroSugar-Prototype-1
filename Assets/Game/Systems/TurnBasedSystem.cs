@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 public class TurnBasedSystem : MonoBehaviour
@@ -13,10 +14,19 @@ public class TurnBasedSystem : MonoBehaviour
     public TurnState CurrentTurn { get; private set; }
 
     [SerializeField]
+    public TextMeshProUGUI timeText;
+    [SerializeField]
     private CardManager cardManagerRef;
 
     public static event Action OnPlayerStartTurn;
     public static event Action OnEnemyStartTurn;
+
+    [SerializeField]
+    private float timer;
+
+    [SerializeField]
+    private float startingTime;
+
 
     public bool inGame;
     void Awake()
@@ -29,7 +39,24 @@ public class TurnBasedSystem : MonoBehaviour
     {
         StartPlayerTurn();
     }
+
+    private void Update()
+    {
+        if (CurrentTurn == TurnState.PlayerTurn)
+        {
+            
+            
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+            {
+                Player.Instance.EndTurn();
+            }
+        }
+            
+        timeText.text = timer.ToString("0.0");
     
+    }
+
     public void EndPlayerTurn()
     {
         Debug.Log("Player Turn Ended");
@@ -83,13 +110,16 @@ public class TurnBasedSystem : MonoBehaviour
     private void StartPlayerTurn()
     {
         cardManagerRef.startOfTurn = true;
+        
         CurrentTurn = TurnState.PlayerTurn;
         Debug.Log("Player Turn Started");
         Player.Instance.GrantActionPoints();
+        
         OnPlayerStartTurn?.Invoke();
-
         // player actions
         if(!inGame)
             Player.Instance.EndTurn();
+
+        timer = startingTime;
     }
 }

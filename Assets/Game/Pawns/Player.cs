@@ -128,7 +128,7 @@ public class Player : MonoBehaviour, IOccupier
         }
         else
         {
-            Debug.Log("alive");
+            //Debug.Log("alive");
             return true;
         }
     }

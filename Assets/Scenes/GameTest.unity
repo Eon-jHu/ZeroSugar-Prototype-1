@@ -33914,6 +33914,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1553569844}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1561953072 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 586243161767447630, guid: faf643f9905106f4e8e6c4250be7bb6e, type: 3}
+  m_PrefabInstance: {fileID: 4887726786060495822}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1566100970
 GameObject:
   m_ObjectHideFlags: 0
@@ -44042,6 +44053,14 @@ PrefabInstance:
       value: Turn Controller
       objectReference: {fileID: 0}
     - target: {fileID: 6662422754385692941, guid: 76f52d6c44c83364e86a24519fcd2c72, type: 3}
+      propertyPath: timeText
+      value: 
+      objectReference: {fileID: 1301130180}
+    - target: {fileID: 6662422754385692941, guid: 76f52d6c44c83364e86a24519fcd2c72, type: 3}
+      propertyPath: startingTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6662422754385692941, guid: 76f52d6c44c83364e86a24519fcd2c72, type: 3}
       propertyPath: cardManagerRef
       value: 
       objectReference: {fileID: 1884562298}
@@ -44170,7 +44189,7 @@ PrefabInstance:
     - target: {fileID: 3162144812194821925, guid: d44f03cfc57aa234e979baedf9a56041, type: 3}
       propertyPath: actionPointsText
       value: 
-      objectReference: {fileID: 1301130180}
+      objectReference: {fileID: 1561953072}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
