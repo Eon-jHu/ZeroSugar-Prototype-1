@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2899992456625912389}
   - component: {fileID: 2122613651285265655}
   - component: {fileID: 8511450209908739978}
-  - component: {fileID: 8684650976794069151}
   - component: {fileID: 6153312160230086007}
   m_Layer: 0
   m_Name: MeleeEnemyTest
@@ -85,27 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8684650976794069151
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7716434983970557633}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6153312160230086007
 MonoBehaviour:
   m_ObjectHideFlags: 0
