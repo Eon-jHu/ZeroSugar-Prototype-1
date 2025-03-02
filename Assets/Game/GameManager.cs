@@ -80,10 +80,7 @@ public class GameManager : Singleton<GameManager>
         // 5. Assign damage to any enemies on the tile
         if (tile.Occupier != null)
         {
-            player.AnimateAttack();
-            
-            if (tile.Occupier.OccupierTransform.TryGetComponent(out Enemy enemy))
-                enemy.TakeDamage(cardBeingPlayed.cardData.damage);
+            //targetTile.Occupier.TakeDamage(card.cardData.damage);
         }
 
         // 6. Discard the card
@@ -94,6 +91,11 @@ public class GameManager : Singleton<GameManager>
         //{
         //    player.EndTurn();
         //}
+        
+        // if (card.damage > 0) // if it's an attack card (movement cards or other cards may become a thing).
+        {
+            player.AnimateAttack();
+        }
 
         // 8. Reset the board
         board.DisableShowRange();
