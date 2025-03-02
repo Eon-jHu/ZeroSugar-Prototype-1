@@ -21,6 +21,7 @@ public class Player : MonoBehaviour, IOccupier
 
     [SerializeField]
     public int actionPoints { get; private set; }
+    [SerializeField] private int playerActionsPerTurn;
 
     [SerializeField]
     private Tile currentTile;
@@ -44,7 +45,7 @@ public class Player : MonoBehaviour, IOccupier
 
     private void Start()
     {
-        actionPoints = 3;
+        actionPoints = playerActionsPerTurn;
     }
     #endregion
 
@@ -74,10 +75,16 @@ public class Player : MonoBehaviour, IOccupier
         TurnBasedSystem.Instance.EndPlayerTurn();
     }
 
-    public void AnimateAttack()
+    public void AnimateAttack(Tile targetTile)
     {
         // bool is set back to false in IdleAnimatorState.cs (attached to the idle state in the animator controller).
+        transform.forward = targetTile.transform.position;
         GetComponent<Animator>().SetBool("AttackBasic", true);
+    }
+
+    public void GrantActionPoints()
+    {
+        actionPoints = playerActionsPerTurn;
     }
 
     public void ConsumeActionPoints(int actionCost)
@@ -93,8 +100,9 @@ public class Player : MonoBehaviour, IOccupier
 
     public bool PlayerAliveCheck()
     {
-        if(Health <= 0)
+        if (Health <= 0)
         {
+            //dead
             Debug.Log("dedge");
             return false;
         }

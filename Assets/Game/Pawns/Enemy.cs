@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour, IOccupier
     #region Variables
     public Transform OccupierTransform => transform;
 
+
     public enum eEnemyType
     {
         MELEE,
@@ -45,6 +46,13 @@ public class Enemy : MonoBehaviour, IOccupier
 
     private bool isMoving = false;
 
+    [SerializeField] 
+    private int health = 3;
+
+    private int maxHealth;
+
+    private HealthBar healthBar;
+
     #endregion
 
     #region Initialization
@@ -54,6 +62,7 @@ public class Enemy : MonoBehaviour, IOccupier
         //Board.OnBoardReady?.Invoke(this);
         player = GameObject.FindGameObjectWithTag("Player").transform;
         board = GameObject.FindGameObjectWithTag("Board").GetComponent<Board>();
+        maxHealth = health;
         EnemySpawn(board);
     }
 
@@ -83,6 +92,21 @@ public class Enemy : MonoBehaviour, IOccupier
         Tile randomTile = spawnableTiles[Random.Range(0, spawnableTiles.Count)];
         PlaceEnemy(randomTile);
 
+    }
+    
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        healthBar ??= GetComponentInChildren<HealthBar>();
+        if (healthBar)
+        {
+            healthBar.UpdateHealthBar((float)health / maxHealth);
+        }
+
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void Initialize(Board boardRef)

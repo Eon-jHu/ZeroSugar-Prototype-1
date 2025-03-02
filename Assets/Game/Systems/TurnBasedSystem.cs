@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +9,11 @@ public class TurnBasedSystem : MonoBehaviour
     public static TurnBasedSystem Instance;
 
     public int turnPhase;
-
     public enum TurnState { PlayerTurn, EnemyTurn}
     public TurnState CurrentTurn { get; private set; }
+
+    public static event Action OnPlayerStartTurn;
+    public static event Action OnEnemyStartTurn;
 
     public bool inGame;
     void Awake()
@@ -23,12 +26,7 @@ public class TurnBasedSystem : MonoBehaviour
     {
         StartPlayerTurn();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
     public void EndPlayerTurn()
     {
         Debug.Log("Player Turn Ended");
@@ -39,6 +37,7 @@ public class TurnBasedSystem : MonoBehaviour
     {
         CurrentTurn = TurnState.EnemyTurn;
         Debug.Log("Enemy Turn Started");
+        OnEnemyStartTurn?.Invoke();
 
         yield return new WaitForSeconds(1f); // Simulate enemy thinking time
         
@@ -82,6 +81,8 @@ public class TurnBasedSystem : MonoBehaviour
     {
         CurrentTurn = TurnState.PlayerTurn;
         Debug.Log("Player Turn Started");
+        Player.Instance.GrantActionPoints();
+        OnPlayerStartTurn?.Invoke();
 
         // player actions
         if(!inGame)

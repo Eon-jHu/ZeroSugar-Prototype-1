@@ -14,6 +14,12 @@ public class CardManager : MonoBehaviour
     public TextMeshProUGUI deckSizeText;
     public BoxCollider playArea;
 
+    [SerializeField]
+    public GameObject drawButton;
+
+    private bool hasDrawnFirstDeck = false;
+    public bool startOfTurn = false;
+
     private void Start()
     {
         foreach (Transform slot in cardSlots)
@@ -29,7 +35,13 @@ public class CardManager : MonoBehaviour
         {
             continue;
         }
-        Player.Instance.EndTurn();
+
+        if (!hasDrawnFirstDeck)
+        {
+            hasDrawnFirstDeck = true;
+            Player.Instance.EndTurn();
+        }
+        startOfTurn = false;
     }
 
     // Draws a single card from the deck to the hand
@@ -100,5 +112,14 @@ public class CardManager : MonoBehaviour
     private void Update()
     {
         deckSizeText.text = deck.Count.ToString();
+        
+        if (startOfTurn == false)
+        {
+            drawButton.SetActive(false);
+        }
+        else
+        {
+            drawButton.SetActive(true);
+        }
     }
 }
