@@ -241,6 +241,7 @@ MonoBehaviour:
   healthText: {fileID: 0}
   actionPointsText: {fileID: 0}
   Health: 5
+  playerActionsPerTurn: 0
   currentTile: {fileID: 0}
   board: {fileID: 0}
 --- !u!65 &13291222
@@ -14725,6 +14726,7 @@ MonoBehaviour:
   healthText: {fileID: 1665856212}
   actionPointsText: {fileID: 1301130180}
   Health: 5
+  playerActionsPerTurn: 3
   currentTile: {fileID: 0}
   board: {fileID: 0}
 --- !u!65 &890423804

@@ -18,6 +18,7 @@ public class Player : MonoBehaviour, IOccupier
 
     [SerializeField]
     public int actionPoints { get; private set; }
+    [SerializeField] private int playerActionsPerTurn;
 
     [SerializeField]
     private Tile currentTile;
@@ -41,7 +42,7 @@ public class Player : MonoBehaviour, IOccupier
 
     private void Start()
     {
-        actionPoints = 3;
+        actionPoints = playerActionsPerTurn;
     }
     #endregion
 
@@ -56,17 +57,6 @@ public class Player : MonoBehaviour, IOccupier
     {
         tile.OccupyTile(this, null, true);
     }
-    
-    public void TakeDamage(int damage)
-    {
-        Health -= damage;
-
-        if (Health <= 0)
-        {
-            // contact GameManager game is over.
-        }
-    }
-
 
     private void OnDestroy()
     {
@@ -82,6 +72,11 @@ public class Player : MonoBehaviour, IOccupier
     {
         // bool is set back to false in IdleAnimatorState.cs (attached to the idle state in the animator controller).
         GetComponent<Animator>().SetBool("AttackBasic", true);
+    }
+
+    public void GrantActionPoints()
+    {
+        actionPoints = playerActionsPerTurn;
     }
 
     public void ConsumeActionPoints(int actionCost)
