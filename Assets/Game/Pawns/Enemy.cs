@@ -219,11 +219,14 @@ public class Enemy : MonoBehaviour, IOccupier
     private void Attack()
     {
         //seperated by type for the mean time
+        
 
         if (enemyType == eEnemyType.MELEE)
         {
             //melee attack
             Player.Instance.TakeDamage(attackDamage);
+            transform.forward = Player.Instance.transform.position;
+            GetComponent<Animator>()?.SetBool("Attack", true);
         }
         if (enemyType == eEnemyType.RANGED)
         {
