@@ -4,7 +4,7 @@ public class EndTurnButton : MonoBehaviour
 {
     private TurnBasedSystem turnSystem;
     
-    public void EndTurn()
+    void EndTurn()
     {
         turnSystem ??= FindObjectOfType<TurnBasedSystem>();
 
