@@ -43,7 +43,7 @@ public class Tile : MonoBehaviour
         // leave current tile so that it can be occupied by another unit.
         if (fromTile)
         {
-            fromTile.LeaveTile();
+            fromTile.LeaveTile(occupier);
         }
         
         Occupier = occupier;
@@ -59,10 +59,13 @@ public class Tile : MonoBehaviour
         return true;
     }
 
-    private void LeaveTile()
+    public void LeaveTile(IOccupier leavingOccupier)
     {
-        Occupier = null;
-        occupierTransform = null;
+        if (leavingOccupier == Occupier)
+        {
+            Occupier = null;
+            occupierTransform = null;
+        }
     }
 
     private void InitializeTile(Board board)

@@ -9,7 +9,7 @@ public class ActionPointDisplayUI : MonoBehaviour
 
     public void SetActionPointDisplay(int actionsPerTurn, int actionsRemaining)
     {
-        actionPointText.text = actionsRemaining.ToString();
+        actionPointText.text = actionsRemaining <= 0 ? "0" : actionsRemaining.ToString();
         fillImage.fillAmount = (float)actionsRemaining / actionsPerTurn;
     }
 }

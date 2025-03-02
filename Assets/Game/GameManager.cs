@@ -81,9 +81,18 @@ public class GameManager : Singleton<GameManager>
         if (tile.Occupier != null)
         {
             player.AnimateAttack(tile);
-            
+
             if (tile.Occupier.OccupierTransform.TryGetComponent(out Enemy enemy))
-                enemy.TakeDamage(cardBeingPlayed.cardData.damage);
+            {
+                bool isInOptimalRange =
+                    board.TileIsInOptimalRange(board.GetPlayerTile(), tile, cardBeingPlayed.cardData.maxRange);
+                
+                // if player is outside of optimal range for the selected card, half the damage & floor it.
+                int damage = Mathf.Max(1, isInOptimalRange ? cardBeingPlayed.cardData.damage : 
+                    Mathf.FloorToInt((float)cardBeingPlayed.cardData.damage / 2));
+
+                enemy.TakeDamage(damage);
+            }
         }
 
         // 6. Discard the card

@@ -47,30 +47,6 @@ public class Board : Singleton<Board>
     {
         return tiles;
     }
-
-    private void Update()
-    {
-        if (!boardDebug)
-            return;
-
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            ShowRange(CenterTile, 1);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            ShowRange(CenterTile, 2);
-
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            ShowRange(CenterTile, 3);
-        }
-        else if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            DisableShowRange();
-        }
-    }
     
     // Get the tile that the player is on for AI Pathfinding.
     public Tile GetPlayerTile()
@@ -89,20 +65,26 @@ public class Board : Singleton<Board>
     public void ShowRange(Tile currentTile, int range)
     {
         // fills out the range to allow for one step diagonally.
-        float adjustedRange = range + 0.42f;
         foreach (var tile in tiles)
         {
             // disables any leftover range indicators that may erroneously enabled from previous turn.
             //tile.TileRangeIndicator.SetActive(false);
             tile.ShowTileIndicator(true);
 
-            
-            float distanceToTile = Vector3.Distance(tile.transform.position, currentTile.transform.position);
-            if (distanceToTile <= adjustedRange * TileSize)
+            if (TileIsInOptimalRange(currentTile, tile, range))
             {
                 tile.ShowTileIndicator();
             }
         }
+    }
+
+    public bool TileIsInOptimalRange(Tile currentTile, Tile targetTile, int range)
+    {
+        float adjustedRange = range + 0.42f;
+        
+        float distanceToTile = Vector3.Distance(targetTile.transform.position, currentTile.transform.position);
+        
+        return distanceToTile <= adjustedRange * TileSize;
     }
 
     public void DisableShowRange()
@@ -125,6 +107,16 @@ public class Board : Singleton<Board>
             }
         }
         return null;
+    }
+
+    public void HandleOccupierDeath(IOccupier occupier)
+    {
+        Tile tile = GetOccupierTile(occupier);
+
+        if (tile)
+        {
+            tile.LeaveTile(occupier);
+        }
     }
 
     public void ShowRangeFromCenter(int range)
