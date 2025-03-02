@@ -29,6 +29,8 @@ public class Player : MonoBehaviour, IOccupier
     [SerializeField]
     private Board board;
 
+    private ActionPointDisplayUI actionPointDisplayUI;
+
     //Temporary variables
     Card[] Deck;
     Card[] Played;
@@ -85,6 +87,13 @@ public class Player : MonoBehaviour, IOccupier
     public void GrantActionPoints()
     {
         actionPoints = playerActionsPerTurn;
+
+        actionPointDisplayUI ??= FindObjectOfType<ActionPointDisplayUI>();
+
+        if (actionPointDisplayUI)
+        {
+            actionPointDisplayUI.SetActionPointDisplay(playerActionsPerTurn, actionPoints);
+        }
     }
 
     public void ConsumeActionPoints(int actionCost)
@@ -95,6 +104,13 @@ public class Player : MonoBehaviour, IOccupier
         if (actionPoints < 0) // This would be cheating
         {
             actionPoints = 0;
+        }
+        
+        actionPointDisplayUI ??= FindObjectOfType<ActionPointDisplayUI>();
+
+        if (actionPointDisplayUI)
+        {
+            actionPointDisplayUI.SetActionPointDisplay(playerActionsPerTurn, actionPoints);
         }
     }
 

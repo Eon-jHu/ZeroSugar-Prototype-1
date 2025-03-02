@@ -4446,6 +4446,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 237828446}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &238446349 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7702796356496381560, guid: faf643f9905106f4e8e6c4250be7bb6e, type: 3}
+  m_PrefabInstance: {fileID: 4887726786060495822}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &252911713
 GameObject:
   m_ObjectHideFlags: 0
@@ -40139,6 +40144,8 @@ MonoBehaviour:
   availableCardSlots: 0101010101
   deckSizeText: {fileID: 2080853290}
   playArea: {fileID: 67482552}
+  drawButton: {fileID: 238446349}
+  startOfTurn: 0
 --- !u!1 &1888403002
 GameObject:
   m_ObjectHideFlags: 0
