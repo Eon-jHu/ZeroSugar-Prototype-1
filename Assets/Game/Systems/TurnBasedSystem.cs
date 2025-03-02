@@ -8,9 +8,9 @@ public class TurnBasedSystem : MonoBehaviour
     public static TurnBasedSystem Instance;
 
     public int turnPhase;
-
     public enum TurnState { PlayerTurn, EnemyTurn}
     public TurnState CurrentTurn { get; private set; }
+
 
     public bool inGame;
     void Awake()
@@ -23,12 +23,7 @@ public class TurnBasedSystem : MonoBehaviour
     {
         StartPlayerTurn();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
     public void EndPlayerTurn()
     {
         Debug.Log("Player Turn Ended");
@@ -82,6 +77,7 @@ public class TurnBasedSystem : MonoBehaviour
     {
         CurrentTurn = TurnState.PlayerTurn;
         Debug.Log("Player Turn Started");
+        Player.Instance.GrantActionPoints();
 
         // player actions
         if(!inGame)
