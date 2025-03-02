@@ -20,10 +20,13 @@ public class Enemy : MonoBehaviour, IOccupier
     public eEnemyType enemyType;
 
     [SerializeField]
-    public Transform Player;
+    public Transform player;
 
     [SerializeField]
     public float attackRange;
+
+    [SerializeField]
+    public int attackDamage;
 
     [SerializeField]
     public LayerMask playerLayer;
@@ -53,7 +56,7 @@ public class Enemy : MonoBehaviour, IOccupier
     {
         //Board.OnBoardReady += EnemySpawn;
         //Board.OnBoardReady?.Invoke(this);
-        Player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         board = GameObject.FindGameObjectWithTag("Board").GetComponent<Board>();
         EnemySpawn(board);
     }
@@ -79,7 +82,6 @@ public class Enemy : MonoBehaviour, IOccupier
             if (tileInstance.IsBoundaryTile() == true && tileInstance.IsOccupied() == false)
             {
                 spawnableTiles.Add(tileInstance);
-
             }
         }
         Tile randomTile = spawnableTiles[Random.Range(0, spawnableTiles.Count)];
@@ -175,7 +177,7 @@ public class Enemy : MonoBehaviour, IOccupier
 
     private bool EnemyRangeCheck()
     {
-        Vector3 directionToPlayer = Player.position - transform.position;
+        Vector3 directionToPlayer = player.position - transform.position;
         float distanceToPlayer = directionToPlayer.magnitude;
 
         // Check if within attack range
@@ -206,13 +208,17 @@ public class Enemy : MonoBehaviour, IOccupier
 
     private void Attack()
     {
+        //seperated by type for the mean time
+
         if (enemyType == eEnemyType.MELEE)
         {
             //melee attack
+            Player.Instance.TakeDamage(attackDamage);
         }
-        else
+        if (enemyType == eEnemyType.RANGED)
         {
             //ranged attack
+            Player.Instance.TakeDamage(attackDamage);
         }
     }
 

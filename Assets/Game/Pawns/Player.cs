@@ -46,11 +46,15 @@ public class Player : MonoBehaviour, IOccupier
     }
     #endregion
 
+    #region Update
     private void Update()
     {
         healthText.text = Health.ToString();
         actionPointsText.text = actionPoints.ToString();
-    }
+
+        PlayerAliveCheck();
+    } 
+    #endregion
 
     #region Functions
     private void PlacePlayer(Tile tile)
@@ -88,9 +92,22 @@ public class Player : MonoBehaviour, IOccupier
         {
             actionPoints = 0;
         }
-    } 
-    #endregion
+    }
 
-}
+    public void PlayerAliveCheck()
+    {
+        if(Health <= 0)
+        {
+            //dead
+        }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        Health -= damage;
+    }
+        #endregion
+
+    }
 
 
