@@ -119,10 +119,13 @@ public class GameManager : Singleton<GameManager>
                 float animationReleaseTime = 0.5f;
                 this.Wait(animationReleaseTime, () =>
                 {
+                    Projectile.CreateProjectile(player.transform, tile);
+                    /*
                     Vector3 spawnPos = player.transform.position + Vector3.up * 2;
                     Projectile projectile = Instantiate(weaponProjectile, spawnPos, player.transform.rotation)
                         .GetComponent<Projectile>();
                     projectile.SetProjectile(tile.transform.position + Vector3.up, 40);
+                    */
 
                     enemy.TakeDamage(damage);
                 });
