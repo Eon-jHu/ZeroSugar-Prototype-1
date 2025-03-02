@@ -29,6 +29,7 @@ public class TurnBasedSystem : MonoBehaviour
 
 
     public bool inGame;
+    public bool drawnCards;
     void Awake()
     {
         if (Instance == null) Instance = this;
@@ -37,18 +38,22 @@ public class TurnBasedSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         StartPlayerTurn();
+        timer = 0;
     }
+
+    
 
     private void Update()
     {
+       
         if (CurrentTurn == TurnState.PlayerTurn)
-        {
-            
-            
+        {         
             timer -= Time.deltaTime;
             if (timer <= 0)
             {
+                
                 Player.Instance.EndTurn();
             }
         }
@@ -102,6 +107,7 @@ public class TurnBasedSystem : MonoBehaviour
         Debug.Log("Enemy actions");
         yield return new WaitForSeconds(1f); // Wait before switching back
 
+        cardManagerRef.DrawHand();
         StartPlayerTurn();
         turnPhase++;
     }
@@ -110,7 +116,6 @@ public class TurnBasedSystem : MonoBehaviour
     private void StartPlayerTurn()
     {
         cardManagerRef.startOfTurn = true;
-        
         CurrentTurn = TurnState.PlayerTurn;
         Debug.Log("Player Turn Started");
         Player.Instance.GrantActionPoints();
@@ -119,7 +124,7 @@ public class TurnBasedSystem : MonoBehaviour
         // player actions
         if(!inGame)
             Player.Instance.EndTurn();
-
+        
         timer = startingTime;
     }
 }

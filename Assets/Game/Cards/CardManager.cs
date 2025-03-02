@@ -26,6 +26,8 @@ public class CardManager : MonoBehaviour
         {
             slot.gameObject.GetComponent<SpriteRenderer>().enabled = false;
         }
+
+
     }
 
     // Draws cards from the deck so it fills the hand
@@ -39,7 +41,7 @@ public class CardManager : MonoBehaviour
         if (!hasDrawnFirstDeck)
         {
             hasDrawnFirstDeck = true;
-            Player.Instance.EndTurn();
+            //Player.Instance.EndTurn();
         }
         startOfTurn = false;
     }
@@ -113,13 +115,13 @@ public class CardManager : MonoBehaviour
     {
         deckSizeText.text = deck.Count.ToString();
         
-        if (startOfTurn == false)
-        {
-            drawButton.SetActive(false);
-        }
-        else
-        {
-            drawButton.SetActive(true);
-        }
+        //if (startOfTurn == false)
+        //{
+        //    drawButton.SetActive(false);
+        //}
+        //else
+        //{
+        //    drawButton.SetActive(true);
+        //}
     }
 }

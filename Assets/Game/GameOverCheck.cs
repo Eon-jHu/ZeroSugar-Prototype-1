@@ -11,7 +11,6 @@ public class GameOverCheck : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("GameOverManager script is running!");
         gameOverCanvas = GameObject.Find("GameOverCanvas");
         gameOverCanvas.SetActive(false);
     }
