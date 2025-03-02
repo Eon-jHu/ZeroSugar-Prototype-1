@@ -25,6 +25,8 @@ public class Card : Draggable
     // Booleans to check if it's in the play zone or not
     private bool inPlayZone;
 
+    //private TurnBasedSystem turnSystemRef;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -40,12 +42,16 @@ public class Card : Draggable
 
     protected override void OnMouseDown()
     {
-        base.OnMouseDown();
-        GetComponent<Renderer>().sortingOrder = 100;
+        if (TurnBasedSystem.Instance.CurrentTurn == TurnBasedSystem.TurnState.PlayerTurn)
+        {
+            base.OnMouseDown();
+            GetComponent<Renderer>().sortingOrder = 100;
+        }
     }
 
     protected override void OnMouseUp()
     {
+        
         base.OnMouseUp();
         cardRenderer.sortingOrder = handIndex;
 
