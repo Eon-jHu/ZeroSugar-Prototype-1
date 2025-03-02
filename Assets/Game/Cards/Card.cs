@@ -24,6 +24,10 @@ public class Card : Draggable
     private SpriteRenderer cardRenderer;
     // Booleans to check if it's in the play zone or not
     private bool inPlayZone;
+    // Boolean to check if the card is being inspected
+    private bool isInspecting;
+    // Boolean to check if the card is being dragged
+    private bool isDragging;
 
     // Start is called before the first frame update
     private void Start()
@@ -34,6 +38,7 @@ public class Card : Draggable
         cardRenderer.sprite = cardData.cardSprite;
 
         inPlayZone = false;
+        isInspecting = false;
     }
 
     // ================= COLLISION AND MOUSE UP =================
@@ -118,9 +123,49 @@ public class Card : Draggable
 
     // =========================================================
 
-    private void MoveToPlayedArea()
-    {
+    // ==================== CARD MOUSE OVER ====================
 
+    private void OnMouseOver()
+    {
+        if (isInspecting) return;
+
+        isInspecting = true;
+        GetComponent<Renderer>().sortingOrder = 100;
+        StartCoroutine(Inspect());
+    }
+
+    private IEnumerator Inspect()
+    {
+        while (transform.localScale.x < 0.75f)
+        {
+            transform.localScale = Vector3.Lerp(transform.localScale, new Vector3(1, 1, 1), 0.2f);
+            transform.position += new Vector3(0, 0.5f, 0);
+            yield return null;
+        }
+    }
+
+    private void OnMouseExit()
+    {
+        if (!isInspecting) return;
+
+        isInspecting = false;
+        GetComponent<Renderer>().sortingOrder = handIndex;
+        StartCoroutine(ResetInspect());
+
+        // Only reset pos if it's not being dragged (since it will reset if it was)
+        if (!isDragging)
+        {
+            StartCoroutine(ResetPos());
+        }   
+    }
+
+    private IEnumerator ResetInspect()
+    {
+        while (transform.localScale.x > 0.25f)
+        {
+            transform.localScale = Vector3.Lerp(new Vector3(0.75f, 0.75f, 0.75f), new Vector3(0.25f, 0.25f, 0.25f), 0.2f);
+            yield return null;
+        }
     }
 
     public void MoveToDiscardPile()

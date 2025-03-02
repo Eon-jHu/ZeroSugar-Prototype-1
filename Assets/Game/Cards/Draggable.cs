@@ -7,7 +7,9 @@ public abstract class Draggable : MonoBehaviour
 {
     private Vector3 offset;
     private float mouseZ;
-    private bool isMouseDown;
+
+    // Flag to check if the object is being dragged
+    protected bool isDragging;
 
     // Store the offset between the object and the mouse
     virtual protected void OnMouseDown()
@@ -16,7 +18,7 @@ public abstract class Draggable : MonoBehaviour
 
         mouseZ = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
         offset = transform.position - GetMouseWorldPos();
-        isMouseDown = true;
+        isDragging = true;
         StartCoroutine(MoveToMouse());
     }
 
@@ -27,13 +29,13 @@ public abstract class Draggable : MonoBehaviour
     protected virtual void OnMouseUp()
     {
         Debug.Log("Mouse up");  
-        isMouseDown = false;
+        isDragging = false;
     }
 
     // Moves the object to the mouse position
     private IEnumerator MoveToMouse()
     {
-        while (isMouseDown && (transform.position - GetMouseWorldPos() + offset).sqrMagnitude > 0.001f)
+        while (isDragging && (transform.position - GetMouseWorldPos() + offset).sqrMagnitude > 0.001f)
         {
             transform.position = Vector3.Lerp(transform.position, GetMouseWorldPos() + offset, 0.1f);
             yield return null;
