@@ -40,12 +40,12 @@ public class EnemySpawnSystem : MonoBehaviour
     void Spawn()
     {
 
-        if ((TurnBasedSystem.Instance.turnPhase - 1) % spawnPhaseCount != 0)
+        if (TurnBasedSystem.Instance.turnPhase - 1 % spawnPhaseCount != 0)
         {
             hasSpawned = false; // Reset when it's not the spawn phase
         }
 
-        if (!hasSpawned && (TurnBasedSystem.Instance.turnPhase - 1) % spawnPhaseCount == 0)
+        if (!hasSpawned && TurnBasedSystem.Instance.turnPhase - 1 % spawnPhaseCount == 0)
         {
             Instantiate(enemyMelee);
             Instantiate(enemyRanged);
