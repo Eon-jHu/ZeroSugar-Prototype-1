@@ -7,6 +7,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: MAT_ArenaBorder
+    second: {fileID: 2100000, guid: 69f6f9138ff87b04083d8722d08870bd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: MAT_Other
     second: {fileID: 2100000, guid: 111f58e6e508ac2418ebff3e39edbeeb, type: 2}
   - first:
