@@ -19,7 +19,7 @@ public class GameOverCheck : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Player.Instance.PlayerAliveCheck() == false)
+        if (Player.Instance.PlayerAliveCheck() == false)
         {
             gameOverCanvas.SetActive(true);
         }

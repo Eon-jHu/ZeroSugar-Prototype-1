@@ -100,8 +100,9 @@ public class Player : MonoBehaviour, IOccupier
 
     public bool PlayerAliveCheck()
     {
-        if(Health <= 0)
+        if (Health <= 0)
         {
+            //dead
             Debug.Log("dedge");
             return false;
         }
