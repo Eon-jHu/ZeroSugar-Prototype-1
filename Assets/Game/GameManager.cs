@@ -14,7 +14,7 @@ public class GameManager : Singleton<GameManager>
 
     // References
     private Board board;
-    private Player player;
+    public Player player;
 
     [SerializeField] private GameObject weaponProjectile;
 
