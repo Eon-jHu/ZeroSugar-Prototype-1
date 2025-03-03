@@ -80,20 +80,37 @@ public class CardSelector : Singleton<CardSelector>
         Card discardCard = cardManager.deck.FirstOrDefault(c => c.cardData == discardedCard);
         if (discardCard)
         {
+            cardManager.deck.Remove(discardCard);
             Destroy(discardCard.gameObject);
         }
         
         // handle adding the selected card.
         Transform cardHand = GameObject.FindWithTag("CardHand").transform;
+        
         if (cardHand)
+        {
+            AddNewCard();
+        }
+        else
+        {
+            cardHand = FindObjectOfType<Card>(true).transform.parent;
+
+            if (cardHand)
+            {
+                AddNewCard();
+            }
+            else
+            {
+                Debug.LogError("Cannot find Cards Parent. It should be tagged with 'Card Hand'");
+
+            }
+        }
+
+        void AddNewCard()
         {
             Card card = Instantiate(cardPrefab, cardHand);
             card.cardData = selectedCard;
             cardManager.deck.Add(card);
-        }
-        else
-        {
-            Debug.LogError("Cannot find Cards Parent. It should be tagged with 'Card Hand'");
         }
         
         SceneManager.UnloadSceneAsync("Card Select");
