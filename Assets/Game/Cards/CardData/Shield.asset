@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dee285f6198d3ce41a3a23ad594f3d30, type: 3}
-  m_Name: Bow
+  m_Name: Shield
   m_EditorClassIdentifier: 
-  cardSprite: {fileID: 21300000, guid: bd144c5c6048d9a4b8058cbe7380aed4, type: 3}
-  cardName: Bow
-  damage: 0
-  damageVariance: 3
-  varianceValue: 0.5
-  actionCost: 2
-  minRange: 4
-  maxRange: 6
+  cardSprite: {fileID: 0}
+  cardName: Shield
+  damage: -1
+  damageVariance: 0
+  varianceValue: 0
+  actionCost: 0
+  minRange: 0
+  maxRange: 0
   aoeType: 0
   aoeArea: 0
   pushDistance: 0
