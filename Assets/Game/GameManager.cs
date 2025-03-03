@@ -49,8 +49,11 @@ public class GameManager : Singleton<GameManager>
         {
             Debug.Log("Not enough action points to play this card.");
             CancelCard();
+            AudioPlayer.PlaySound2D(Sound.card_place_deny);
             return;
         }
+        
+        AudioPlayer.PlaySound2D(Sound.card_place_down);
 
         // 1. Visually display the card's range on the board based on mouse position
         board.ShowRange(board.GetPlayerTile(), card.cardData.maxRange);
@@ -78,6 +81,7 @@ public class GameManager : Singleton<GameManager>
     {
         // 4. Consume action points
         player.ConsumeActionPoints(cardBeingPlayed.cardData.actionCost);
+        AudioPlayer.PlaySound2D(Sound.card_place_down);
 
         // 5. Assign damage to any enemies on the tile
         HandleAttack(tile);
@@ -116,13 +120,18 @@ public class GameManager : Singleton<GameManager>
                 int damage = Mathf.Max(1, isInOptimalRange ? cardBeingPlayed.cardData.damage : 
                     Mathf.FloorToInt((float)cardBeingPlayed.cardData.damage / 2));
 
+                AudioPlayer.PlaySound3D(Sound.weapon_throw, player.transform.position);
+                AudioPlayer.PlaySound3D(Sound.attack_vocal, player.transform.position, 0.25f);
                 float animationReleaseTime = 0.5f;
                 this.Wait(animationReleaseTime, () =>
                 {
+                    Projectile.CreateProjectile(player.transform, tile);
+                    /*
                     Vector3 spawnPos = player.transform.position + Vector3.up * 2;
                     Projectile projectile = Instantiate(weaponProjectile, spawnPos, player.transform.rotation)
                         .GetComponent<Projectile>();
                     projectile.SetProjectile(tile.transform.position + Vector3.up, 40);
+                    */
 
                     enemy.TakeDamage(damage);
                 });

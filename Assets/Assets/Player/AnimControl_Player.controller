@@ -71,7 +71,7 @@ AnimatorStateTransition:
   m_Name: AttackPlayed
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: AttackBasic
+    m_ConditionEvent: Attack
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 2680280907324006253}
@@ -96,7 +96,7 @@ AnimatorController:
   m_Name: AnimControl_Player
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: AttackBasic
+  - m_Name: Attack
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0

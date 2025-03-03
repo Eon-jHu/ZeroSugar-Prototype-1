@@ -20,6 +20,9 @@ public class CardManager : MonoBehaviour
     private bool hasDrawnFirstDeck = false;
     public bool startOfTurn = true;
 
+    private AudioSource cardSFXSource;
+    [SerializeField] private AudioClip drawCardClip;
+
     private void Start()
     {
         foreach (Transform slot in cardSlots)
@@ -35,7 +38,9 @@ public class CardManager : MonoBehaviour
         {
             continue;
         }
-
+        
+        AudioPlayer.PlaySound2D(Sound.card_draw);
+        
         if (!hasDrawnFirstDeck)
         {
             hasDrawnFirstDeck = true;
@@ -95,7 +100,7 @@ public class CardManager : MonoBehaviour
         ShuffleDeck();
 
     }
-
+    
     // Shuffles the deck
     public void ShuffleDeck()
     {

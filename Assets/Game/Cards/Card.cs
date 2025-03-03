@@ -48,6 +48,7 @@ public class Card : MonoBehaviour
     {
         isDragging = true;
         GetComponent<Renderer>().sortingOrder = 100;
+        AudioPlayer.PlaySound2D(Sound.card_select);
     }
 
     private void OnMouseUp()

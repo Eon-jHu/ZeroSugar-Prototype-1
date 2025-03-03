@@ -27,11 +27,18 @@ public class Projectile : MonoBehaviour
         }
         else
         {
-            if (impactClip)
-            {
-                AudioSource.PlayClipAtPoint(impactClip, transform.position, 1f);
-            }
+            AudioPlayer.PlaySound3D(Sound.impact, transform.position);
             Destroy(gameObject);
         }
+    }
+
+    public static void CreateProjectile(Transform owner, Tile targetTile)
+    {
+        GameObject projectile = Resources.Load<GameObject>("Projectile");
+        
+        Vector3 spawnPos = owner.position + Vector3.up * 2;
+        Projectile projectileInst = Instantiate(projectile, spawnPos, owner.rotation)
+            .GetComponent<Projectile>();
+        projectileInst.SetProjectile(targetTile.transform.position + Vector3.up, 40);
     }
 }
