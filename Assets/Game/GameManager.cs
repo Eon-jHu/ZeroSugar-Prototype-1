@@ -28,7 +28,7 @@ public class GameManager : Singleton<GameManager>
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonDown(1))
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonDown(1) || TurnBasedSystem.Instance.CurrentTurn == TurnBasedSystem.TurnState.EnemyTurn)
         {
             CancelCard();
         }
