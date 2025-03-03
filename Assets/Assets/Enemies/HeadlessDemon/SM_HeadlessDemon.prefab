@@ -163,7 +163,7 @@ MonoBehaviour:
     m_Bits: 8
   Health: 0
   board: {fileID: 0}
-  moveSpeed: 1.5
+  moveSpeed: 4
   maximumMoveTime: 4
   health: 3
 --- !u!4 &4093652323552242240 stripped

@@ -105,7 +105,7 @@ public class TurnBasedSystem : MonoBehaviour
         
         
         Debug.Log("Enemy actions");
-        yield return new WaitForSeconds(1f); // Wait before switching back
+        yield return new WaitForSeconds(0.3f); // Wait before switching back
 
         cardManagerRef.DrawHand();
         StartPlayerTurn();
