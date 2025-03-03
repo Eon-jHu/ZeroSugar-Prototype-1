@@ -877,6 +877,7 @@ GameObject:
   - component: {fileID: 42027087}
   - component: {fileID: 42027086}
   - component: {fileID: 42027085}
+  - component: {fileID: 42027090}
   - component: {fileID: 42027089}
   m_Layer: 0
   m_Name: Card (4)
@@ -936,11 +937,11 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 6.0080023, y: 8.184995, z: 1}
+  m_Size: {x: 5, y: 7, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &42027087
 MonoBehaviour:
@@ -1035,6 +1036,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &42027090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 42027083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 541d8dbc78c6b6f478cb2d2e6c106487, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &42327895
 GameObject:
   m_ObjectHideFlags: 0
@@ -1328,8 +1341,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 9.1103, y: 4.002506, z: 7.942836}
-  m_Center: {x: 0.00000601154, y: 5.1762757, z: 0.8606417}
+  m_Size: {x: 14.504012, y: 6.9108562, z: 7.942836}
+  m_Center: {x: 0.000013574821, y: 6.6304517, z: 0.8606428}
 --- !u!1 &67758728
 GameObject:
   m_ObjectHideFlags: 0
@@ -6591,6 +6604,7 @@ GameObject:
   - component: {fileID: 353658943}
   - component: {fileID: 353658942}
   - component: {fileID: 353658941}
+  - component: {fileID: 353658946}
   - component: {fileID: 353658945}
   m_Layer: 0
   m_Name: Card (3)
@@ -6650,11 +6664,11 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 5.9923496, y: 8.212725, z: 1}
+  m_Size: {x: 5, y: 7, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &353658943
 MonoBehaviour:
@@ -6749,6 +6763,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &353658946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 353658939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 541d8dbc78c6b6f478cb2d2e6c106487, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &354676541
 GameObject:
   m_ObjectHideFlags: 0
@@ -8109,6 +8135,7 @@ GameObject:
   - component: {fileID: 457195690}
   - component: {fileID: 457195689}
   - component: {fileID: 457195688}
+  - component: {fileID: 457195693}
   - component: {fileID: 457195692}
   m_Layer: 0
   m_Name: Card (6)
@@ -8168,11 +8195,11 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 5.984761, y: 8.240118, z: 1}
+  m_Size: {x: 5, y: 7, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &457195690
 MonoBehaviour:
@@ -8267,6 +8294,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &457195693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457195686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 541d8dbc78c6b6f478cb2d2e6c106487, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &457672752
 GameObject:
   m_ObjectHideFlags: 0
@@ -11487,6 +11526,7 @@ GameObject:
   - component: {fileID: 704786952}
   - component: {fileID: 704786951}
   - component: {fileID: 704786950}
+  - component: {fileID: 704786955}
   - component: {fileID: 704786954}
   m_Layer: 0
   m_Name: Card (8)
@@ -11546,11 +11586,11 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 5.9991055, y: 8.185022, z: 1}
+  m_Size: {x: 5, y: 7, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &704786952
 MonoBehaviour:
@@ -11645,6 +11685,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &704786955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 704786948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 541d8dbc78c6b6f478cb2d2e6c106487, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &707170907
 GameObject:
   m_ObjectHideFlags: 0
@@ -14778,6 +14830,7 @@ GameObject:
   - component: {fileID: 934927369}
   - component: {fileID: 934927368}
   - component: {fileID: 934927367}
+  - component: {fileID: 934927372}
   - component: {fileID: 934927371}
   m_Layer: 0
   m_Name: Card (7)
@@ -14837,11 +14890,11 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 5.9750614, y: 8.227547, z: 1}
+  m_Size: {x: 5, y: 7, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &934927369
 MonoBehaviour:
@@ -14936,6 +14989,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &934927372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934927365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 541d8dbc78c6b6f478cb2d2e6c106487, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &935967053
 GameObject:
   m_ObjectHideFlags: 0
@@ -24113,6 +24178,7 @@ GameObject:
   - component: {fileID: 1277958054}
   - component: {fileID: 1277958053}
   - component: {fileID: 1277958052}
+  - component: {fileID: 1277958056}
   - component: {fileID: 1277958055}
   m_Layer: 0
   m_Name: Card (0)
@@ -24224,11 +24290,11 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 6, y: 8.4, z: 0.2}
+  m_Size: {x: 5, y: 7, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1277958054
 MonoBehaviour:
@@ -24271,6 +24337,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1277958056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1277958049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 541d8dbc78c6b6f478cb2d2e6c106487, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1286615927
 GameObject:
   m_ObjectHideFlags: 0
@@ -34093,6 +34171,7 @@ GameObject:
   - component: {fileID: 1567941946}
   - component: {fileID: 1567941945}
   - component: {fileID: 1567941944}
+  - component: {fileID: 1567941949}
   - component: {fileID: 1567941948}
   m_Layer: 0
   m_Name: Card (2)
@@ -34152,11 +34231,11 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 5.965438, y: 8.214336, z: 1}
+  m_Size: {x: 5, y: 7, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1567941946
 MonoBehaviour:
@@ -34251,6 +34330,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1567941949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1567941942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 541d8dbc78c6b6f478cb2d2e6c106487, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1578900008
 GameObject:
   m_ObjectHideFlags: 0
@@ -34942,6 +35033,7 @@ GameObject:
   - component: {fileID: 1634161901}
   - component: {fileID: 1634161900}
   - component: {fileID: 1634161899}
+  - component: {fileID: 1634161904}
   - component: {fileID: 1634161903}
   m_Layer: 0
   m_Name: Card (5)
@@ -35001,11 +35093,11 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 6.0058775, y: 8.1943, z: 1}
+  m_Size: {x: 5, y: 7, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1634161901
 MonoBehaviour:
@@ -35100,6 +35192,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1634161904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1634161897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 541d8dbc78c6b6f478cb2d2e6c106487, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1636197740
 GameObject:
   m_ObjectHideFlags: 0
@@ -35920,6 +36024,7 @@ GameObject:
   - component: {fileID: 1681096552}
   - component: {fileID: 1681096551}
   - component: {fileID: 1681096550}
+  - component: {fileID: 1681096555}
   - component: {fileID: 1681096554}
   m_Layer: 0
   m_Name: Card (9)
@@ -35979,11 +36084,11 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 5.9513445, y: 8.210122, z: 1}
+  m_Size: {x: 5, y: 7, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1681096552
 MonoBehaviour:
@@ -36078,6 +36183,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1681096555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1681096548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 541d8dbc78c6b6f478cb2d2e6c106487, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1687832091
 GameObject:
   m_ObjectHideFlags: 0
@@ -37805,6 +37922,7 @@ GameObject:
   - component: {fileID: 1780723530}
   - component: {fileID: 1780723529}
   - component: {fileID: 1780723528}
+  - component: {fileID: 1780723533}
   - component: {fileID: 1780723532}
   m_Layer: 0
   m_Name: Card (1)
@@ -37864,11 +37982,11 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 5.958379, y: 8.241158, z: 1}
+  m_Size: {x: 5, y: 7, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1780723530
 MonoBehaviour:
@@ -37963,6 +38081,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1780723533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780723526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 541d8dbc78c6b6f478cb2d2e6c106487, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1781948893
 GameObject:
   m_ObjectHideFlags: 0

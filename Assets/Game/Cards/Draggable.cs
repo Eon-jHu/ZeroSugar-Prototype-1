@@ -3,16 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // This class allows an object with a Collider to be dragged around the screen
-public abstract class Draggable : MonoBehaviour
+public class Draggable : MonoBehaviour
 {
     private Vector3 offset;
     private float mouseZ;
-
-    // Flag to check if the object is being dragged
-    protected bool isDragging;
+    private bool isDragging;
 
     // Store the offset between the object and the mouse
-    virtual protected void OnMouseDown()
+    private void OnMouseDown()
     {
         Debug.Log("Mouse down");
 
@@ -22,11 +20,8 @@ public abstract class Draggable : MonoBehaviour
         StartCoroutine(MoveToMouse());
     }
 
-    // Override this method to handle the mouse drag event
-    protected virtual void OnMouseDrag() {}
-
     // Override this method to handle the mouse up event
-    protected virtual void OnMouseUp()
+    private void OnMouseUp()
     {
         Debug.Log("Mouse up");  
         isDragging = false;
@@ -35,11 +30,12 @@ public abstract class Draggable : MonoBehaviour
     // Moves the object to the mouse position
     private IEnumerator MoveToMouse()
     {
-        while (isDragging && (transform.position - GetMouseWorldPos() + offset).sqrMagnitude > 0.001f)
+        while (isDragging)
         {
-            transform.position = Vector3.Lerp(transform.position, GetMouseWorldPos() + offset, 0.1f);
+            transform.position = Vector3.Slerp(transform.position, GetMouseWorldPos() + offset, 0.25f);
             yield return null;
         }
+        transform.position = GetMouseWorldPos() + offset;
     }
 
     // Get the mouse position in the world
