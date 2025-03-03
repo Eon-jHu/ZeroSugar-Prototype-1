@@ -40,7 +40,7 @@ public class TurnBasedSystem : MonoBehaviour
     {
         
         StartPlayerTurn();
-        timer = 0;
+        timer = 1;
     }
 
     
@@ -53,8 +53,8 @@ public class TurnBasedSystem : MonoBehaviour
             timer -= Time.deltaTime;
             if (timer <= 0)
             {
-                
-                Player.Instance.EndTurn();
+
+                EndPlayerTurn();
             }
         }
             
