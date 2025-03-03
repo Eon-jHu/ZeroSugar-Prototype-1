@@ -18,8 +18,8 @@ MonoBehaviour:
   damageVariance: 0
   varianceValue: 0
   actionCost: 2
-  minRange: 1
-  maxRange: 1
+  minRange: 0
+  maxRange: 0
   aoeType: 1
   aoeArea: 3
   pushDistance: 0

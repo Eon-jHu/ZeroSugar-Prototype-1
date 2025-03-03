@@ -34,11 +34,6 @@ public class Player : MonoBehaviour, IOccupier
     private ActionPointDisplayUI actionPointDisplayUI;
     private HealthBar healthBar;
 
-    //Temporary variables
-    Card[] Deck;
-    Card[] Played;
-    Card[] Discarded;
-
     #endregion
 
     #region Initialization

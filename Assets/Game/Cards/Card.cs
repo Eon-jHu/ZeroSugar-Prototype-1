@@ -203,11 +203,15 @@ public class Card : MonoBehaviour
 
     public void MoveToDiscardPile()
     {
+        // Cards may be played again
+        cmRef.playArea.enabled = true;
+        cardCollider.enabled = true;
+
         // No longer in the hand
         cmRef.availableCardSlots[handIndex] = true;
-
         cmRef.discardPile.Add(this);
+        inPlayZone = false; 
+
         gameObject.SetActive(false);
-        inPlayZone = false; // reset played status
     }
 }

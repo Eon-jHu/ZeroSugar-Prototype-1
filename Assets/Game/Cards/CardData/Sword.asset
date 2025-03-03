@@ -18,7 +18,7 @@ MonoBehaviour:
   damageVariance: 0
   varianceValue: 0
   actionCost: 1
-  minRange: 1
+  minRange: 0
   maxRange: 1
   aoeType: 0
   aoeArea: 0

@@ -62,29 +62,30 @@ public class Board : Singleton<Board>
         return null;
     }
 
-    public void ShowRange(Tile currentTile, int range)
+    public void ShowRange(Tile currentTile, int minRange, int maxRange)
     {
-        // fills out the range to allow for one step diagonally.
+        // Fill out the range, and unfill all tiles closer than the minimum range.
         foreach (var tile in tiles)
         {
-            // disables any leftover range indicators that may erroneously enabled from previous turn.
-            //tile.TileRangeIndicator.SetActive(false);
-            tile.ShowTileIndicator(true);
-
-            if (TileIsInOptimalRange(currentTile, tile, range))
+            if (TileIsInOptimalRange(currentTile, tile, minRange, maxRange))
             {
                 tile.ShowTileIndicator();
+            }
+            else
+            {
+                tile.ShowTileIndicator(true);
             }
         }
     }
 
-    public bool TileIsInOptimalRange(Tile currentTile, Tile targetTile, int range)
+    public bool TileIsInOptimalRange(Tile currentTile, Tile targetTile, int minRange, int maxRange)
     {
-        float adjustedRange = range + 0.42f;
+        float adjustedMaxRange = maxRange + 0.421f;
+        float adjustedMinRange = minRange + 0.419f;
         
-        float distanceToTile = Vector3.Distance(targetTile.transform.position, currentTile.transform.position);
+        float distanceToTile = GetDistance(currentTile, targetTile);
         
-        return distanceToTile <= adjustedRange * TileSize;
+        return (distanceToTile - 0.01f <= adjustedMaxRange * TileSize && distanceToTile + 0.01f >= adjustedMinRange * TileSize);
     }
 
     public void DisableShowRange()
@@ -95,6 +96,11 @@ public class Board : Singleton<Board>
 
             tile.TileRangeIndicator.SetActive(false);
         }
+    }
+
+    public float GetDistance(Tile tile, Tile targetTile)
+    {
+        return Vector3.Distance(tile.transform.position, targetTile.transform.position) - 0.42f;
     }
 
     public Tile GetOccupierTile(IOccupier occupier)
@@ -121,7 +127,7 @@ public class Board : Singleton<Board>
 
     public void ShowRangeFromCenter(int range)
     {
-        ShowRange(CenterTile, range);
+        ShowRange(CenterTile, range, range);
     }
 
     public Tile GetNextTileOnPathToPlayer(Tile currentTile, bool diagonalMovement = false)

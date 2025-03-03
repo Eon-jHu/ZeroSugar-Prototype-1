@@ -56,7 +56,7 @@ public class GameManager : Singleton<GameManager>
         AudioPlayer.PlaySound2D(Sound.card_place_down);
 
         // 1. Visually display the card's range on the board based on mouse position
-        board.ShowRange(board.GetPlayerTile(), card.cardData.maxRange);
+        board.ShowRange(board.GetPlayerTile(), card.cardData.minRange, card.cardData.maxRange);
 
         // 2. Subscribe the card's effect to the tile click event
         Tile.OnTileClicked += ResolveCard;
@@ -90,10 +90,10 @@ public class GameManager : Singleton<GameManager>
         cardBeingPlayed.MoveToDiscardPile();
 
         // 7. End the player's turn if their action points are now 0
-        //if (player.actionPoints <= 0)
-        //{
-        //    player.EndTurn();
-        //}
+        if (player.actionPoints <= 0)
+        {
+            player.EndTurn(); 
+        }
 
         // 8. Reset the board
         board.DisableShowRange();
@@ -105,27 +105,63 @@ public class GameManager : Singleton<GameManager>
         cardBeingPlayed = null;
     }
 
-    private void HandleAttack(Tile tile)
+    private void HandleAttack(Tile targetTile)
     {
-        if (tile.Occupier != null)
-        {
-            player.AnimateAttack(tile);
+        Tile playerTile = board.GetPlayerTile();
 
-            if (tile.Occupier.OccupierTransform.TryGetComponent(out Enemy enemy))
+        if (targetTile.Occupier != null)
+        {
+            player.AnimateAttack(targetTile);
+
+            if (targetTile.Occupier.OccupierTransform.TryGetComponent(out Enemy enemy))
             {
                 bool isInOptimalRange =
-                    board.TileIsInOptimalRange(board.GetPlayerTile(), tile, cardBeingPlayed.cardData.maxRange);
-                
-                // if player is outside of optimal range for the selected card, half the damage & floor it.
-                int damage = Mathf.Max(1, isInOptimalRange ? cardBeingPlayed.cardData.damage : 
-                    Mathf.FloorToInt((float)cardBeingPlayed.cardData.damage / 2));
+                    board.TileIsInOptimalRange(playerTile, targetTile, cardBeingPlayed.cardData.minRange, cardBeingPlayed.cardData.maxRange);
+
+                // === Damage Calculation ===
+                //
+                // if player is outside of optimal range for the selected card, 1 damage only
+                int damage = isInOptimalRange ? cardBeingPlayed.cardData.damage : 1;
+                if (isInOptimalRange)
+                {
+                    switch(cardBeingPlayed.cardData.damageVariance)
+                    {
+                        // Returns a random value between the damage value +- the variance value
+                        case EDamageVariance.Random:
+                            damage = (int)Mathf.Round(UnityEngine.Random.Range((float)cardBeingPlayed.cardData.damage - cardBeingPlayed.cardData.varianceValue, (float)cardBeingPlayed.cardData.damage + cardBeingPlayed.cardData.varianceValue));
+                            break;
+
+                        // Adds the variance value per tile away from the player (can add negatives)
+                        case EDamageVariance.RangeToPlayer:
+                            damage += (int)(board.GetDistance(playerTile, targetTile) * cardBeingPlayed.cardData.varianceValue);
+                            break;
+
+                        // Adds the variance value per tile away from the center of the AOE
+                        case EDamageVariance.RangeToCenter:
+                            damage += (int)((float)cardBeingPlayed.cardData.aoeArea * cardBeingPlayed.cardData.varianceValue);
+                            break;
+
+                        // Double damage on a critical hit (1 in 10)
+                        case EDamageVariance.Critical:
+                            damage = UnityEngine.Random.Range(0, 10) >= 9 ? cardBeingPlayed.cardData.damage * 2 : cardBeingPlayed.cardData.damage;
+                            break;
+
+                        // No variance
+                        case EDamageVariance.None:
+                        default:
+                            break;
+                    }
+
+                    Debug.Log($"Player dealt {damage} damage to {enemy.name}.");
+                }
 
                 AudioPlayer.PlaySound3D(Sound.weapon_throw, player.transform.position);
                 AudioPlayer.PlaySound3D(Sound.attack_vocal, player.transform.position, 0.25f);
                 float animationReleaseTime = 0.5f;
                 this.Wait(animationReleaseTime, () =>
                 {
-                    Projectile.CreateProjectile(player.transform, tile);
+                    Projectile.CreateProjectile(player.transform, targetTile);
+
                     /*
                     Vector3 spawnPos = player.transform.position + Vector3.up * 2;
                     Projectile projectile = Instantiate(weaponProjectile, spawnPos, player.transform.rotation)
