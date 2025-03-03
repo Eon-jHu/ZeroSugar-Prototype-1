@@ -42,6 +42,7 @@ public class Card : Draggable
     {
         base.OnMouseDown();
         GetComponent<Renderer>().sortingOrder = 100;
+        AudioPlayer.PlaySound2D(Sound.card_select);
     }
 
     protected override void OnMouseUp()

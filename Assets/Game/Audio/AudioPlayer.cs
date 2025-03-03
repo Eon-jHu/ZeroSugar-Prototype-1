@@ -10,6 +10,8 @@ public enum Sound
     card_place_down,
     card_place_deny,
     impact,
+    weapon_throw,
+    attack_vocal
 }
 
 public class AudioPlayer : Singleton<AudioPlayer>

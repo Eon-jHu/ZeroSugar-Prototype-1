@@ -27,10 +27,7 @@ public class Projectile : MonoBehaviour
         }
         else
         {
-            if (impactClip)
-            {
-                AudioSource.PlayClipAtPoint(impactClip, transform.position, 1f);
-            }
+            AudioPlayer.PlaySound3D(Sound.impact, transform.position);
             Destroy(gameObject);
         }
     }

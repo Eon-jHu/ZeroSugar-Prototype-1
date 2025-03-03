@@ -1,6 +1,8 @@
-All licences are cc0
+All licences are cc0 unless otherwise appended.
 
 card_place_down:    https://freesound.org/people/ciapaqua/sounds/637108/
 card_select:        https://freesound.org/people/morganpurkis/sounds/376614/
 card_place_deny:    https://freesound.org/people/el_boss/sounds/628638/
 card_draw:          https://freesound.org/people/Geoff-Bremner-Audio/sounds/682449/
+throw_weapon:       https://freesound.org/people/kev_durr/sounds/426208/ CC4.0
+attack_vocal:       https://freesound.org/people/igroglaz/sounds/592950/
