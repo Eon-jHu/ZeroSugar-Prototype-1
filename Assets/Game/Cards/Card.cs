@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Card : Draggable
+public class Card : MonoBehaviour
 {
     // Card data in a separate scriptable object
     public CardData cardData;
@@ -24,8 +24,10 @@ public class Card : Draggable
     private SpriteRenderer cardRenderer;
     // Booleans to check if it's in the play zone or not
     private bool inPlayZone;
-
-    //private TurnBasedSystem turnSystemRef;
+    // Boolean to check if the card is being inspected
+    private bool isInspecting;
+    // Boolean to check if the card is being dragged
+    private bool isDragging;
 
     // Start is called before the first frame update
     private void Start()
@@ -36,72 +38,73 @@ public class Card : Draggable
         cardRenderer.sprite = cardData.cardSprite;
 
         inPlayZone = false;
+        isInspecting = false;
+        isDragging = false;
     }
 
     // ================= COLLISION AND MOUSE UP =================
 
-    protected override void OnMouseDown()
+    private void OnMouseDown()
     {
-        if (TurnBasedSystem.Instance.CurrentTurn == TurnBasedSystem.TurnState.PlayerTurn)
-        {
-            base.OnMouseDown();
-            GetComponent<Renderer>().sortingOrder = 100;
-        }
+        isDragging = true;
+        GetComponent<Renderer>().sortingOrder = 100;
+        AudioPlayer.PlaySound2D(Sound.card_select);
     }
 
-    protected override void OnMouseUp()
+    private void OnMouseUp()
     {
-        
-        base.OnMouseUp();
+        isDragging = false;
         cardRenderer.sortingOrder = handIndex;
 
         if (inPlayZone)
         {
             //Invoke("MoveToDiscardPile", 2f);
             StartCoroutine(FadeOutAnim());
+
+            // Disable colliders
             cardCollider.enabled = false;
+            cmRef.playArea.enabled = false;
+
             GameManager.Instance.PlayCard(this);
         }
         else
         {
             // Reset its position
-            StartCoroutine(ResetPos());
+            StartCoroutine(ResetCard());
         }
     }
 
     private IEnumerator FadeOutAnim()
     {
-        while (cardRenderer.color.a > 0)
+        while (cardRenderer.color.a > 0.2f)
         {
-            cardRenderer.color = new Color(cardRenderer.color.r, cardRenderer.color.g, cardRenderer.color.b, cardRenderer.color.a - 0.1f);
+            cardRenderer.color = new Color(cardRenderer.color.r, cardRenderer.color.g, cardRenderer.color.b, cardRenderer.color.a - 0.2f);
             yield return null;
         }
+        cardRenderer.color = new Color(cardRenderer.color.r, cardRenderer.color.g, cardRenderer.color.b, 0);
     }
 
     private IEnumerator FadeInAnim()
     {
-        while (cardRenderer.color.a < 1)
+        while (cardRenderer.color.a < 0.8f)
         {
-            cardRenderer.color = new Color(cardRenderer.color.r, cardRenderer.color.g, cardRenderer.color.b, cardRenderer.color.a + 0.1f);
+            cardRenderer.color = new Color(cardRenderer.color.r, cardRenderer.color.g, cardRenderer.color.b, cardRenderer.color.a + 0.2f);
             yield return null;
         }
+        cardRenderer.color = new Color(cardRenderer.color.r, cardRenderer.color.g, cardRenderer.color.b, 1);
     }
 
-    private IEnumerator ResetPos()
-    {
-        while ((transform.position - cmRef.cardSlots[handIndex].position).sqrMagnitude > 0.001f)
-        {
-            transform.position = Vector3.Lerp(transform.position, cmRef.cardSlots[handIndex].position, 0.1f);
-            yield return null;
-        }        
-    }
 
     public void ResetCardInHand()
     {
-        StartCoroutine(ResetPos());
+        // Stop relevant Coroutines
+        StopAllCoroutines();
+
+        StartCoroutine(ResetCard());
         StartCoroutine(FadeInAnim());
-        cardCollider.enabled = true;
         inPlayZone = false;
+        cardCollider.enabled = true;
+        cmRef.playArea.enabled = true;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -124,18 +127,91 @@ public class Card : Draggable
 
     // =========================================================
 
-    private void MoveToPlayedArea()
-    {
+    // ==================== CARD MOUSE OVER ====================
 
+    private void OnMouseOver()
+    {
+        if (isInspecting) return;
+
+        isInspecting = true;
+        StopAllCoroutines();
+        if (!inPlayZone)
+        {
+            StartCoroutine(FadeInAnim()); // cheeky fix
+        }
+        StartCoroutine(InspectCard());
+        GetComponent<Renderer>().sortingOrder = 100;
     }
+
+    private void OnMouseExit()
+    {
+        if (!isInspecting) return;
+        
+        isInspecting = false;
+        StopAllCoroutines();
+        if (!inPlayZone)
+        {
+            StartCoroutine(FadeInAnim()); // cheeky fix
+        }
+        if (!inPlayZone || !isDragging)
+        {
+            StartCoroutine(ResetCard());
+        }
+        GetComponent<Renderer>().sortingOrder = handIndex;
+    }
+
+    private IEnumerator InspectCard()
+    {
+        Vector3 targetScale = new(0.75f, 0.75f, 0.75f);
+        Vector3 targetPosition = new(cmRef.cardSlots[handIndex].position.x, cmRef.cardSlots[handIndex].position.y + 3.1f, cmRef.cardSlots[handIndex].position.z);
+
+        while (Vector3.Distance(transform.localScale, targetScale) > 0.01f || Vector3.Distance(transform.position, targetPosition) > 0.01f)
+        {
+            transform.localScale = Vector3.Lerp(transform.localScale, targetScale, 0.333f);
+            if (!isDragging)
+            {
+                transform.position = Vector3.Lerp(transform.position, targetPosition, 0.333f);
+            }
+            yield return null;
+        }
+
+        transform.localScale = targetScale;
+        transform.position = targetPosition;
+    }
+
+    private IEnumerator ResetCard()
+    {
+        Vector3 originalScale = new(0.5f, 0.5f, 0.5f);
+        Vector3 originalPosition = cmRef.cardSlots[handIndex].position;
+
+        while (Vector3.Distance(transform.localScale, originalScale) > 0.01f || Vector3.Distance(transform.position, originalPosition) > 0.01f)
+        {
+            transform.localScale = Vector3.Lerp(transform.localScale, originalScale, 0.333f);
+
+            if (!isDragging)
+            {
+                transform.position = Vector3.Lerp(transform.position, originalPosition, 0.333f);
+            }
+            yield return null;
+        }
+
+        transform.localScale = originalScale;
+        transform.position = originalPosition;
+    }
+
+    // =========================================================
 
     public void MoveToDiscardPile()
     {
+        // Cards may be played again
+        cmRef.playArea.enabled = true;
+        cardCollider.enabled = true;
+
         // No longer in the hand
         cmRef.availableCardSlots[handIndex] = true;
-
         cmRef.discardPile.Add(this);
+        inPlayZone = false; 
+
         gameObject.SetActive(false);
-        inPlayZone = false; // reset played status
     }
 }

@@ -64,6 +64,7 @@ public class TurnBasedSystem : MonoBehaviour
 
     public void EndPlayerTurn()
     {
+        cardManagerRef.DrawHand();
         Debug.Log("Player Turn Ended");
         StartCoroutine(EnemyTurn());
     }

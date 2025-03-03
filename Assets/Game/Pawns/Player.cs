@@ -34,11 +34,6 @@ public class Player : MonoBehaviour, IOccupier
     private ActionPointDisplayUI actionPointDisplayUI;
     private HealthBar healthBar;
 
-    //Temporary variables
-    Card[] Deck;
-    Card[] Played;
-    Card[] Discarded;
-
     #endregion
 
     #region Initialization
@@ -85,7 +80,7 @@ public class Player : MonoBehaviour, IOccupier
     {
         // bool is set back to false in IdleAnimatorState.cs (attached to the idle state in the animator controller).
         transform.forward = targetTile.transform.position;
-        GetComponent<Animator>().SetBool("AttackBasic", true);
+        GetComponent<Animator>().SetBool("Attack", true);
     }
 
     public void GrantActionPoints()

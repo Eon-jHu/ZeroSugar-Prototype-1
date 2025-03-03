@@ -233,6 +233,8 @@ public class Enemy : MonoBehaviour, IOccupier
         if (enemyType == eEnemyType.RANGED)
         {
             //ranged attack
+            Projectile.CreateProjectile(transform, board.GetPlayerTile());
+            AudioPlayer.PlaySound3D(Sound.weapon_throw, transform.position);
             Player.Instance.TakeDamage(attackDamage);
         }
     }

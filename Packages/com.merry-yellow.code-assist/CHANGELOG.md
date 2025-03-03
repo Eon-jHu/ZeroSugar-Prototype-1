@@ -1,5 +1,18 @@
 List of new features, bug fixes and improvements
 
+# Version 1.4.7
+* New gpt feature: Integration into GitHub Copilot. Can now feed GitHub Copilot with project/scene/game-object details.
+* Auto updater for itch.io builds
+
+# Version 1.4.6
+* Updated binaries with new build parameters
+
+# Version 1.4.5
+* Version skipped by mistake ^-^
+
+# Version 1.4.4
+* Hotfix for Unity package compile error
+
 # Version 1.4.3
 * New gpt provider: OpenAI API Compatible, for web/cloud services that supports OpenAI SDK standards
 
