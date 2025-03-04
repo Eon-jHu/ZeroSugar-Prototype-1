@@ -45,7 +45,11 @@ public class CardSelector : Singleton<CardSelector>
 
         while (!discardCard)
         {
-            List<Card> discardCards = cardManager.deck.OrderBy(_ => Random.value).Take(3).ToList();
+            List<Card> discardCards = new List<Card>(cardManager.deck);
+            // add the cards in the discard pile too
+            discardCards.AddRange(cardManager.discardPile);
+            discardCards = discardCards.OrderBy(_ => Random.value).Take(3).ToList();
+
             
             cardSelectorUI.BeginSelection(card => discardCard = card, discardCards);
             
