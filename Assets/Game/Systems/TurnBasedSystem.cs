@@ -22,7 +22,7 @@ public class TurnBasedSystem : MonoBehaviour
     public static event Action OnEnemyStartTurn;
 
     [SerializeField]
-    private float timer;
+    public float timer;
 
     [SerializeField]
     private float startingTime;
@@ -30,6 +30,11 @@ public class TurnBasedSystem : MonoBehaviour
 
     public bool inGame;
     public bool drawnCards;
+
+    #region GettersSetters
+    public float getStartingTime() { return startingTime; }
+    public void setStartingTime(float _newStartingTime) { startingTime = _newStartingTime; }
+    #endregion
     void Awake()
     {
         if (Instance == null) Instance = this;
@@ -128,4 +133,5 @@ public class TurnBasedSystem : MonoBehaviour
         
         timer = startingTime;
     }
+
 }

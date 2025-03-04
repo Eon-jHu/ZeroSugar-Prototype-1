@@ -124,6 +124,14 @@ public class GameManager : Singleton<GameManager>
                 int damage = isInOptimalRange ? cardBeingPlayed.cardData.damage : 1;
                 if (isInOptimalRange)
                 {
+                    //knock back check
+                    if(cardBeingPlayed.cardData.pushDistance !=0)
+                    {
+                        for(int i = 0; i < cardBeingPlayed.cardData.pushDistance; i++)
+                        {
+                            StartCoroutine(enemy.Movement(false));
+                        }
+                    }
                     switch(cardBeingPlayed.cardData.damageVariance)
                     {
                         // Returns a random value between the damage value +- the variance value
@@ -161,14 +169,7 @@ public class GameManager : Singleton<GameManager>
                 this.Wait(animationReleaseTime, () =>
                 {
                     Projectile.CreateProjectile(player.transform, targetTile);
-
-                    /*
-                    Vector3 spawnPos = player.transform.position + Vector3.up * 2;
-                    Projectile projectile = Instantiate(weaponProjectile, spawnPos, player.transform.rotation)
-                        .GetComponent<Projectile>();
-                    projectile.SetProjectile(tile.transform.position + Vector3.up, 40);
-                    */
-
+                    
                     enemy.TakeDamage(damage);
                 });
             }
