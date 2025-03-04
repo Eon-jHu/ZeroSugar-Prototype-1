@@ -228,12 +228,14 @@ public class Enemy : MonoBehaviour, IOccupier
         {
             //melee attack
             GetComponent<Animator>().SetBool("TailAttack", true);
+            transform.forward = (Player.Instance.transform.position - transform.position).normalized;
             Invoke("DelayDamage", 0.8f);
         }
         if (enemyType == eEnemyType.RANGED)
         {
             //ranged attack
-            Projectile.CreateProjectile(transform, board.GetPlayerTile());
+            transform.forward = (Player.Instance.transform.position - transform.position).normalized;
+            Projectile.CreateProjectile(transform, board.GetPlayerTile(), "Projectile Enemy");
             AudioPlayer.PlaySound3D(Sound.weapon_throw, transform.position);
             Player.Instance.TakeDamage(attackDamage);
         }
