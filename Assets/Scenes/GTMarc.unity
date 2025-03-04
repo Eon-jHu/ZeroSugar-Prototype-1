@@ -11604,7 +11604,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84e1282a73431fa4ba4d698d7b2e7044, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardData: {fileID: 11400000, guid: e4712636c6371274b90438369b5cd7ad, type: 2}
+  cardData: {fileID: 11400000, guid: f53cba4685b56a34ca5467766bc7cdc4, type: 2}
   handIndex: 0
 --- !u!212 &704786953
 SpriteRenderer:
@@ -14952,7 +14952,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84e1282a73431fa4ba4d698d7b2e7044, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardData: {fileID: 11400000, guid: e4712636c6371274b90438369b5cd7ad, type: 2}
+  cardData: {fileID: 11400000, guid: f53cba4685b56a34ca5467766bc7cdc4, type: 2}
   handIndex: 0
 --- !u!212 &934927370
 SpriteRenderer:
@@ -44360,6 +44360,10 @@ PrefabInstance:
     - target: {fileID: 767819008435115669, guid: d44f03cfc57aa234e979baedf9a56041, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3162144812194821925, guid: d44f03cfc57aa234e979baedf9a56041, type: 3}
+      propertyPath: Health
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 3162144812194821925, guid: d44f03cfc57aa234e979baedf9a56041, type: 3}
       propertyPath: healthText

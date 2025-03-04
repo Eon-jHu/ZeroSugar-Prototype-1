@@ -44,6 +44,8 @@ public class GameManager : Singleton<GameManager>
         }
         cardBeingPlayed = card;
 
+
+
         // 0. Check if they have enough Action Value to play this card
         if (player.actionPoints < card.cardData.actionCost)
         {
@@ -57,6 +59,8 @@ public class GameManager : Singleton<GameManager>
 
         // 1. Visually display the card's range on the board based on mouse position
         board.ShowRange(board.GetPlayerTile(), card.cardData.minRange, card.cardData.maxRange);
+
+        
 
         // 2. Subscribe the card's effect to the tile click event
         Tile.OnTileClicked += ResolveCard;
@@ -105,6 +109,7 @@ public class GameManager : Singleton<GameManager>
         cardBeingPlayed = null;
     }
 
+   
     private void HandleAttack(Tile targetTile)
     {
         Tile playerTile = board.GetPlayerTile();
@@ -156,6 +161,22 @@ public class GameManager : Singleton<GameManager>
 
                         // No variance
                         case EDamageVariance.None:
+                        default:
+                            break;
+                    }
+                    switch (cardBeingPlayed.cardData.aoeType)
+                    {
+                        case AoEType.Circle:
+                            break;
+                        case AoEType.Cone:
+                            break;
+                        case AoEType.Cross:
+
+                            break;
+                        case AoEType.Line:
+                            //Board.Instance.GetKnockBackTile(targetTile);
+                            break;
+                        case AoEType.Single:
                         default:
                             break;
                     }

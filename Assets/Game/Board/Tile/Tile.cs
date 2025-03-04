@@ -23,6 +23,8 @@ public class Tile : MonoBehaviour
     public static event Action<Tile> OnCenterTileAssigned;
     public static event Action<Tile> OnTileClicked; // Static event that carries the clicked tile
 
+    public bool isAOE;
+
     private void Awake()
     {
         Board.OnTileInitRequired += InitializeTile;
@@ -145,6 +147,15 @@ public class Tile : MonoBehaviour
         render.material.color = previousColor;
     }
 
+    public void HighlightNeighborTiles(bool highlight)
+    {
+        foreach (var neighbor in neighbourTiles)
+        {
+            neighbor.TileRangeIndicator.SetActive(highlight);
+            neighbor.TileRangeIndicator.GetComponent<Renderer>().material.color = highlight ? hoverRed : previousColor;
+        }
+    }
+
     private IEnumerator ClickFeedback()
     {
         SetHoverColor(); // Change the color to red
@@ -159,7 +170,18 @@ public class Tile : MonoBehaviour
         if (!TileRangeIndicator.activeSelf)
             return;
 
+
+
         SetHoverColor();
+        if (isAOE)
+        {
+            foreach (var neighbor in neighbourTiles)
+            {
+                neighbor.TileRangeIndicator.SetActive(true);
+                neighbor.TileRangeIndicator.GetComponent<Renderer>().material.color = hoverRed; // Use a different color
+            } 
+        }
+
     }
 
     private void SetHoverColor()
@@ -171,7 +193,41 @@ public class Tile : MonoBehaviour
     private void OnMouseExit()
     {
         ResetColor();
+
+        if (isAOE)
+        {
+            foreach (var neighbor in neighbourTiles)
+            {
+                neighbor.ResetColor();
+                //neighbor.TileRangeIndicator.SetActive(false); // Hide if necessary
+            } 
+        }
+
+
     }
+
+    public void SimulateHoverEffect(bool activate)
+    {
+        if (activate)
+        {
+            SetHoverColor();
+            foreach (var neighbor in neighbourTiles)
+            {
+                neighbor.TileRangeIndicator.SetActive(true);
+                neighbor.TileRangeIndicator.GetComponent<Renderer>().material.color = hoverYellow;
+            }
+        }
+        else
+        {
+            ResetColor();
+            foreach (var neighbor in neighbourTiles)
+            {
+                neighbor.ResetColor();
+                neighbor.TileRangeIndicator.SetActive(false);
+            }
+        }
+    }
+
 
 
     private void OnDestroy()
