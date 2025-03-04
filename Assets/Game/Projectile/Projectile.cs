@@ -7,9 +7,10 @@ public class Projectile : MonoBehaviour
     private float travelDuration;
     private float elapsedTime;
 
-    [SerializeField] private AudioClip impactClip;
-
-    public void SetProjectile(Vector3 target, float projectileSpeed)
+    [SerializeField] private float projectileSpeed = 40;
+    [SerializeField] private GameObject impactFx;
+    
+    private void SetProjectile(Vector3 target)
     {
         destination = target;
         target.y = transform.position.y;
@@ -28,17 +29,24 @@ public class Projectile : MonoBehaviour
         else
         {
             AudioPlayer.PlaySound3D(Sound.impact, transform.position);
+
+            if (impactFx)
+            {
+                // place the impact a little backwards so explosion isn't inside the model.
+                Instantiate(impactFx, transform.position + -transform.forward * 0.5f, transform.rotation);
+            }
+            
             Destroy(gameObject);
         }
     }
 
-    public static void CreateProjectile(Transform owner, Tile targetTile)
+    public static void CreateProjectile(Transform owner, Tile targetTile, string projectileName = "Projectile")
     {
-        GameObject projectile = Resources.Load<GameObject>("Projectile");
+        GameObject projectile = Resources.Load<GameObject>(projectileName);
         
         Vector3 spawnPos = owner.position + Vector3.up * 2;
         Projectile projectileInst = Instantiate(projectile, spawnPos, owner.rotation)
             .GetComponent<Projectile>();
-        projectileInst.SetProjectile(targetTile.transform.position + Vector3.up, 40);
+        projectileInst.SetProjectile(targetTile.transform.position + Vector3.up);
     }
 }
