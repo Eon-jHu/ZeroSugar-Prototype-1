@@ -45,8 +45,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AllCards:
-  - {fileID: 11400000, guid: 94b5f09da7c83464bb8e98cecdd52eb8, type: 2}
-  - {fileID: 11400000, guid: e4712636c6371274b90438369b5cd7ad, type: 2}
-  - {fileID: 11400000, guid: 61f012c94471108438427c8778883b42, type: 2}
+  - {fileID: 11400000, guid: b95843b0b76df9f4d8f4c11712d6cb8e, type: 2}
   - {fileID: 11400000, guid: b7707f97f31dff54fb35cdfa2d0c493f, type: 2}
+  - {fileID: 11400000, guid: 2d1081408ff38354db658021731a2be5, type: 2}
+  - {fileID: 11400000, guid: 61f012c94471108438427c8778883b42, type: 2}
+  - {fileID: 11400000, guid: d822ff905d1211045a370f617c758506, type: 2}
+  - {fileID: 11400000, guid: e4712636c6371274b90438369b5cd7ad, type: 2}
+  - {fileID: 11400000, guid: f53cba4685b56a34ca5467766bc7cdc4, type: 2}
+  - {fileID: 11400000, guid: 94b5f09da7c83464bb8e98cecdd52eb8, type: 2}
   cardPrefab: {fileID: 1338636845159585238, guid: a1d269ce0583def4786ec96a1f03529a, type: 3}

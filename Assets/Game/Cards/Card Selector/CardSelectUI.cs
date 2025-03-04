@@ -8,7 +8,7 @@ public class CardSelectUI : MonoBehaviour
     
     [SerializeField] private TMP_Text title;
     [SerializeField] private Image iconImage;
-    
+
     public void SetCardSelect(CardData cardSelectionOption)
     {
         CardData data = cardSelectionOption;

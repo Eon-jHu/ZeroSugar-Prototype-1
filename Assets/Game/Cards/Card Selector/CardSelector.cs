@@ -8,11 +8,8 @@ using Random = UnityEngine.Random;
 
 public class CardSelector : Singleton<CardSelector>
 {
-    //public List<Card> SelectedCards = new();
     public List<CardData> AllCards;
-
-    private CardData selectedCard;
-    private CardData discardedCard;
+    
     [SerializeField] private Card cardPrefab;
 
     public static event Action<CardData> OnCardSelected;
@@ -28,60 +25,66 @@ public class CardSelector : Singleton<CardSelector>
         Time.timeScale = 0;
 
         CardSelectorUI cardSelectorUI = FindObjectOfType<CardSelectorUI>();
-        selectedCard = null;
+        CardData selectedCard = null;
 
         while (!selectedCard)
         {
             // code how to select random cards.
             List<CardData> randomCards = AllCards.OrderBy(_ => Random.value).Take(3).ToList();
             
-            cardSelectorUI.BeginSelection(SelectCard, randomCards);
+            cardSelectorUI.BeginSelection(card => SelectCard(card, ref selectedCard), randomCards);
             
             yield return new WaitUntil(() => selectedCard);
         }
         
         CardManager cardManager = FindObjectOfType<CardManager>();
-        discardedCard = null;
+        CardData discardCard = null;
 
         // wait a period before bringing up discard interface.
         yield return new WaitForSecondsRealtime(0.5f);
 
-        while (!discardedCard)
+        while (!discardCard)
         {
             List<Card> discardCards = cardManager.deck.OrderBy(_ => Random.value).Take(3).ToList();
             
-            cardSelectorUI.BeginSelection(DiscardCard, discardCards);
+            cardSelectorUI.BeginSelection(card => DiscardCard(card, ref discardCard), discardCards);
             
-            yield return new WaitUntil(() => discardedCard);
+            yield return new WaitUntil(() => discardCard);
         }
 
-        CompleteCardSelection();
+        CompleteCardSelection(selectedCard, discardCard);
         Time.timeScale = 1;
     }
 
-    private void SelectCard(CardData card)
+    private void SelectCard(CardData card, ref CardData selectedCard)
     {
         // add card to deck.
         selectedCard = card;
         OnCardSelected?.Invoke(card);
     }
 
-    private void DiscardCard(CardData card)
+    private void DiscardCard(CardData card, ref CardData discardCard)
     {
         // remove card from deck.
-        discardedCard = card;
+        discardCard = card;
     }
 
-    private void CompleteCardSelection()
+    public void SkipCardSelection()
+    {
+        SceneManager.UnloadSceneAsync("Card Select");
+        Time.timeScale = 1;
+    }
+
+    private void CompleteCardSelection(CardData selectedCard, CardData discardCard)
     {
         CardManager cardManager = FindObjectOfType<CardManager>();
 
         // handle discarding the chosen discard card.
-        Card discardCard = cardManager.deck.FirstOrDefault(c => c.cardData == discardedCard);
-        if (discardCard)
+        Card cardToDiscard = cardManager.deck.FirstOrDefault(c => c.cardData == discardCard);
+        if (cardToDiscard)
         {
-            cardManager.deck.Remove(discardCard);
-            Destroy(discardCard.gameObject);
+            cardManager.deck.Remove(cardToDiscard);
+            Destroy(cardToDiscard.gameObject);
         }
 
         bool successAddingCard = AddNewCard();
