@@ -32,7 +32,7 @@ public class CardSelector : Singleton<CardSelector>
             // code how to select random cards.
             List<CardData> randomCards = AllCards.OrderBy(_ => Random.value).Take(3).ToList();
             
-            cardSelectorUI.BeginSelection(card => SelectCard(card, ref selectedCard), randomCards);
+            cardSelectorUI.BeginSelection(card => selectedCard = card, randomCards);
             
             yield return new WaitUntil(() => selectedCard);
         }
@@ -47,7 +47,7 @@ public class CardSelector : Singleton<CardSelector>
         {
             List<Card> discardCards = cardManager.deck.OrderBy(_ => Random.value).Take(3).ToList();
             
-            cardSelectorUI.BeginSelection(card => DiscardCard(card, ref discardCard), discardCards);
+            cardSelectorUI.BeginSelection(card => discardCard = card, discardCards);
             
             yield return new WaitUntil(() => discardCard);
         }
@@ -55,20 +55,7 @@ public class CardSelector : Singleton<CardSelector>
         CompleteCardSelection(selectedCard, discardCard);
         Time.timeScale = 1;
     }
-
-    private void SelectCard(CardData card, ref CardData selectedCard)
-    {
-        // add card to deck.
-        selectedCard = card;
-        OnCardSelected?.Invoke(card);
-    }
-
-    private void DiscardCard(CardData card, ref CardData discardCard)
-    {
-        // remove card from deck.
-        discardCard = card;
-    }
-
+    
     public void SkipCardSelection()
     {
         SceneManager.UnloadSceneAsync("Card Select");
