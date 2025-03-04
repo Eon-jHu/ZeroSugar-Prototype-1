@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1055649781896082350
 Transform:
   m_ObjectHideFlags: 0
@@ -151,7 +151,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e9bd1ce7f259c7468f6602c7b5a1870, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impactClip: {fileID: 8300000, guid: 6cb65677469fd8142836e0c72c63612b, type: 3}
+  projectileSpeed: 40
+  impactFx: {fileID: 1124781282672466773, guid: 699a1ad4e5755f242b40096a9dc43053, type: 3}
 --- !u!1001 &5305289543337627107
 PrefabInstance:
   m_ObjectHideFlags: 0
