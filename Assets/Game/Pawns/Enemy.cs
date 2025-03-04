@@ -133,7 +133,7 @@ public class Enemy : MonoBehaviour, IOccupier
             Debug.Log("NOT in Range");
             if (!isMoving)
             {
-                StartCoroutine(MoveTowardsPlayer());
+                StartCoroutine(Movement(true));
 
                 yield return new WaitUntil(() => !isMoving);
 
@@ -142,13 +142,21 @@ public class Enemy : MonoBehaviour, IOccupier
         }
     }
 
-    private IEnumerator MoveTowardsPlayer()
+    public IEnumerator Movement(bool towardsPlayer)
     {
         Tile currentTile = Board.Instance.GetOccupierTile(this);
 
         if (currentTile)
         {
-            Tile targetTile = Board.Instance.GetNextTileOnPathToPlayer(currentTile);
+            Tile targetTile;
+            if (towardsPlayer)
+            {
+                targetTile = Board.Instance.GetNextTileOnPathToPlayer(currentTile);
+            }
+            else
+            {
+                targetTile = Board.Instance.GetKnockBackTile(currentTile);
+            }        
 
             if (!targetTile) yield break;
 
@@ -185,6 +193,8 @@ public class Enemy : MonoBehaviour, IOccupier
         isMoving = false;
     }
 
+
+   
     private bool EnemyRangeCheck()
     {
         Vector3 directionToPlayer = player.position - transform.position;
