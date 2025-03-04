@@ -114,19 +114,25 @@ public class GameManager : Singleton<GameManager>
     {
         Tile playerTile = board.GetPlayerTile();
 
+        bool isInOptimalRange =
+                    board.TileIsInOptimalRange(playerTile, targetTile, cardBeingPlayed.cardData.minRange, cardBeingPlayed.cardData.maxRange);
+
+        // === Damage Calculation ===
+        //
+        // if player is outside of optimal range for the selected card, 1 damage only
+        int damage = isInOptimalRange ? cardBeingPlayed.cardData.damage : 1;
+
+        float animationReleaseTime = 0.5f;
+
+        player.AnimateAttack(targetTile);
+
         if (targetTile.Occupier != null)
         {
-            player.AnimateAttack(targetTile);
+           
 
             if (targetTile.Occupier.OccupierTransform.TryGetComponent(out Enemy enemy))
             {
-                bool isInOptimalRange =
-                    board.TileIsInOptimalRange(playerTile, targetTile, cardBeingPlayed.cardData.minRange, cardBeingPlayed.cardData.maxRange);
-
-                // === Damage Calculation ===
-                //
-                // if player is outside of optimal range for the selected card, 1 damage only
-                int damage = isInOptimalRange ? cardBeingPlayed.cardData.damage : 1;
+                
                 if (isInOptimalRange)
                 {
                     //knock back check
@@ -164,9 +170,26 @@ public class GameManager : Singleton<GameManager>
                         default:
                             break;
                     }
+                    
                     switch (cardBeingPlayed.cardData.aoeType)
                     {
                         case AoEType.Circle:
+                            
+                            foreach (Tile neighbor in targetTile.neighbourTiles)
+                            {
+                                if (neighbor.Occupier != null && neighbor.Occupier.OccupierTransform.TryGetComponent(out Enemy aoeEnemy))
+                                {
+                                    Debug.Log($"AOE dealt {damage} damage to {aoeEnemy.name}.");
+                                    
+                                    this.Wait(animationReleaseTime, () =>
+                                    {
+                                        //Projectile.CreateProjectile(player.transform, targetTile);
+
+                                        aoeEnemy.TakeDamage(damage);
+                                    });
+                                }
+                            }
+                            
                             break;
                         case AoEType.Cone:
                             break;
@@ -186,13 +209,32 @@ public class GameManager : Singleton<GameManager>
 
                 AudioPlayer.PlaySound3D(Sound.weapon_throw, player.transform.position);
                 AudioPlayer.PlaySound3D(Sound.attack_vocal, player.transform.position, 0.25f);
-                float animationReleaseTime = 0.5f;
                 this.Wait(animationReleaseTime, () =>
                 {
                     Projectile.CreateProjectile(player.transform, targetTile);
                     
                     enemy.TakeDamage(damage);
                 });
+            }
+        }
+        else 
+        {
+
+            if (cardBeingPlayed.cardData.aoeType == AoEType.Circle)
+            {
+                foreach (Tile neighbor in targetTile.neighbourTiles)
+                {
+                    if (neighbor.Occupier != null && neighbor.Occupier.OccupierTransform.TryGetComponent(out Enemy aoeEnemy))
+                    {
+                        Debug.Log($"AOE dealt {damage} damage to {aoeEnemy.name}.");
+                        this.Wait(animationReleaseTime, () =>
+                        {
+                            Projectile.CreateProjectile(player.transform, targetTile);
+
+                            aoeEnemy.TakeDamage(damage);
+                        });
+                    }
+                }
             }
         }
     }
