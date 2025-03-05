@@ -9,6 +9,7 @@ public class Projectile : MonoBehaviour
 
     [SerializeField] private float projectileSpeed = 40;
     [SerializeField] private GameObject impactFx;
+    [SerializeField] private float impactCameraShakeStrength;
     
     private void SetProjectile(Vector3 target)
     {
@@ -29,6 +30,7 @@ public class Projectile : MonoBehaviour
         else
         {
             AudioPlayer.PlaySound3D(Sound.impact, transform.position);
+            CameraShake.Shake(0.15f, impactCameraShakeStrength);
 
             if (impactFx)
             {
