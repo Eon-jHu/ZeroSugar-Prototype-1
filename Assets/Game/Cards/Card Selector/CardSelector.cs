@@ -45,11 +45,9 @@ public class CardSelector : Singleton<CardSelector>
 
         while (!discardCard)
         {
-            List<Card> discardCards = new List<Card>(cardManager.deck);
+            List<Card> discardCards = new List<Card>(FindObjectsOfType<Card>(true));
             // add the cards in the discard pile too
-            discardCards.AddRange(cardManager.discardPile);
             discardCards = discardCards.OrderBy(_ => Random.value).Take(3).ToList();
-
             
             cardSelectorUI.BeginSelection(card => discardCard = card, discardCards);
             
@@ -71,10 +69,16 @@ public class CardSelector : Singleton<CardSelector>
         CardManager cardManager = FindObjectOfType<CardManager>();
 
         // handle discarding the chosen discard card.
-        Card cardToDiscard = cardManager.deck.FirstOrDefault(c => c.cardData == discardCard);
+        Card cardToDiscard = FindObjectsOfType<Card>(true).ToList().FirstOrDefault(c => c.cardData == discardCard);
         if (cardToDiscard)
         {
             cardManager.deck.Remove(cardToDiscard);
+            cardManager.discardPile.Remove(cardToDiscard);
+            
+            // if the card is not in the deck and not in the discard pile, then it's in the hand, so reset the available card slot.
+            if (!cardManager.deck.Contains(cardToDiscard) && !cardManager.discardPile.Contains(cardToDiscard))
+                cardManager.availableCardSlots[cardToDiscard.handIndex] = true;
+            
             Destroy(cardToDiscard.gameObject);
         }
 

@@ -21,7 +21,6 @@ public class CardManager : MonoBehaviour
     public bool startOfTurn = true;
 
     private AudioSource cardSFXSource;
-    [SerializeField] private AudioClip drawCardClip;
 
     private void Start()
     {
@@ -29,8 +28,6 @@ public class CardManager : MonoBehaviour
         {
             slot.gameObject.GetComponent<SpriteRenderer>().enabled = false;
         }
-
-
     }
 
     // Draws cards from the deck so it fills the hand

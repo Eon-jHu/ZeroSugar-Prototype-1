@@ -33,7 +33,8 @@ public class Projectile : MonoBehaviour
             if (impactFx)
             {
                 // place the impact a little backwards so explosion isn't inside the model.
-                Instantiate(impactFx, transform.position + -transform.forward * 0.5f, transform.rotation);
+                GameObject impactInst = Instantiate(impactFx, transform.position + -transform.forward * 0.5f, transform.rotation);
+                Destroy(impactInst, 4f);
             }
             
             Destroy(gameObject);
