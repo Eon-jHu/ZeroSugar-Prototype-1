@@ -197,7 +197,23 @@ public class GameManager : Singleton<GameManager>
                         case AoEType.Cone:
                             break;
                         case AoEType.Cross:
+                            foreach (Tile neighbor in targetTile.neighbourTiles)
+                            {
+                                if (Vector3.Distance(targetTile.transform.position, neighbor.transform.position) > 2 * 1.05)
+                                    continue;
+                                if (neighbor.Occupier != null && neighbor.Occupier.OccupierTransform.TryGetComponent(out Enemy aoeEnemy))
+                                {
+                                    Debug.Log($"AOE dealt {damage} damage to {aoeEnemy.name}.");
 
+
+                                    this.Wait(animationReleaseTime, () =>
+                                    {
+                                        //Projectile.CreateProjectile(player.transform, targetTile);
+
+                                        aoeEnemy.TakeDamage(damage);
+                                    });
+                                }
+                            }
                             break;
                         case AoEType.Line:
                             //Board.Instance.GetKnockBackTile(targetTile);
@@ -230,21 +246,29 @@ public class GameManager : Singleton<GameManager>
         }
         else 
         {
-            //need to adjust damage for our of range
-            if (cardBeingPlayed.cardData.aoeType == AoEType.Circle)
+            if (isInOptimalRange)
             {
-                foreach (Tile neighbor in targetTile.neighbourTiles)
+                //need to adjust damage for our of range
+                if (cardBeingPlayed.cardData.aoeType == AoEType.Circle || cardBeingPlayed.cardData.aoeType == AoEType.Cross)
                 {
-                    if (neighbor.Occupier != null && neighbor.Occupier.OccupierTransform.TryGetComponent(out Enemy aoeEnemy))
+                    foreach (Tile neighbor in targetTile.neighbourTiles)
                     {
-                        AudioPlayer.PlaySound3D(Sound.weapon_throw, player.transform.position);
-                        AudioPlayer.PlaySound3D(Sound.attack_vocal, player.transform.position, 0.25f);
-                        this.Wait(animationReleaseTime, () =>
+                        if (neighbor.Occupier != null && neighbor.Occupier.OccupierTransform.TryGetComponent(out Enemy aoeEnemy))
                         {
-                            Projectile.CreateProjectile(player.transform, neighbor);
+                            if (cardBeingPlayed.cardData.aoeType == AoEType.Cross)
+                            {
+                                if (Vector3.Distance(targetTile.transform.position, neighbor.transform.position) > 2 * 1.05)
+                                    continue;
+                            }
+                            AudioPlayer.PlaySound3D(Sound.weapon_throw, player.transform.position);
+                            AudioPlayer.PlaySound3D(Sound.attack_vocal, player.transform.position, 0.25f);
+                            this.Wait(animationReleaseTime, () =>
+                            {
+                                Projectile.CreateProjectile(player.transform, neighbor);
 
-                            aoeEnemy.TakeDamage(damage);
-                        });
+                                aoeEnemy.TakeDamage(damage);
+                            });
+                        }
                     }
                 }
             }
