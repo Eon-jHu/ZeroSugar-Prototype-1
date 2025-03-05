@@ -15,7 +15,7 @@ public class GameManager : Singleton<GameManager>
     // References
     private Board board;
     public Player player;
-
+    bool isCircleAttack;
     [SerializeField] private GameObject weaponProjectile;
 
 
@@ -122,6 +122,8 @@ public class GameManager : Singleton<GameManager>
         // if player is outside of optimal range for the selected card, 1 damage only
         int damage = isInOptimalRange ? cardBeingPlayed.cardData.damage : 1;
 
+
+       
         float animationReleaseTime = 0.5f;
 
         player.AnimateAttack(targetTile);
@@ -174,12 +176,13 @@ public class GameManager : Singleton<GameManager>
                     switch (cardBeingPlayed.cardData.aoeType)
                     {
                         case AoEType.Circle:
-                            
+                            isCircleAttack = true;
                             foreach (Tile neighbor in targetTile.neighbourTiles)
                             {
                                 if (neighbor.Occupier != null && neighbor.Occupier.OccupierTransform.TryGetComponent(out Enemy aoeEnemy))
                                 {
                                     Debug.Log($"AOE dealt {damage} damage to {aoeEnemy.name}.");
+                                    
                                     
                                     this.Wait(animationReleaseTime, () =>
                                     {
@@ -212,8 +215,16 @@ public class GameManager : Singleton<GameManager>
                 this.Wait(animationReleaseTime, () =>
                 {
                     Projectile.CreateProjectile(player.transform, targetTile);
-                    
-                    enemy.TakeDamage(damage);
+                    if(isCircleAttack)
+                    {
+
+                        isCircleAttack = false;
+                    }
+                    else
+                    {
+                        enemy.TakeDamage(damage);
+
+                    }
                 });
             }
         }
@@ -226,10 +237,11 @@ public class GameManager : Singleton<GameManager>
                 {
                     if (neighbor.Occupier != null && neighbor.Occupier.OccupierTransform.TryGetComponent(out Enemy aoeEnemy))
                     {
-                        Debug.Log($"AOE dealt {damage} damage to {aoeEnemy.name}.");
+                        AudioPlayer.PlaySound3D(Sound.weapon_throw, player.transform.position);
+                        AudioPlayer.PlaySound3D(Sound.attack_vocal, player.transform.position, 0.25f);
                         this.Wait(animationReleaseTime, () =>
                         {
-                            Projectile.CreateProjectile(player.transform, targetTile);
+                            Projectile.CreateProjectile(player.transform, neighbor);
 
                             aoeEnemy.TakeDamage(damage);
                         });
