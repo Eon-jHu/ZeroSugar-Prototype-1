@@ -13389,6 +13389,10 @@ PrefabInstance:
       propertyPath: enemyRanged
       value: 
       objectReference: {fileID: 3712166441722114298, guid: 61b26aae9929078418a60c6005567290, type: 3}
+    - target: {fileID: 2148580996385030547, guid: c5b5dde7550e8ae4fa2c997c93a6efd5, type: 3}
+      propertyPath: cardSelectionPhase
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5882590491400717855, guid: c5b5dde7550e8ae4fa2c997c93a6efd5, type: 3}
       propertyPath: m_Name
       value: Spawner
@@ -44314,7 +44318,7 @@ PrefabInstance:
       objectReference: {fileID: 1301130180}
     - target: {fileID: 6662422754385692941, guid: 76f52d6c44c83364e86a24519fcd2c72, type: 3}
       propertyPath: startingTime
-      value: 5
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6662422754385692941, guid: 76f52d6c44c83364e86a24519fcd2c72, type: 3}
       propertyPath: cardManagerRef
