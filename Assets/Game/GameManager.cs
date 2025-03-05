@@ -219,7 +219,7 @@ public class GameManager : Singleton<GameManager>
         }
         else 
         {
-
+            //need to adjust damage for our of range
             if (cardBeingPlayed.cardData.aoeType == AoEType.Circle)
             {
                 foreach (Tile neighbor in targetTile.neighbourTiles)

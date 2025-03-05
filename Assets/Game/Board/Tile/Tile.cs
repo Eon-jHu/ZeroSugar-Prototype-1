@@ -24,6 +24,7 @@ public class Tile : MonoBehaviour
     public static event Action<Tile> OnTileClicked; // Static event that carries the clicked tile
 
     public bool isAOE;
+    public bool isCross;
 
     private void Awake()
     {
@@ -172,15 +173,25 @@ public class Tile : MonoBehaviour
 
 
 
-        SetHoverColor();
-        if (isAOE)
+        if (isAOE || isCross)
         {
             foreach (var neighbor in neighbourTiles)
             {
+                //disable diagonal
+
+                if (isCross)
+                {
+                    SetHoverColor();
+                    if (Vector3.Distance(this.transform.position, neighbor.transform.position) > 2 * 1.05)
+                        continue; 
+                }
+
                 neighbor.TileRangeIndicator.SetActive(true);
                 neighbor.TileRangeIndicator.GetComponent<Renderer>().material.color = hoverRed; // Use a different color
             } 
         }
+        else
+            SetHoverColor();
 
     }
 
@@ -194,7 +205,7 @@ public class Tile : MonoBehaviour
     {
         ResetColor();
 
-        if (isAOE)
+        if (isAOE || isCross)
         {
             foreach (var neighbor in neighbourTiles)
             {

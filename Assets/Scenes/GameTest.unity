@@ -1208,6 +1208,7 @@ MonoBehaviour:
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
   isAOE: 0
+  isCross: 0
 --- !u!1 &63319948
 GameObject:
   m_ObjectHideFlags: 0
@@ -1521,6 +1522,7 @@ MonoBehaviour:
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
   isAOE: 0
+  isCross: 0
 --- !u!1 &73862398
 GameObject:
   m_ObjectHideFlags: 0
@@ -2987,6 +2989,7 @@ MonoBehaviour:
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
   isAOE: 0
+  isCross: 0
 --- !u!1 &146992604
 GameObject:
   m_ObjectHideFlags: 0
@@ -3099,6 +3102,7 @@ MonoBehaviour:
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
   isAOE: 0
+  isCross: 0
 --- !u!1 &149528695
 GameObject:
   m_ObjectHideFlags: 0
@@ -3720,6 +3724,7 @@ MonoBehaviour:
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
   isAOE: 0
+  isCross: 0
 --- !u!1 &203625221
 GameObject:
   m_ObjectHideFlags: 0
@@ -4247,6 +4252,7 @@ MonoBehaviour:
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
   isAOE: 0
+  isCross: 0
 --- !u!1 &233361046
 GameObject:
   m_ObjectHideFlags: 0
@@ -5237,6 +5243,7 @@ MonoBehaviour:
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
   isAOE: 0
+  isCross: 0
 --- !u!1 &279357169
 GameObject:
   m_ObjectHideFlags: 0
@@ -6369,6 +6376,7 @@ MonoBehaviour:
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
   isAOE: 0
+  isCross: 0
 --- !u!1 &349200126
 GameObject:
   m_ObjectHideFlags: 0
@@ -6529,6 +6537,7 @@ MonoBehaviour:
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
   isAOE: 0
+  isCross: 0
 --- !u!1 &352109767
 GameObject:
   m_ObjectHideFlags: 0
@@ -9043,6 +9052,7 @@ MonoBehaviour:
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
   isAOE: 0
+  isCross: 0
 --- !u!1 &519700823
 GameObject:
   m_ObjectHideFlags: 0
@@ -9120,6 +9130,7 @@ MonoBehaviour:
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
   isAOE: 0
+  isCross: 0
 --- !u!1 &524866740
 GameObject:
   m_ObjectHideFlags: 0
@@ -10015,6 +10026,7 @@ MonoBehaviour:
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
   isAOE: 0
+  isCross: 0
 --- !u!1 &581277726
 GameObject:
   m_ObjectHideFlags: 0
@@ -11372,6 +11384,7 @@ MonoBehaviour:
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
   isAOE: 0
+  isCross: 0
 --- !u!1 &693552407
 GameObject:
   m_ObjectHideFlags: 0
@@ -12686,6 +12699,7 @@ MonoBehaviour:
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
   isAOE: 0
+  isCross: 0
 --- !u!1 &775496682
 GameObject:
   m_ObjectHideFlags: 0
@@ -12881,6 +12895,7 @@ MonoBehaviour:
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
   isAOE: 0
+  isCross: 0
 --- !u!1 &782361031
 GameObject:
   m_ObjectHideFlags: 0
@@ -13124,6 +13139,7 @@ MonoBehaviour:
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
   isAOE: 0
+  isCross: 0
 --- !u!1 &790075464
 GameObject:
   m_ObjectHideFlags: 0
@@ -14200,6 +14216,7 @@ MonoBehaviour:
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
   isAOE: 0
+  isCross: 0
 --- !u!1 &890738101
 GameObject:
   m_ObjectHideFlags: 0
@@ -14487,6 +14504,7 @@ MonoBehaviour:
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
   isAOE: 0
+  isCross: 0
 --- !u!1 &909305782
 GameObject:
   m_ObjectHideFlags: 0
@@ -14647,6 +14665,7 @@ MonoBehaviour:
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
   isAOE: 0
+  isCross: 0
 --- !u!1 &915286107
 GameObject:
   m_ObjectHideFlags: 0
@@ -14987,7 +15006,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84e1282a73431fa4ba4d698d7b2e7044, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardData: {fileID: 11400000, guid: e4712636c6371274b90438369b5cd7ad, type: 2}
+  cardData: {fileID: 11400000, guid: f53cba4685b56a34ca5467766bc7cdc4, type: 2}
   handIndex: 0
 --- !u!212 &934927370
 SpriteRenderer:
@@ -15240,6 +15259,7 @@ MonoBehaviour:
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
   isAOE: 0
+  isCross: 0
 --- !u!1 &953786553
 GameObject:
   m_ObjectHideFlags: 0
@@ -22088,6 +22108,7 @@ MonoBehaviour:
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
   isAOE: 0
+  isCross: 0
 --- !u!1 &1111781057
 GameObject:
   m_ObjectHideFlags: 0
@@ -22248,6 +22269,7 @@ MonoBehaviour:
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
   isAOE: 0
+  isCross: 0
 --- !u!1 &1119227324
 GameObject:
   m_ObjectHideFlags: 0
@@ -22526,6 +22548,7 @@ MonoBehaviour:
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
   isAOE: 0
+  isCross: 0
 --- !u!1 &1152143866
 GameObject:
   m_ObjectHideFlags: 0
@@ -23220,6 +23243,7 @@ MonoBehaviour:
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
   isAOE: 0
+  isCross: 0
 --- !u!1 &1212404950
 GameObject:
   m_ObjectHideFlags: 0
@@ -23813,6 +23837,7 @@ MonoBehaviour:
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
   isAOE: 0
+  isCross: 0
 --- !u!1 &1250975791
 GameObject:
   m_ObjectHideFlags: 0
@@ -24515,6 +24540,7 @@ MonoBehaviour:
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
   isAOE: 0
+  isCross: 0
 --- !u!1 &1294346672
 GameObject:
   m_ObjectHideFlags: 0
@@ -25007,6 +25033,7 @@ MonoBehaviour:
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
   isAOE: 0
+  isCross: 0
 --- !u!1 &1310421836
 GameObject:
   m_ObjectHideFlags: 0
@@ -25285,6 +25312,7 @@ MonoBehaviour:
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
   isAOE: 0
+  isCross: 0
 --- !u!1 &1333051953
 GameObject:
   m_ObjectHideFlags: 0
@@ -25362,6 +25390,7 @@ MonoBehaviour:
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
   isAOE: 0
+  isCross: 0
 --- !u!1 &1336677441
 GameObject:
   m_ObjectHideFlags: 0
@@ -31743,6 +31772,7 @@ MonoBehaviour:
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
   isAOE: 0
+  isCross: 0
 --- !u!1 &1415993183
 GameObject:
   m_ObjectHideFlags: 0
@@ -33395,6 +33425,7 @@ MonoBehaviour:
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
   isAOE: 0
+  isCross: 0
 --- !u!1 &1532078955
 GameObject:
   m_ObjectHideFlags: 0
@@ -33638,6 +33669,7 @@ MonoBehaviour:
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
   isAOE: 0
+  isCross: 0
 --- !u!1 &1538680769
 GameObject:
   m_ObjectHideFlags: 0
@@ -34609,6 +34641,7 @@ MonoBehaviour:
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
   isAOE: 0
+  isCross: 0
 --- !u!1 &1581233879
 GameObject:
   m_ObjectHideFlags: 0
@@ -34935,6 +34968,7 @@ MonoBehaviour:
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
   isAOE: 0
+  isCross: 0
 --- !u!1 &1607077542
 GameObject:
   m_ObjectHideFlags: 0
@@ -35095,6 +35129,7 @@ MonoBehaviour:
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
   isAOE: 0
+  isCross: 0
 --- !u!1 &1612052526
 GameObject:
   m_ObjectHideFlags: 0
@@ -35391,6 +35426,7 @@ MonoBehaviour:
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
   isAOE: 0
+  isCross: 0
 --- !u!1 &1638896639
 GameObject:
   m_ObjectHideFlags: 0
@@ -36470,6 +36506,7 @@ MonoBehaviour:
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
   isAOE: 0
+  isCross: 0
 --- !u!1 &1697590778
 GameObject:
   m_ObjectHideFlags: 0
@@ -37528,6 +37565,7 @@ MonoBehaviour:
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
   isAOE: 0
+  isCross: 0
 --- !u!1 &1745584984
 GameObject:
   m_ObjectHideFlags: 0
@@ -38287,6 +38325,7 @@ MonoBehaviour:
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
   isAOE: 0
+  isCross: 0
 --- !u!1 &1786423987
 GameObject:
   m_ObjectHideFlags: 0
@@ -38364,6 +38403,7 @@ MonoBehaviour:
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
   isAOE: 0
+  isCross: 0
 --- !u!1 &1794497869
 GameObject:
   m_ObjectHideFlags: 0
@@ -38917,6 +38957,7 @@ MonoBehaviour:
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
   isAOE: 0
+  isCross: 0
 --- !u!1 &1817767948
 GameObject:
   m_ObjectHideFlags: 0
@@ -39811,6 +39852,7 @@ MonoBehaviour:
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
   isAOE: 0
+  isCross: 0
 --- !u!1 &1875110620
 GameObject:
   m_ObjectHideFlags: 0
@@ -41841,6 +41883,7 @@ MonoBehaviour:
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
   isAOE: 0
+  isCross: 0
 --- !u!1 &2018530488
 GameObject:
   m_ObjectHideFlags: 0
@@ -41918,6 +41961,7 @@ MonoBehaviour:
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
   isAOE: 0
+  isCross: 0
 --- !u!1 &2021074266
 GameObject:
   m_ObjectHideFlags: 0
@@ -42637,6 +42681,7 @@ MonoBehaviour:
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
   isAOE: 0
+  isCross: 0
 --- !u!1 &2078690580
 GameObject:
   m_ObjectHideFlags: 0
@@ -42974,6 +43019,7 @@ MonoBehaviour:
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
   isAOE: 0
+  isCross: 0
 --- !u!1 &2107867476
 GameObject:
   m_ObjectHideFlags: 0
@@ -43632,6 +43678,7 @@ MonoBehaviour:
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
   isAOE: 0
+  isCross: 0
 --- !u!1 &2134015503
 GameObject:
   m_ObjectHideFlags: 0
@@ -44076,6 +44123,7 @@ MonoBehaviour:
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
   isAOE: 0
+  isCross: 0
 --- !u!1 &2141683478
 GameObject:
   m_ObjectHideFlags: 0
@@ -44153,6 +44201,7 @@ MonoBehaviour:
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
   isAOE: 0
+  isCross: 0
 --- !u!1 &2142717559
 GameObject:
   m_ObjectHideFlags: 0

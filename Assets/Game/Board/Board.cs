@@ -143,7 +143,7 @@ public class Board : Singleton<Board>
         foreach (var tile in currentTile.neighbourTiles)
         {
             float distanceToPlayer = Vector3.Distance(tile.transform.position, playerTile.transform.position);
-            
+            Debug.Log(TileSize);
             // disable diagonal movement, make max distance for neighbour to 1 unit space rather than 1.41 unit space that a diagonal uses.
             if (!diagonalMovement && Vector3.Distance(currentTile.transform.position, tile.transform.position) > TileSize * 1.05 
                 || tile.IsOccupied())
