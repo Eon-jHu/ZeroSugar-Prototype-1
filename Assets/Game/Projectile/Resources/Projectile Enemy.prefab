@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpeed: 20
   impactFx: {fileID: 1124781282672466773, guid: 699a1ad4e5755f242b40096a9dc43053, type: 3}
+  impactCameraShakeStrength: 0.05
 --- !u!1001 &9186559660735940423
 PrefabInstance:
   m_ObjectHideFlags: 0

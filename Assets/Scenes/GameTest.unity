@@ -1207,6 +1207,8 @@ MonoBehaviour:
   hoverYellow: {r: 1, g: 1, b: 0, a: 0.54901963}
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
+  isAOE: 0
+  isCross: 0
 --- !u!1 &63319948
 GameObject:
   m_ObjectHideFlags: 0
@@ -1519,6 +1521,8 @@ MonoBehaviour:
   hoverYellow: {r: 1, g: 1, b: 0, a: 0.54901963}
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
+  isAOE: 0
+  isCross: 0
 --- !u!1 &73862398
 GameObject:
   m_ObjectHideFlags: 0
@@ -2984,6 +2988,8 @@ MonoBehaviour:
   hoverYellow: {r: 1, g: 1, b: 0, a: 0.54901963}
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
+  isAOE: 0
+  isCross: 0
 --- !u!1 &146992604
 GameObject:
   m_ObjectHideFlags: 0
@@ -3095,6 +3101,8 @@ MonoBehaviour:
   hoverYellow: {r: 1, g: 1, b: 0, a: 0.54901963}
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
+  isAOE: 0
+  isCross: 0
 --- !u!1 &149528695
 GameObject:
   m_ObjectHideFlags: 0
@@ -3739,6 +3747,8 @@ MonoBehaviour:
   hoverYellow: {r: 1, g: 1, b: 0, a: 0.54901963}
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
+  isAOE: 0
+  isCross: 0
 --- !u!1 &203625221
 GameObject:
   m_ObjectHideFlags: 0
@@ -4265,6 +4275,8 @@ MonoBehaviour:
   hoverYellow: {r: 1, g: 1, b: 0, a: 0.54901963}
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
+  isAOE: 0
+  isCross: 0
 --- !u!1 &233361046
 GameObject:
   m_ObjectHideFlags: 0
@@ -5254,6 +5266,8 @@ MonoBehaviour:
   hoverYellow: {r: 1, g: 1, b: 0, a: 0.54901963}
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
+  isAOE: 0
+  isCross: 0
 --- !u!1 &279357169
 GameObject:
   m_ObjectHideFlags: 0
@@ -6409,6 +6423,8 @@ MonoBehaviour:
   hoverYellow: {r: 1, g: 1, b: 0, a: 0.54901963}
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
+  isAOE: 0
+  isCross: 0
 --- !u!1 &349200126
 GameObject:
   m_ObjectHideFlags: 0
@@ -6568,6 +6584,8 @@ MonoBehaviour:
   hoverYellow: {r: 1, g: 1, b: 0, a: 0.54901963}
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
+  isAOE: 0
+  isCross: 0
 --- !u!1 &352109767
 GameObject:
   m_ObjectHideFlags: 0
@@ -9105,6 +9123,8 @@ MonoBehaviour:
   hoverYellow: {r: 1, g: 1, b: 0, a: 0.54901963}
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
+  isAOE: 0
+  isCross: 0
 --- !u!1 &519700823
 GameObject:
   m_ObjectHideFlags: 0
@@ -9181,6 +9201,8 @@ MonoBehaviour:
   hoverYellow: {r: 1, g: 1, b: 0, a: 0.54901963}
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
+  isAOE: 0
+  isCross: 0
 --- !u!1 &524866740
 GameObject:
   m_ObjectHideFlags: 0
@@ -10075,6 +10097,8 @@ MonoBehaviour:
   hoverYellow: {r: 1, g: 1, b: 0, a: 0.54901963}
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
+  isAOE: 0
+  isCross: 0
 --- !u!1 &581277726
 GameObject:
   m_ObjectHideFlags: 0
@@ -11431,6 +11455,8 @@ MonoBehaviour:
   hoverYellow: {r: 1, g: 1, b: 0, a: 0.54901963}
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
+  isAOE: 0
+  isCross: 0
 --- !u!1 &693552407
 GameObject:
   m_ObjectHideFlags: 0
@@ -12744,6 +12770,8 @@ MonoBehaviour:
   hoverYellow: {r: 1, g: 1, b: 0, a: 0.54901963}
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
+  isAOE: 0
+  isCross: 0
 --- !u!1 &775496682
 GameObject:
   m_ObjectHideFlags: 0
@@ -12938,6 +12966,8 @@ MonoBehaviour:
   hoverYellow: {r: 1, g: 1, b: 0, a: 0.54901963}
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
+  isAOE: 0
+  isCross: 0
 --- !u!1 &782361031
 GameObject:
   m_ObjectHideFlags: 0
@@ -13180,6 +13210,8 @@ MonoBehaviour:
   hoverYellow: {r: 1, g: 1, b: 0, a: 0.54901963}
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
+  isAOE: 0
+  isCross: 0
 --- !u!1 &790075464
 GameObject:
   m_ObjectHideFlags: 0
@@ -13445,6 +13477,10 @@ PrefabInstance:
       propertyPath: enemyRanged
       value: 
       objectReference: {fileID: 3712166441722114298, guid: 61b26aae9929078418a60c6005567290, type: 3}
+    - target: {fileID: 2148580996385030547, guid: c5b5dde7550e8ae4fa2c997c93a6efd5, type: 3}
+      propertyPath: cardSelectionPhase
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5882590491400717855, guid: c5b5dde7550e8ae4fa2c997c93a6efd5, type: 3}
       propertyPath: m_Name
       value: Spawner
@@ -14251,6 +14287,8 @@ MonoBehaviour:
   hoverYellow: {r: 1, g: 1, b: 0, a: 0.54901963}
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
+  isAOE: 0
+  isCross: 0
 --- !u!1 &890738101
 GameObject:
   m_ObjectHideFlags: 0
@@ -14537,6 +14575,8 @@ MonoBehaviour:
   hoverYellow: {r: 1, g: 1, b: 0, a: 0.54901963}
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
+  isAOE: 0
+  isCross: 0
 --- !u!1 &909305782
 GameObject:
   m_ObjectHideFlags: 0
@@ -14696,6 +14736,8 @@ MonoBehaviour:
   hoverYellow: {r: 1, g: 1, b: 0, a: 0.54901963}
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
+  isAOE: 0
+  isCross: 0
 --- !u!1 &915286107
 GameObject:
   m_ObjectHideFlags: 0
@@ -15036,7 +15078,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84e1282a73431fa4ba4d698d7b2e7044, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardData: {fileID: 11400000, guid: e4712636c6371274b90438369b5cd7ad, type: 2}
+  cardData: {fileID: 11400000, guid: f53cba4685b56a34ca5467766bc7cdc4, type: 2}
   handIndex: 0
 --- !u!212 &934927370
 SpriteRenderer:
@@ -15288,6 +15330,8 @@ MonoBehaviour:
   hoverYellow: {r: 1, g: 1, b: 0, a: 0.54901963}
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
+  isAOE: 0
+  isCross: 0
 --- !u!1 &953786553
 GameObject:
   m_ObjectHideFlags: 0
@@ -22135,6 +22179,8 @@ MonoBehaviour:
   hoverYellow: {r: 1, g: 1, b: 0, a: 0.54901963}
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
+  isAOE: 0
+  isCross: 0
 --- !u!1 &1111781057
 GameObject:
   m_ObjectHideFlags: 0
@@ -22294,6 +22340,8 @@ MonoBehaviour:
   hoverYellow: {r: 1, g: 1, b: 0, a: 0.54901963}
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
+  isAOE: 0
+  isCross: 0
 --- !u!1 &1119227324
 GameObject:
   m_ObjectHideFlags: 0
@@ -22571,6 +22619,8 @@ MonoBehaviour:
   hoverYellow: {r: 1, g: 1, b: 0, a: 0.54901963}
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
+  isAOE: 0
+  isCross: 0
 --- !u!1 &1152143866
 GameObject:
   m_ObjectHideFlags: 0
@@ -23288,6 +23338,8 @@ MonoBehaviour:
   hoverYellow: {r: 1, g: 1, b: 0, a: 0.54901963}
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
+  isAOE: 0
+  isCross: 0
 --- !u!1 &1212404950
 GameObject:
   m_ObjectHideFlags: 0
@@ -23880,6 +23932,8 @@ MonoBehaviour:
   hoverYellow: {r: 1, g: 1, b: 0, a: 0.54901963}
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
+  isAOE: 0
+  isCross: 0
 --- !u!1 &1250975791
 GameObject:
   m_ObjectHideFlags: 0
@@ -24581,6 +24635,8 @@ MonoBehaviour:
   hoverYellow: {r: 1, g: 1, b: 0, a: 0.54901963}
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
+  isAOE: 0
+  isCross: 0
 --- !u!1 &1294346672
 GameObject:
   m_ObjectHideFlags: 0
@@ -25096,6 +25152,8 @@ MonoBehaviour:
   hoverYellow: {r: 1, g: 1, b: 0, a: 0.54901963}
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
+  isAOE: 0
+  isCross: 0
 --- !u!1 &1310421836
 GameObject:
   m_ObjectHideFlags: 0
@@ -25373,6 +25431,8 @@ MonoBehaviour:
   hoverYellow: {r: 1, g: 1, b: 0, a: 0.54901963}
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
+  isAOE: 0
+  isCross: 0
 --- !u!1 &1333051953
 GameObject:
   m_ObjectHideFlags: 0
@@ -25449,6 +25509,8 @@ MonoBehaviour:
   hoverYellow: {r: 1, g: 1, b: 0, a: 0.54901963}
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
+  isAOE: 0
+  isCross: 0
 --- !u!1 &1336677441
 GameObject:
   m_ObjectHideFlags: 0
@@ -31829,6 +31891,8 @@ MonoBehaviour:
   hoverYellow: {r: 1, g: 1, b: 0, a: 0.54901963}
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
+  isAOE: 0
+  isCross: 0
 --- !u!1 &1415993183
 GameObject:
   m_ObjectHideFlags: 0
@@ -33504,6 +33568,8 @@ MonoBehaviour:
   hoverYellow: {r: 1, g: 1, b: 0, a: 0.54901963}
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
+  isAOE: 0
+  isCross: 0
 --- !u!1 &1532078955
 GameObject:
   m_ObjectHideFlags: 0
@@ -33746,6 +33812,8 @@ MonoBehaviour:
   hoverYellow: {r: 1, g: 1, b: 0, a: 0.54901963}
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
+  isAOE: 0
+  isCross: 0
 --- !u!1 &1538680769
 GameObject:
   m_ObjectHideFlags: 0
@@ -34716,6 +34784,8 @@ MonoBehaviour:
   hoverYellow: {r: 1, g: 1, b: 0, a: 0.54901963}
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
+  isAOE: 0
+  isCross: 0
 --- !u!1 &1581233879
 GameObject:
   m_ObjectHideFlags: 0
@@ -35041,6 +35111,8 @@ MonoBehaviour:
   hoverYellow: {r: 1, g: 1, b: 0, a: 0.54901963}
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
+  isAOE: 0
+  isCross: 0
 --- !u!1 &1607077542
 GameObject:
   m_ObjectHideFlags: 0
@@ -35200,6 +35272,8 @@ MonoBehaviour:
   hoverYellow: {r: 1, g: 1, b: 0, a: 0.54901963}
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
+  isAOE: 0
+  isCross: 0
 --- !u!1 &1612052526
 GameObject:
   m_ObjectHideFlags: 0
@@ -35495,6 +35569,8 @@ MonoBehaviour:
   hoverYellow: {r: 1, g: 1, b: 0, a: 0.54901963}
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
+  isAOE: 0
+  isCross: 0
 --- !u!1 &1638896639
 GameObject:
   m_ObjectHideFlags: 0
@@ -36051,6 +36127,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: d2f78b3c93a449b45af376f74a0f885b, type: 3}
+      propertyPath: m_Materials.Array.data[10]
+      value: 
+      objectReference: {fileID: 2100000, guid: 111f58e6e508ac2418ebff3e39edbeeb, type: 2}
     - target: {fileID: 919132149155446097, guid: d2f78b3c93a449b45af376f74a0f885b, type: 3}
       propertyPath: m_Name
       value: SM_LevelTest
@@ -36569,6 +36649,8 @@ MonoBehaviour:
   hoverYellow: {r: 1, g: 1, b: 0, a: 0.54901963}
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
+  isAOE: 0
+  isCross: 0
 --- !u!1 &1697590778
 GameObject:
   m_ObjectHideFlags: 0
@@ -37650,6 +37732,8 @@ MonoBehaviour:
   hoverYellow: {r: 1, g: 1, b: 0, a: 0.54901963}
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
+  isAOE: 0
+  isCross: 0
 --- !u!1 &1745584984
 GameObject:
   m_ObjectHideFlags: 0
@@ -38408,6 +38492,8 @@ MonoBehaviour:
   hoverYellow: {r: 1, g: 1, b: 0, a: 0.54901963}
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
+  isAOE: 0
+  isCross: 0
 --- !u!1 &1786423987
 GameObject:
   m_ObjectHideFlags: 0
@@ -38484,6 +38570,8 @@ MonoBehaviour:
   hoverYellow: {r: 1, g: 1, b: 0, a: 0.54901963}
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
+  isAOE: 0
+  isCross: 0
 --- !u!1 &1794497869
 GameObject:
   m_ObjectHideFlags: 0
@@ -39036,6 +39124,8 @@ MonoBehaviour:
   hoverYellow: {r: 1, g: 1, b: 0, a: 0.54901963}
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
+  isAOE: 0
+  isCross: 0
 --- !u!1 &1817767948
 GameObject:
   m_ObjectHideFlags: 0
@@ -39929,6 +40019,8 @@ MonoBehaviour:
   hoverYellow: {r: 1, g: 1, b: 0, a: 0.54901963}
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
+  isAOE: 0
+  isCross: 0
 --- !u!1 &1875110620
 GameObject:
   m_ObjectHideFlags: 0
@@ -40411,7 +40503,6 @@ MonoBehaviour:
   playArea: {fileID: 67482552}
   drawButton: {fileID: 68416773}
   startOfTurn: 0
-  drawCardClip: {fileID: 0}
 --- !u!1 &1888403002
 GameObject:
   m_ObjectHideFlags: 0
@@ -41959,6 +42050,8 @@ MonoBehaviour:
   hoverYellow: {r: 1, g: 1, b: 0, a: 0.54901963}
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
+  isAOE: 0
+  isCross: 0
 --- !u!1 &2018530488
 GameObject:
   m_ObjectHideFlags: 0
@@ -42035,6 +42128,8 @@ MonoBehaviour:
   hoverYellow: {r: 1, g: 1, b: 0, a: 0.54901963}
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
+  isAOE: 0
+  isCross: 0
 --- !u!1 &2021074266
 GameObject:
   m_ObjectHideFlags: 0
@@ -42753,6 +42848,8 @@ MonoBehaviour:
   hoverYellow: {r: 1, g: 1, b: 0, a: 0.54901963}
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
+  isAOE: 0
+  isCross: 0
 --- !u!1 &2078690580
 GameObject:
   m_ObjectHideFlags: 0
@@ -43089,6 +43186,8 @@ MonoBehaviour:
   hoverYellow: {r: 1, g: 1, b: 0, a: 0.54901963}
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
+  isAOE: 0
+  isCross: 0
 --- !u!1 &2107867476
 GameObject:
   m_ObjectHideFlags: 0
@@ -43746,6 +43845,8 @@ MonoBehaviour:
   hoverYellow: {r: 1, g: 1, b: 0, a: 0.54901963}
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
+  isAOE: 0
+  isCross: 0
 --- !u!1 &2134015503
 GameObject:
   m_ObjectHideFlags: 0
@@ -44189,6 +44290,8 @@ MonoBehaviour:
   hoverYellow: {r: 1, g: 1, b: 0, a: 0.54901963}
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
+  isAOE: 0
+  isCross: 0
 --- !u!1 &2141683478
 GameObject:
   m_ObjectHideFlags: 0
@@ -44265,6 +44368,8 @@ MonoBehaviour:
   hoverYellow: {r: 1, g: 1, b: 0, a: 0.54901963}
   hoverRed: {r: 1, g: 0, b: 0, a: 0.54901963}
   isInFeedbackMode: 0
+  isAOE: 0
+  isCross: 0
 --- !u!1 &2142717559
 GameObject:
   m_ObjectHideFlags: 0
@@ -44276,6 +44381,7 @@ GameObject:
   - component: {fileID: 2142717562}
   - component: {fileID: 2142717561}
   - component: {fileID: 2142717560}
+  - component: {fileID: 2142717563}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -44359,6 +44465,18 @@ Transform:
   - {fileID: 1401737830}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 30.179, y: -133.849, z: -1.182}
+--- !u!114 &2142717563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2142717559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6fdc9a1c3f06854aa418f55fd4dfcab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1482510901360077438
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44417,7 +44535,7 @@ PrefabInstance:
       objectReference: {fileID: 1301130180}
     - target: {fileID: 6662422754385692941, guid: 76f52d6c44c83364e86a24519fcd2c72, type: 3}
       propertyPath: startingTime
-      value: 5
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6662422754385692941, guid: 76f52d6c44c83364e86a24519fcd2c72, type: 3}
       propertyPath: cardManagerRef
@@ -44577,6 +44695,14 @@ PrefabInstance:
     - target: {fileID: 1777726790620385777, guid: faf643f9905106f4e8e6c4250be7bb6e, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 43.587006
+      objectReference: {fileID: 0}
+    - target: {fileID: 2232833914175763310, guid: faf643f9905106f4e8e6c4250be7bb6e, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2232833914175763310, guid: faf643f9905106f4e8e6c4250be7bb6e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3605590219155772445, guid: faf643f9905106f4e8e6c4250be7bb6e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size

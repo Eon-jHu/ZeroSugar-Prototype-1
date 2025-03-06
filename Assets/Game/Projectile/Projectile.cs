@@ -9,6 +9,7 @@ public class Projectile : MonoBehaviour
 
     [SerializeField] private float projectileSpeed = 40;
     [SerializeField] private GameObject impactFx;
+    [SerializeField] private float impactCameraShakeStrength;
     
     private void SetProjectile(Vector3 target)
     {
@@ -29,11 +30,13 @@ public class Projectile : MonoBehaviour
         else
         {
             AudioPlayer.PlaySound3D(Sound.impact, transform.position);
+            CameraShake.Shake(0.15f, impactCameraShakeStrength);
 
             if (impactFx)
             {
                 // place the impact a little backwards so explosion isn't inside the model.
-                Instantiate(impactFx, transform.position + -transform.forward * 0.5f, transform.rotation);
+                GameObject impactInst = Instantiate(impactFx, transform.position + -transform.forward * 0.5f, transform.rotation);
+                Destroy(impactInst, 4f);
             }
             
             Destroy(gameObject);

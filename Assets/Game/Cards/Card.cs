@@ -65,7 +65,20 @@ public class Card : MonoBehaviour
             cardCollider.enabled = false;
             cmRef.playArea.enabled = false;
 
+            // Check if the played card is an AOE card
+            bool isAOECard = (cardData.aoeType == AoEType.Circle);
+            bool isCrossCard = (cardData.aoeType == AoEType.Cross);
+
+            // Enable AOE mode only on hover
+            foreach (Tile tile in Board.Instance.GetTiles())
+            {
+                tile.isAOE = isAOECard;
+                tile.isCross = isCrossCard;
+            }
+
             GameManager.Instance.PlayCard(this);
+            
+           
         }
         else
         {
