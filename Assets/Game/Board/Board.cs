@@ -60,21 +60,7 @@ public class Board : Singleton<Board>
         }
         return null;
     }
-
-    /*
-    public void ShowRange(Tile currentTile, int minRange, int maxRange, Card card)
-    {
-        if (card.cardData.aoeType == AoEType.Line)
-        {
-            ShowRange(GetLineTiles(maxRange));
-        }
-        else
-        {
-            ShowRange(currentTile, minRange, maxRange);
-        }
-    }
-    */
-
+    
     public void ShowRange(Tile currentTile, int minRange, int maxRange, Card card)
     {
         // Fill out the range, and unfill all tiles closer than the minimum range.
@@ -90,22 +76,7 @@ public class Board : Singleton<Board>
             }
         }
     }
-
-    public void ShowRange(List<Tile> tilesInRange)
-    {
-        foreach (var tile in tiles)
-        {
-            if (tilesInRange.Contains(tile))
-            {
-                tile.ShowTileIndicator();
-            }
-            else
-            {
-                tile.ShowTileIndicator(true);
-            }
-        }
-    }
-
+    
     public bool TileIsInOptimalRange(Tile currentTile, Tile targetTile, int minRange, int maxRange, Card card)
     {
         if (card.cardData.aoeType == AoEType.Line)
@@ -236,18 +207,18 @@ public class Board : Singleton<Board>
         return knockBackTile;
     }
 
-    public List<Tile> GetLineTiles(Tile currentTile, int range) // use to for an example
+    public List<Tile> GetLineTiles(Tile currentTile, int range) 
     {
         List<Tile> lineTiles = new();
 
         // find all the diagonal tiles to begin with
-        //lineTiles.AddRange(lineTiles.FindAll(t => Vector3.Distance(t.transform.position, playerTile.transform.position) > 1.05 * Board.Instance.TileSize));
         foreach (var tile in currentTile.neighbourTiles)
         {
             // add all the adjacent tiles.
             lineTiles.Add(tile);
             Vector3 direction = tile.transform.position - currentTile.transform.position;
-
+            
+            // go out in the direction 
             for (int i = 1; i < range; i++)
             {
                 // if the direction magnitude is greater than 1, it'll be diagonal
@@ -258,5 +229,4 @@ public class Board : Singleton<Board>
         }
         return lineTiles;
     }
-
 }

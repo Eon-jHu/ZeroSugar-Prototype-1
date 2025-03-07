@@ -6,6 +6,5 @@ public class IdleAnimatorState : StateMachineBehaviour
     {
        animator.SetBool("Attack", false);
        // will cause a warning, need to unify attack parameter names in the animators.
-       animator.SetBool("TailAttack", false); 
     }
 }
