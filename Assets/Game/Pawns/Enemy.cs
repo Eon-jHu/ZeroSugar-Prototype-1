@@ -105,6 +105,7 @@ public class Enemy : MonoBehaviour, IOccupier
 
         if (health <= 0)
         {
+            Board.Instance.GetOccupierTile(this).LeaveTile(this);
             Destroy(gameObject);
         }
     }
@@ -226,6 +227,10 @@ public class Enemy : MonoBehaviour, IOccupier
         tile.OccupyTile(this, null, true);
     }
 
+    //private void OnDestroy()
+    //{
+    //    Board.Instance.GetOccupierTile(this).LeaveTile(this);
+    //}
     private void DelayDamage()
     {
         Player.Instance.TakeDamage(attackDamage);

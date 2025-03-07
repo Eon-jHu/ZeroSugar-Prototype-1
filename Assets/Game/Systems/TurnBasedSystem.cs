@@ -13,8 +13,8 @@ public class TurnBasedSystem : MonoBehaviour
     public enum TurnState { PlayerTurn, EnemyTurn}
     public TurnState CurrentTurn { get; private set; }
 
-    [SerializeField]
-    public TextMeshProUGUI timeText;
+    //[SerializeField]
+    //public TextMeshProUGUI timeText;
     [SerializeField]
     private CardManager cardManagerRef;
 
@@ -63,7 +63,7 @@ public class TurnBasedSystem : MonoBehaviour
             }
         }
             
-        timeText.text = timer.ToString("0.0");
+        //timeText.text = timer.ToString("0.0");
     
     }
 
