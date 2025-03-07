@@ -99,6 +99,7 @@ public class Enemy : MonoBehaviour, IOccupier
     {
         health -= damage;
         healthBar ??= GetComponentInChildren<HealthBar>();
+        AudioPlayer.PlaySound2D(Sound.demon_hurt);
         if (healthBar)
         {
             healthBar.UpdateHealthBar((float)health / maxHealth);

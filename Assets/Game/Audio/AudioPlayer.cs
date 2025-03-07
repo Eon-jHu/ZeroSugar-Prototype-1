@@ -13,6 +13,7 @@ public enum Sound
     weapon_throw,
     attack_vocal,
     clouds_moving,
+    demon_hurt
 }
 
 public class AudioPlayer : Singleton<AudioPlayer>
