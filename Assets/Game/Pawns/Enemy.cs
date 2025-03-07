@@ -52,6 +52,7 @@ public class Enemy : MonoBehaviour, IOccupier
     private int maxHealth;
 
     private HealthBar healthBar;
+    private static readonly int Walk = Animator.StringToHash("Walk");
 
     #endregion
 
@@ -171,9 +172,12 @@ public class Enemy : MonoBehaviour, IOccupier
 
             if (!canOccupy) yield break;
 
-            //animate enemy movement e.g Animator.SetBool("Walk", true)
+            //animate enemy movement e.g 
 
             isMoving = true;
+
+            Animator animator = GetComponent<Animator>();
+            animator.SetBool(Walk, true);
 
             while (moveTimeRemaining > 0)
             {
@@ -189,7 +193,7 @@ public class Enemy : MonoBehaviour, IOccupier
             // snap to the center tile at the end of the move sequence, should already be there from the while loop above.
             transform.position = targetTile.transform.position;
             isMoving = false;
-            //Animator.SetBool("Walk", false)
+            animator.SetBool(Walk, false);
         }
         isMoving = false;
     }
@@ -242,7 +246,7 @@ public class Enemy : MonoBehaviour, IOccupier
         if (enemyType == eEnemyType.MELEE)
         {
             //melee attack
-            GetComponent<Animator>().SetBool("TailAttack", true);
+            GetComponent<Animator>().SetBool("Attack", true);
             transform.forward = (Player.Instance.transform.position - transform.position).normalized;
             Invoke("DelayDamage", 0.8f);
         }
