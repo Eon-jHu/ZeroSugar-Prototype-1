@@ -207,6 +207,20 @@ public class Board : Singleton<Board>
         return knockBackTile;
     }
 
+    public Tile GetEnemyTile(Enemy enemy)
+    {
+        Tile enemyTile = null;
+
+        foreach (var tile in tiles)
+        {
+            if (tile.Occupier == enemy as IOccupier)
+            {
+                enemyTile = tile;
+            }
+        }
+        return enemyTile;
+    }
+
     public List<Tile> GetLineTiles(Tile currentTile, int range) 
     {
         List<Tile> lineTiles = new();
