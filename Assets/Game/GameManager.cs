@@ -15,7 +15,6 @@ public class GameManager : Singleton<GameManager>
     // References
     private Board board;
     public Player player;
-    bool isCircleAttack;
     [SerializeField] private GameObject weaponProjectile;
 
 
@@ -110,29 +109,6 @@ public class GameManager : Singleton<GameManager>
         cardBeingPlayed = null;
     }
 
-
-    private void HandleLineAttack(Tile targetTile, int damage)
-    {
-        float animationReleaseTime = 0.75f;
-        List<Tile> tiles = board.GetLineTiles(board.GetPlayerTile(), cardBeingPlayed.cardData.maxRange);
-        if (tiles.Contains(targetTile))
-        {
-            foreach (var tile in tiles)
-            {
-                if (tile.IsOccupied())
-                {
-                    this.Wait(animationReleaseTime, () =>
-                    {
-                        if (tile.Occupier != null)
-                        {
-                            tile.Occupier.OccupierTransform.GetComponent<Enemy>().TakeDamage(damage);
-                        }
-                    });
-                }
-            }
-        }
-    }
-
     private void HandleAttack(Tile targetTile)
     {
         Tile playerTile = board.GetPlayerTile();
@@ -150,161 +126,196 @@ public class GameManager : Singleton<GameManager>
 
         player.AnimateAttack(targetTile);
         
-        if (targetTile.Occupier != null)
+        Player targetPlayer = null;
+        Dictionary<Enemy, Tile> targetEnemiesTiles = new();
+
+        // if the player has clicked on a green tile.
+        if (isInOptimalRange)
         {
-            if (targetTile.Occupier.OccupierTransform.TryGetComponent(out Enemy enemy))
-            {
-                // if the player has clicked on a green tile.
-                if (isInOptimalRange)
+            // Changes damage based on the card's damage variance type
+            switch (cardBeingPlayed.cardData.damageVariance)
                 {
-                    //knock back check
-                    if (cardBeingPlayed.cardData.pushDistance != 0)
-                    {
-                        for (int i = 0; i < cardBeingPlayed.cardData.pushDistance; i++)
-                        {
-                            StartCoroutine(enemy.Movement(false));
-                        }
-                    }
+                    // Returns a random value between the damage value +- the variance value
+                    case EDamageVariance.Random:
+                        damage = (int)Mathf.Round(UnityEngine.Random.Range(
+                            (float)cardBeingPlayed.cardData.damage - cardBeingPlayed.cardData.varianceValue,
+                            (float)cardBeingPlayed.cardData.damage + cardBeingPlayed.cardData.varianceValue));
+                        break;
 
-                    switch (cardBeingPlayed.cardData.damageVariance)
-                    {
-                        // Returns a random value between the damage value +- the variance value
-                        case EDamageVariance.Random:
-                            damage = (int)Mathf.Round(UnityEngine.Random.Range(
-                                (float)cardBeingPlayed.cardData.damage - cardBeingPlayed.cardData.varianceValue,
-                                (float)cardBeingPlayed.cardData.damage + cardBeingPlayed.cardData.varianceValue));
-                            break;
+                    // Adds the variance value per tile away from the player (can add negatives)
+                    case EDamageVariance.RangeToPlayer:
+                        damage += (int)(board.GetDistance(playerTile, targetTile) *
+                                        cardBeingPlayed.cardData.varianceValue);
+                        break;
 
-                        // Adds the variance value per tile away from the player (can add negatives)
-                        case EDamageVariance.RangeToPlayer:
-                            damage += (int)(board.GetDistance(playerTile, targetTile) *
-                                            cardBeingPlayed.cardData.varianceValue);
-                            break;
+                    // Adds the variance value per tile away from the center of the AOE
+                    case EDamageVariance.RangeToCenter:
+                        damage += (int)((float)cardBeingPlayed.cardData.aoeArea *
+                                        cardBeingPlayed.cardData.varianceValue);
+                        break;
 
-                        // Adds the variance value per tile away from the center of the AOE
-                        case EDamageVariance.RangeToCenter:
-                            damage += (int)((float)cardBeingPlayed.cardData.aoeArea *
-                                            cardBeingPlayed.cardData.varianceValue);
-                            break;
+                    // Double damage on a critical hit (1 in 10)
+                    case EDamageVariance.Critical:
+                        damage = UnityEngine.Random.Range(0, 10) >= 9
+                            ? cardBeingPlayed.cardData.damage * 2
+                            : cardBeingPlayed.cardData.damage;
+                        break;
 
-                        // Double damage on a critical hit (1 in 10)
-                        case EDamageVariance.Critical:
-                            damage = UnityEngine.Random.Range(0, 10) >= 9
-                                ? cardBeingPlayed.cardData.damage * 2
-                                : cardBeingPlayed.cardData.damage;
-                            break;
-
-                        // No variance
-                        case EDamageVariance.None:
-                        default:
-                            break;
-                    }
-
-                    switch (cardBeingPlayed.cardData.aoeType)
-                    {
-                        case AoEType.Circle:
-                            isCircleAttack = true;
-                            foreach (Tile neighbor in targetTile.neighbourTiles)
-                            {
-                                if (neighbor.Occupier != null &&
-                                    neighbor.Occupier.OccupierTransform.TryGetComponent(out Enemy aoeEnemy))
-                                {
-                                    Debug.Log($"AOE dealt {damage} damage to {aoeEnemy.name}.");
-
-
-                                    this.Wait(animationReleaseTime, () =>
-                                    {
-                                        //Projectile.CreateProjectile(player.transform, targetTile);
-
-                                        aoeEnemy.TakeDamage(damage);
-                                    });
-                                }
-                            }
-
-                            break;
-                        case AoEType.Cone:
-                            break;
-                        case AoEType.Cross:
-                            foreach (Tile neighbor in targetTile.neighbourTiles)
-                            {
-                                if (Vector3.Distance(targetTile.transform.position, neighbor.transform.position) >
-                                    2 * 1.05)
-                                    continue;
-                                if (neighbor.Occupier != null &&
-                                    neighbor.Occupier.OccupierTransform.TryGetComponent(out Enemy aoeEnemy))
-                                {
-                                    Debug.Log($"AOE dealt {damage} damage to {aoeEnemy.name}.");
-
-
-                                    this.Wait(animationReleaseTime, () =>
-                                    {
-                                        //Projectile.CreateProjectile(player.transform, targetTile);
-
-                                        aoeEnemy.TakeDamage(damage);
-                                    });
-                                }
-                            }
-
-                            break;
-                        case AoEType.Line:
-                            HandleLineAttack(targetTile, damage);
-                            break;
-                        case AoEType.Single:
-                        default:
-                            break;
-                    }
-
-                    Debug.Log($"Player dealt {damage} damage to {enemy.name}.");
+                    // No variance
+                    case EDamageVariance.None:
+                    default:
+                        break;
                 }
 
-                AudioPlayer.PlaySound3D(Sound.weapon_throw, player.transform.position);
-                AudioPlayer.PlaySound3D(Sound.attack_vocal, player.transform.position, 0.25f);
-                
-                this.Wait(animationReleaseTime, () =>
-                {
-                    Projectile.CreateProjectile(player.transform, targetTile);
-                    if (isCircleAttack)
+            // Apply all damage and effects during AoE
+            // (TODO: Refactor; add to a list of effects to execute once this is done)
+            switch (cardBeingPlayed.cardData.aoeType)
+            {   // ========================================================================================================
+                case AoEType.Circle:
                     {
-                        isCircleAttack = false;
+                        // Doesn't affect center!
+
+                        foreach (Tile neighbor in targetTile.neighbourTiles)
+                        {
+                            if (neighbor.Occupier != null &&
+                                neighbor.Occupier.OccupierTransform.TryGetComponent(out Enemy aoeEnemy))
+                            {
+                                Debug.Log($"AOE dealt {damage} damage to {aoeEnemy.name}.");
+
+                                targetEnemiesTiles.Add(aoeEnemy, neighbor);
+                            }
+                        }
+
+                        break;
                     }
-                    else
+                // ========================================================================================================
+                case AoEType.Cone:
                     {
-                        enemy.TakeDamage(damage);
+                        // Not implemented
                     }
-                });
+                    break;
+                // ========================================================================================================
+                case AoEType.Cross:
+                    {
+                        // Add selected tile
+                        Enemy enemy = targetTile.Occupier.OccupierTransform.GetComponent<Enemy>();
+                        if (enemy)
+                        {
+                            targetEnemiesTiles.Add(enemy, targetTile);
+                        }
+
+                        foreach (Tile neighbor in targetTile.neighbourTiles)
+                        {
+                            // Skips diagonals
+                            if (Vector3.Distance(targetTile.transform.position, neighbor.transform.position) >
+                                2 * 1.05)
+                                continue;
+
+                            if (neighbor.Occupier != null &&
+                                neighbor.Occupier.OccupierTransform.TryGetComponent(out Enemy aoeEnemy))
+                            {
+                                Debug.Log($"AOE dealt {damage} damage to {aoeEnemy.name}.");
+
+                                targetEnemiesTiles.Add(aoeEnemy, neighbor);
+                            }
+                        }
+
+                        break;
+                    }
+                // ========================================================================================================
+                case AoEType.Line:
+                    {
+                        // Get all tiles within max range
+                        List<Tile> allLineTiles = board.GetLineTiles(board.GetPlayerTile(), cardBeingPlayed.cardData.maxRange);
+
+                        // They didn't select a tile that was part of the line
+                        if (!allLineTiles.Contains(targetTile))
+                        {
+                            Enemy enemy = targetTile.Occupier.OccupierTransform.GetComponent<Enemy>();
+                            if (!enemy) return;
+
+                            targetEnemiesTiles.Add(enemy, targetTile);
+                            break;
+                        }
+
+                        // Get the direction vector from the player to the target tile
+                        Vector3 direction = (targetTile.transform.position - board.GetPlayerTile().transform.position).normalized;
+
+                        // Filter the tiles to get only those in the same line
+                        foreach (Tile tile in allLineTiles)
+                        {
+                            Vector3 tileDirection = (tile.transform.position - board.GetPlayerTile().transform.position).normalized;
+                            if (Vector3.Dot(direction, tileDirection) > 0.9f)
+                            {
+                                // Part of the single line
+                                Enemy enemy = tile.Occupier.OccupierTransform.GetComponent<Enemy>();
+                                if (!enemy) continue;
+
+                                targetEnemiesTiles.Add(enemy, tile);
+                            }
+                        }
+                        break;
+                    }
+                // ========================================================================================================
+                case AoEType.Single:
+                default:
+                    { 
+                        if (targetPlayer = targetTile.Occupier.OccupierTransform.GetComponent<Player>())
+                        {
+                            break;
+                        }
+
+                        targetEnemiesTiles.Add(targetTile.Occupier.OccupierTransform.GetComponent<Enemy>(), targetTile);
+                        break;
+                    }
+                // ========================================================================================================
             }
         }
-        else
+        else // Not in Optimal Range
         {
-            if (isInOptimalRange)
+            // Add selected tile
+            Enemy enemy = targetTile.Occupier.OccupierTransform.GetComponent<Enemy>();
+            if (enemy)
             {
-                //need to adjust damage for our of range
-                if (cardBeingPlayed.cardData.aoeType == AoEType.Circle ||
-                    cardBeingPlayed.cardData.aoeType == AoEType.Cross)
+                targetEnemiesTiles.Add(enemy, targetTile);
+            }
+        }
+
+        // Play  animation if any enemies targeted
+        if (targetEnemiesTiles.Count > 0)
+        {
+            this.Wait(animationReleaseTime, () =>
+            {
+                foreach (var (enemy, tile) in targetEnemiesTiles)
                 {
-                    foreach (Tile neighbor in targetTile.neighbourTiles)
-                    {
-                        if (neighbor.Occupier != null &&
-                            neighbor.Occupier.OccupierTransform.TryGetComponent(out Enemy aoeEnemy))
-                        {
-                            if (cardBeingPlayed.cardData.aoeType == AoEType.Cross)
-                            {
-                                if (Vector3.Distance(targetTile.transform.position, neighbor.transform.position) >
-                                    2 * 1.05)
-                                    continue;
-                            }
-
-                            AudioPlayer.PlaySound3D(Sound.weapon_throw, player.transform.position);
-                            AudioPlayer.PlaySound3D(Sound.attack_vocal, player.transform.position, 0.25f);
-                            this.Wait(animationReleaseTime, () =>
-                            {
-                                Projectile.CreateProjectile(player.transform, neighbor);
-
-                                aoeEnemy.TakeDamage(damage);
-                            });
-                        }
-                    }
+                    Projectile.CreateProjectile(player.transform, tile);
+                    Knockback(enemy);
+                    enemy.TakeDamage(damage);
                 }
+            });
+        }
+        else if (targetPlayer != null)
+        {
+            // SHIELD SELF
+            if (damage < 0)
+            {
+                targetPlayer.shield = true;
+            }
+        }
+
+            // Always play sound
+            AudioPlayer.PlaySound3D(Sound.weapon_throw, player.transform.position);
+        AudioPlayer.PlaySound3D(Sound.attack_vocal, player.transform.position, 0.25f);
+    }
+
+    private void Knockback(Enemy aoeEnemy)
+    {
+        // knock back check
+        if (cardBeingPlayed.cardData.pushDistance != 0)
+        {
+            for (int i = 0; i < cardBeingPlayed.cardData.pushDistance; i++)
+            {
+                StartCoroutine(aoeEnemy.Movement(false));
             }
         }
     }

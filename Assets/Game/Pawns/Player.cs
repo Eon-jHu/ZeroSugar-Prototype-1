@@ -34,6 +34,8 @@ public class Player : MonoBehaviour, IOccupier
     private ActionPointDisplayUI actionPointDisplayUI;
     private HealthBar healthBar;
 
+    public bool shield = false;
+
     #endregion
 
     #region Initialization
@@ -130,6 +132,12 @@ public class Player : MonoBehaviour, IOccupier
 
     public void TakeDamage(int damage)
     {
+        if (shield)
+        {
+            shield = false;
+            return;
+        }
+
         Health -= damage;
 
         healthBar ??= GetComponentInChildren<HealthBar>();

@@ -245,6 +245,7 @@ MonoBehaviour:
   playerActionsPerTurn: 0
   currentTile: {fileID: 0}
   board: {fileID: 0}
+  shield: 0
 --- !u!65 &13291222
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11770,7 +11771,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84e1282a73431fa4ba4d698d7b2e7044, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardData: {fileID: 11400000, guid: e4712636c6371274b90438369b5cd7ad, type: 2}
+  cardData: {fileID: 11400000, guid: b95843b0b76df9f4d8f4c11712d6cb8e, type: 2}
   handIndex: 0
 --- !u!212 &704786953
 SpriteRenderer:
