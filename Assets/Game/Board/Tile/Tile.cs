@@ -25,6 +25,7 @@ public class Tile : MonoBehaviour
 
     public bool isAOE;
     public bool isCross;
+    //public bool isOccupied;
 
     private void Awake()
     {
@@ -244,5 +245,10 @@ public class Tile : MonoBehaviour
     private void OnDestroy()
     {
         Board.OnTileInitRequired -= InitializeTile; 
+    }
+
+    private void Update()
+    {
+        //isOccupied = IsOccupied();
     }
 }

@@ -12,13 +12,23 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: MAT_ArenaBorder1
+    second: {fileID: 2100000, guid: 69f6f9138ff87b04083d8722d08870bd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: MAT_Other
     second: {fileID: 2100000, guid: 111f58e6e508ac2418ebff3e39edbeeb, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: MAT_Other1
+    second: {fileID: 2100000, guid: 111f58e6e508ac2418ebff3e39edbeeb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: MAT_UVGroup1
-    second: {fileID: 2100000, guid: 3f8180b206b515340942e63a0068c1f8, type: 2}
+    second: {fileID: 2100000, guid: a4e6020d1431e8d4a9237d3be3a274a1, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -54,6 +64,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: MAT_UVGroup8
     second: {fileID: 2100000, guid: ad8e314604d31e54fa8aca8399dde43d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_WallGroup_01
+    second: {fileID: 2100000, guid: 3929d5591d2469443aa6f27e2ab6674f, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

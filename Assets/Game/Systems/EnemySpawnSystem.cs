@@ -56,8 +56,29 @@ public class EnemySpawnSystem : MonoBehaviour
             Instantiate(enemyMelee);
             Instantiate(enemyRanged);
             Instantiate(enemyRanged);
-            Debug.Log("Spawn new Enemy");
+            if(TurnBasedSystem.Instance.turnPhase > 8)
+            {
+                Instantiate(enemyMelee);
+                
+                Debug.Log("Extra enemies spawned");
+            }
+            if (TurnBasedSystem.Instance.turnPhase > 16)
+            {
+                Instantiate(enemyRanged);
 
+                Debug.Log("Extra enemies spawned");
+            }
+            if (TurnBasedSystem.Instance.turnPhase > 20)
+            {
+                Instantiate(enemyMelee);
+                Instantiate(enemyRanged);
+                Instantiate(enemyMelee);
+                Instantiate(enemyRanged);
+                Debug.Log("Overswarmed enemies spawned");
+            }
+            Debug.Log("Spawn new Enemy");
+            if (TurnBasedSystem.Instance.getStartingTime() > 6f)
+                TurnBasedSystem.Instance.setStartingTime(TurnBasedSystem.Instance.getStartingTime() - 2f);
             hasSpawned = true;
         }
     }
@@ -85,6 +106,7 @@ public class EnemySpawnSystem : MonoBehaviour
 
     private void SelectionSceneReady(AsyncOperation op)
     {
+        FindObjectOfType<CardManager>().ResetAndStopAllCards();
         CardSelector.Instance.SelectCard();
     }
     #endregion

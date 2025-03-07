@@ -72,14 +72,7 @@ public class CardSelector : Singleton<CardSelector>
         Card cardToDiscard = FindObjectsOfType<Card>(true).ToList().FirstOrDefault(c => c.cardData == discardCard);
         if (cardToDiscard)
         {
-            cardManager.deck.Remove(cardToDiscard);
-            cardManager.discardPile.Remove(cardToDiscard);
-            
-            // if the card is not in the deck and not in the discard pile, then it's in the hand, so reset the available card slot.
-            if (!cardManager.deck.Contains(cardToDiscard) && !cardManager.discardPile.Contains(cardToDiscard))
-                cardManager.availableCardSlots[cardToDiscard.handIndex] = true;
-            
-            Destroy(cardToDiscard.gameObject);
+            cardManager.DeleteCard(cardToDiscard);
         }
 
         bool successAddingCard = AddNewCard();
@@ -90,16 +83,18 @@ public class CardSelector : Singleton<CardSelector>
         
         bool AddNewCard()
         {
-            Transform cardHand = GameObject.FindWithTag("CardHand").transform;
-            cardHand = !cardHand ? FindObjectOfType<Card>(true).transform.parent : cardHand;
+            Transform deck = GameObject.FindWithTag("CardDeck").transform;
 
-            if (!cardHand)
+            if (!deck)
                 return false;
 
-            Card card = Instantiate(cardPrefab, cardHand);
+            Card card = Instantiate(cardPrefab, deck);
             card.cardData = selectedCard;
             cardManager.deck.Add(card);
-
+            card.gameObject.SetActive(false);
+            cardManager.ShuffleDeck();
+            cardManager.DrawHand();
+            cardManager.playArea.enabled = true;
             return true;
         }
         
