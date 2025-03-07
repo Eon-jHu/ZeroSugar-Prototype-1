@@ -255,9 +255,14 @@ public class Enemy : MonoBehaviour, IOccupier
         {
             //ranged attack
             transform.forward = (Player.Instance.transform.position - transform.position).normalized;
-            Projectile.CreateProjectile(transform, board.GetPlayerTile(), "Projectile Enemy");
-            AudioPlayer.PlaySound3D(Sound.weapon_throw, transform.position);
-            Player.Instance.TakeDamage(attackDamage);
+            GetComponent<Animator>().SetBool("Attack", true);
+            
+            this.Wait(0.5f, () =>
+            {
+                Projectile.CreateProjectile(transform, board.GetPlayerTile(), "Projectile Enemy");
+                AudioPlayer.PlaySound3D(Sound.weapon_throw, transform.position);
+                Player.Instance.TakeDamage(attackDamage);
+            });
         }
     }
 
