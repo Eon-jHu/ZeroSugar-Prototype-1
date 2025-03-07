@@ -53,7 +53,6 @@ public class Board : Singleton<Board>
     {
         foreach (Tile tileInstance in tiles)
         {
-            // todo change PlayerTest to the actual script on the player.
             if (tileInstance.Occupier is Player)
             {
                 return tileInstance;
@@ -62,12 +61,26 @@ public class Board : Singleton<Board>
         return null;
     }
 
-    public void ShowRange(Tile currentTile, int minRange, int maxRange)
+    /*
+    public void ShowRange(Tile currentTile, int minRange, int maxRange, Card card)
+    {
+        if (card.cardData.aoeType == AoEType.Line)
+        {
+            ShowRange(GetLineTiles(maxRange));
+        }
+        else
+        {
+            ShowRange(currentTile, minRange, maxRange);
+        }
+    }
+    */
+
+    public void ShowRange(Tile currentTile, int minRange, int maxRange, Card card)
     {
         // Fill out the range, and unfill all tiles closer than the minimum range.
         foreach (var tile in tiles)
         {
-            if (TileIsInOptimalRange(currentTile, tile, minRange, maxRange))
+            if (TileIsInOptimalRange(currentTile, tile, minRange, maxRange, card))
             {
                 tile.ShowTileIndicator();
             }
@@ -78,8 +91,28 @@ public class Board : Singleton<Board>
         }
     }
 
-    public bool TileIsInOptimalRange(Tile currentTile, Tile targetTile, int minRange, int maxRange)
+    public void ShowRange(List<Tile> tilesInRange)
     {
+        foreach (var tile in tiles)
+        {
+            if (tilesInRange.Contains(tile))
+            {
+                tile.ShowTileIndicator();
+            }
+            else
+            {
+                tile.ShowTileIndicator(true);
+            }
+        }
+    }
+
+    public bool TileIsInOptimalRange(Tile currentTile, Tile targetTile, int minRange, int maxRange, Card card)
+    {
+        if (card.cardData.aoeType == AoEType.Line)
+        {
+            return GetLineTiles(currentTile, maxRange).Contains(targetTile);
+        }
+        
         float adjustedMaxRange = maxRange + 0.421f;
         float adjustedMinRange = minRange + 0.419f;
         
@@ -115,6 +148,7 @@ public class Board : Singleton<Board>
         return null;
     }
 
+    //todo: investigate why this function is no longer used.
     public void HandleOccupierDeath(IOccupier occupier)
     {
         Tile tile = GetOccupierTile(occupier);
@@ -124,10 +158,23 @@ public class Board : Singleton<Board>
             tile.LeaveTile(occupier);
         }
     }
-
-    public void ShowRangeFromCenter(int range)
+    
+    public Tile GetTileClosestToPosition(Vector3 position)
     {
-        ShowRange(CenterTile, range, range);
+        float closestDistance = float.MaxValue;
+        Tile closestTile = null;
+        foreach (var tile in tiles)
+        {
+            float distance = Vector3.Distance(tile.transform.position, position);
+
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                closestTile = tile;
+            }
+        }
+
+        return closestTile;
     }
 
     public Tile GetNextTileOnPathToPlayer(Tile currentTile, bool diagonalMovement = false)
@@ -186,9 +233,30 @@ public class Board : Singleton<Board>
 
 
         }
-
         return knockBackTile;
     }
 
+    public List<Tile> GetLineTiles(Tile currentTile, int range) // use to for an example
+    {
+        List<Tile> lineTiles = new();
+
+        // find all the diagonal tiles to begin with
+        //lineTiles.AddRange(lineTiles.FindAll(t => Vector3.Distance(t.transform.position, playerTile.transform.position) > 1.05 * Board.Instance.TileSize));
+        foreach (var tile in currentTile.neighbourTiles)
+        {
+            // add all the adjacent tiles.
+            lineTiles.Add(tile);
+            Vector3 direction = tile.transform.position - currentTile.transform.position;
+
+            for (int i = 1; i < range; i++)
+            {
+                // if the direction magnitude is greater than 1, it'll be diagonal
+                Vector3 samplePos = currentTile.transform.position + direction * i  * TileSize;
+                Tile closestTile = GetTileClosestToPosition(samplePos);
+                lineTiles.Add(closestTile);
+            }
+        }
+        return lineTiles;
+    }
 
 }
