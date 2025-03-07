@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class CardManager : MonoBehaviour
 {
-    public List<Card> deck = new List<Card>();
-    public List<Card> discardPile = new List<Card>();
+    public List<Card> deck = new();
+    public List<Card> discardPile = new();
+    public List<Card> hand = new();
 
     public Transform[] cardSlots;
     public bool[] availableCardSlots;
@@ -48,6 +49,31 @@ public class CardManager : MonoBehaviour
         startOfTurn = false;
     }
 
+    // Deletes a card from the deck/discard
+    public bool DeleteCard(Card card)
+    {
+        if (deck.Contains(card))
+        {
+            deck.Remove(card);
+        }
+        else if (discardPile.Contains(card))
+        {
+            discardPile.Remove(card);
+        }
+        else if (hand.Contains(card))
+        {
+            hand.Remove(card);
+            availableCardSlots[card.handIndex] = true;
+        }
+        else
+        {
+            return false;
+        }
+
+        Destroy(card.gameObject);
+        return true;
+    }
+
     // Draws a single card from the deck to the hand
     public bool DrawCards()
     {
@@ -70,6 +96,7 @@ public class CardManager : MonoBehaviour
                     
                     availableCardSlots[i] = false;
                     deck.Remove(drawnCard);
+                    hand.Add(drawnCard);
                     return true;
                 }
             }
@@ -116,14 +143,13 @@ public class CardManager : MonoBehaviour
     private void Update()
     {
         deckSizeText.text = deck.Count.ToString();
-        
-        //if (startOfTurn == false)
-        //{
-        //    drawButton.SetActive(false);
-        //}
-        //else
-        //{
-        //    drawButton.SetActive(true);
-        //}
+    }
+    public void ResetAndStopAllCards()
+    {
+        foreach(Card card in hand)
+        {
+            card.ResetCardInHand();
+            playArea.enabled = false;
+        }
     }
 }

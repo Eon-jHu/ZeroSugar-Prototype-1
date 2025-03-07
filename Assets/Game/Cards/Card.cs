@@ -222,9 +222,17 @@ public class Card : MonoBehaviour
 
         // No longer in the hand
         cmRef.availableCardSlots[handIndex] = true;
-        cmRef.discardPile.Add(this);
-        inPlayZone = false; 
+        cmRef.hand.Remove(this);
 
+        // Reset size and color
+        cardRenderer.color = new Color(cardRenderer.color.r, cardRenderer.color.g, cardRenderer.color.b, 1);
+        transform.localScale = new(0.5f, 0.5f, 0.5f);
+
+        // Send to discard
+        cmRef.discardPile.Add(this);
+        inPlayZone = false;
+
+        // Disable the card
         gameObject.SetActive(false);
     }
 }

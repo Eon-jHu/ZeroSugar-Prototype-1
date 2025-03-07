@@ -65,8 +65,8 @@ public class GameManager : Singleton<GameManager>
         // 2. Subscribe the card's effect to the tile click event
         Tile.OnTileClicked += ResolveCard;
 
-        // 3. We just need to wait for the player to click a tile, or press escape to cancel
-        
+
+        // 3. We just need to wait for the player to click a tile, or press escape/RMB to cancel
     }
 
     private void CancelCard()

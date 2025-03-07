@@ -86,6 +86,7 @@ public class EnemySpawnSystem : MonoBehaviour
 
     private void SelectionSceneReady(AsyncOperation op)
     {
+        FindObjectOfType<CardManager>().ResetAndStopAllCards();
         CardSelector.Instance.SelectCard();
     }
     #endregion

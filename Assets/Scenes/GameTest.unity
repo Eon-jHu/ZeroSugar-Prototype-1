@@ -24692,17 +24692,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1299274173}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1301130180 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1270768304913366829, guid: faf643f9905106f4e8e6c4250be7bb6e, type: 3}
-  m_PrefabInstance: {fileID: 4887726786060495822}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1301195692
 GameObject:
   m_ObjectHideFlags: 0
@@ -24748,8 +24737,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1302713457}
   m_Layer: 0
-  m_Name: Cards
-  m_TagString: CardHand
+  m_Name: Deck
+  m_TagString: CardDeck
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40324,6 +40313,7 @@ MonoBehaviour:
   - {fileID: 704786952}
   - {fileID: 1681096552}
   discardPile: []
+  hand: []
   cardSlots:
   - {fileID: 2054435917}
   - {fileID: 827823187}
@@ -44364,7 +44354,7 @@ PrefabInstance:
     - target: {fileID: 6662422754385692941, guid: 76f52d6c44c83364e86a24519fcd2c72, type: 3}
       propertyPath: timeText
       value: 
-      objectReference: {fileID: 1301130180}
+      objectReference: {fileID: 0}
     - target: {fileID: 6662422754385692941, guid: 76f52d6c44c83364e86a24519fcd2c72, type: 3}
       propertyPath: startingTime
       value: 20
