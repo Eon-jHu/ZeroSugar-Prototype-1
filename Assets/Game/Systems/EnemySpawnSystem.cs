@@ -79,7 +79,8 @@ public class EnemySpawnSystem : MonoBehaviour
             AsyncOperation op = SceneManager.LoadSceneAsync("Card Select", LoadSceneMode.Additive);
             op.completed += SelectionSceneReady;
             sceneSelect = true;
-            
+            if(TurnBasedSystem.Instance.getStartingTime() > 6f)
+                TurnBasedSystem.Instance.setStartingTime(TurnBasedSystem.Instance.getStartingTime() - 2f);
         }
     }
 
